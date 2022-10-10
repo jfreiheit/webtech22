@@ -577,8 +577,9 @@
 &lt;/body&gt;&lt;/html&gt;
 * Connection <span class="c1">#0 to host freiheit.f4.htw-berlin.de left intact</span>
 * Closing connection <span class="m">0</span>
-jornfreiheit@Jorns-MBP ~ % curl -v https://freiheit.f4.htw-berlin.de/WT/index.html
-*   Trying <span class="m">141</span>.45.146.146...
+</code></pre></div>
+<p>Sie erhalten also die Meldung vom Webserver, dass die Seite <code>index.html</code> nicht mehr unter dieser Adresse verfügbar ist, sondern wegbewegt wurde (<code>Moved permanently</code>). Der Statuscode der Antwort ist <code>301</code>. Das ist anders, wenn die Anfrage an die Ressource <code>https://freiheit.f4.htw-berlin.de/WT/index.html</code> gestellt wird, also per <code>Transport Layer Security (TLS)</code> verschlüsselt wird:</p>
+<p><div class="highlight"><pre><span></span><code>*   Trying <span class="m">141</span>.45.146.146...
 * TCP_NODELAY <span class="nb">set</span>
 * Connected to freiheit.f4.htw-berlin.de <span class="o">(</span><span class="m">141</span>.45.146.146<span class="o">)</span> port <span class="m">443</span> <span class="o">(</span><span class="c1">#0)</span>
 * ALPN, offering h2
@@ -625,7 +626,7 @@ jornfreiheit@Jorns-MBP ~ % curl -v https://freiheit.f4.htw-berlin.de/WT/index.ht
   &lt;head&gt;
     &lt;meta <span class="nv">charset</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span> /&gt;
     &lt;meta <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;viewport&quot;</span> <span class="nv">content</span><span class="o">=</span><span class="s2">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;
-    &lt;title&gt;Webtech WS <span class="m">18</span>/19&lt;/title&gt;
+    &lt;title&gt;Webtech&lt;/title&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;p&gt;Hallo FIW!&lt;/p&gt;
@@ -634,7 +635,7 @@ jornfreiheit@Jorns-MBP ~ % curl -v https://freiheit.f4.htw-berlin.de/WT/index.ht
 * Connection <span class="c1">#0 to host freiheit.f4.htw-berlin.de left intact</span>
 * Closing connection <span class="m">0</span>
 </code></pre></div>
-<p>Sie sehen darin, dass der Webserver <code>freiheit.f4.htw-berlin.de</code> unter der IP <code>141.45.146.146</code> läuft, das die Verbindung über <code>TLSv1.2</code> hergestellt wird (Port <code>443</code> und dass für die <code>GET</code>-Anfrage das HTTProtokoll in der Version <code>1.1</code> verwendet wird. Als <em>response</em> wird die HTML-Seite <code>index.html</code> zurückgesendet. Für Curl siehe auch <a href="https://everything.curl.dev/usingcurl">hier</a>. </p>
+Sie sehen darin, dass der Webserver <code>freiheit.f4.htw-berlin.de</code> unter der IP <code>141.45.146.146</code> läuft, das die Verbindung über <code>TLSv1.2</code> hergestellt wird (Port <code>443</code>) und dass für die <code>GET</code>-Anfrage das HTTProtokoll in der Version <code>1.1</code> verwendet wird. Als <em>response</em> wird die HTML-Seite <code>index.html</code> zurückgesendet. Der Status-Code der Antwort ist nun <code>200 OK</code>. Für Curl siehe auch <a href="https://everything.curl.dev/usingcurl">hier</a>. </p>
 <h3 id="uniform-resource-identifier-uri">Uniform Resource Identifier (URI)<a class="headerlink" href="#uniform-resource-identifier-uri" title="Permanent link">&para;</a></h3>
 <p><em>Uniform Resource Identifiers</em> sind Zeichenfolgen, die Ressourcen eindeutig beschreiben und deren Zugriff darauf. Die bekannteste Unterart von <em>URI</em> sind <em>Uniform Resource Locator (URL)</em>. Häufig werden <em>URL</em> und <em>URI</em> synonym verwendet, was nicht ganz korrekt ist. </p>
 <p>Generell beschreiben <em>URI</em>:</p>

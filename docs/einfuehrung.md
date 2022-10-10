@@ -160,7 +160,11 @@ eingeben (`-v` steht für den `verbose`-Modus), dann erhalten Sie
 </body></html>
 * Connection #0 to host freiheit.f4.htw-berlin.de left intact
 * Closing connection 0
-jornfreiheit@Jorns-MBP ~ % curl -v https://freiheit.f4.htw-berlin.de/WT/index.html
+```
+
+Sie erhalten also die Meldung vom Webserver, dass die Seite `index.html` nicht mehr unter dieser Adresse verfügbar ist, sondern wegbewegt wurde (`Moved permanently`). Der Statuscode der Antwort ist `301`. Das ist anders, wenn die Anfrage an die Ressource `https://freiheit.f4.htw-berlin.de/WT/index.html` gestellt wird, also per `Transport Layer Security (TLS)` verschlüsselt wird:
+
+```bash
 *   Trying 141.45.146.146...
 * TCP_NODELAY set
 * Connected to freiheit.f4.htw-berlin.de (141.45.146.146) port 443 (#0)
@@ -208,7 +212,7 @@ jornfreiheit@Jorns-MBP ~ % curl -v https://freiheit.f4.htw-berlin.de/WT/index.ht
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Webtech WS 18/19</title>
+    <title>Webtech</title>
   </head>
   <body>
     <p>Hallo FIW!</p>
@@ -217,8 +221,7 @@ jornfreiheit@Jorns-MBP ~ % curl -v https://freiheit.f4.htw-berlin.de/WT/index.ht
 * Connection #0 to host freiheit.f4.htw-berlin.de left intact
 * Closing connection 0
 ```
-
-Sie sehen darin, dass der Webserver `freiheit.f4.htw-berlin.de` unter der IP `141.45.146.146` läuft, das die Verbindung über `TLSv1.2` hergestellt wird (Port `443` und dass für die `GET`-Anfrage das HTTProtokoll in der Version `1.1` verwendet wird. Als *response* wird die HTML-Seite `index.html` zurückgesendet. Für Curl siehe auch [hier](https://everything.curl.dev/usingcurl). 
+Sie sehen darin, dass der Webserver `freiheit.f4.htw-berlin.de` unter der IP `141.45.146.146` läuft, das die Verbindung über `TLSv1.2` hergestellt wird (Port `443`) und dass für die `GET`-Anfrage das HTTProtokoll in der Version `1.1` verwendet wird. Als *response* wird die HTML-Seite `index.html` zurückgesendet. Der Status-Code der Antwort ist nun `200 OK`. Für Curl siehe auch [hier](https://everything.curl.dev/usingcurl). 
 
 ### Uniform Resource Identifier (URI)
 
