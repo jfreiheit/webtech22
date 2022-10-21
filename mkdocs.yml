@@ -64,5 +64,6 @@ markdown_extensions:
 nav:
     - Home: index.md
     - Einführung: einfuehrung.md
+    - HTML: html.md
     - Übungen: uebungen.md
     - Werkzeuge: tools.md

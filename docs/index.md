@@ -11,10 +11,10 @@ Nachfolgend der vorläufige Wochenplan (wird eventuell angepasst).
 | | Woche | Themen (Vorlesung) | Übung | Aufgabe (Stand) | Abgabe Übung bis | 
 |-|-------|--------------------|-------|-----------------|------------------|
 | 1. | 10.-14.10.2022 | [Einführung](./einfuehrung/#webtechnologien-einfuhrung) und [Organisatorisches](./#organisatorisches) | [Übung 0](./uebungen/#ubung-0) | - | - | 
-| 2. | 17.-21.10.2022 | HTML | [Übung 1](./uebungen/#ubung-1) | Idee | 25.10.2022 | 
+| 2. | 17.-21.10.2022 | [HTML](./html/) | [Übung 1](./uebungen/#ubung-1) | Idee | 25.10.2022 | 
 | 3. | 24.-28.10.2022 | CSS (Eigenschaften und Selektoren | [Übung 2](./uebungen/#ubung-2) | - | 01.11.2022 | 
 | 4. | 31.-04.11.2022 | CSS (Layout) | [Übung 3](./uebungen/#ubung-3) | Konzept | 08.11.2022 | 
-| 5. | 07.-11.11.2022 | [RWD (responsive Webdesign) | [Übung 4](./uebungen/#ubung-4) | - | 15.11.2022 | 
+| 5. | 07.-11.11.2022 | RWD (responsive Webdesign) | [Übung 4](./uebungen/#ubung-4) | - | 15.11.2022 | 
 | 6. | 14.-18.11.2022 | JavaScript (DOM) | [Übung 5](./uebungen/#ubung-5) | Datenmodell | 22.11.2022 | 
 | 7. | 21.-25.11.2022 | Angular (Einführung und Komponenten) | [Übung 6](./uebungen/#ubung-6) | Schnittstelle | 29.11.2022 | 
 | 8. | 28.-02.12.2022 | Angular (Bindings und Direktiven) + JSON | [Übung 7](./uebungen/#ubung-7) | Frontend (c+r)| 06.12.2022 | 
