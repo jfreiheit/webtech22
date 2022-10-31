@@ -38,6 +38,336 @@ Zur erfolgreichen Durchführung der Veranstaltung müssen Sie die Übungen löse
 
 Für die Kommunikation untereinander verwenden wir [**Slack**](https://slack.com/intl/de-de/). Dort können Sie alle inhaltlichen und organisatorischen Fragen stellen. Ich fände es gut, wenn ich dort möglichst wenig Fragen - zumindest die inhaltlichen - beantworten müsste, sondern eine Art internes Diskussionsforum entsteht. Es ist sehr gewünscht, dort Fragen zu stellen und noch mehr gewünscht, diese von Ihnen dort beantwortet zu sehen. Damit wäre allen geholfen und ich kann besser erkennen, wo noch Nachhol- bzw. Erläuterungsbedarf bei den meisten besteht.  
 
+## Code aus der Vorlesung
+
+??? note "HTML"
+	```html
+	<!DOCTYPE html>
+	<html lang="en">
+
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>Hello FIW</title>
+	</head>
+
+	<body>
+
+	    <h1>Überschrift h1</h1>
+	    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+	        <br /> diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+	        eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+	        ipsum dolor sit amet. Lorem ipsum dolor
+	        <img src="./Logos/fiw.jpg" alt="FIW_Logo" />
+
+	        sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+	        erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+	        sea takimata sanctus est Lorem ipsum dolor sit amet.
+	    </p>
+	    <h2>Überschrift h2</h2>
+	    <h3>Überschrift h3</h3>
+	    <h4>Überschrift h4</h4>
+	    <h5>Überschrift h5</h5>
+	    <h6>Überschrift h6</h6>
+
+	    <ul>
+	        <li>Erster Punkt</li>
+	        <li>Zweiter Punkt
+	            <ul>
+	                <li>Unterpunkt</li>
+	                <li>Unterpunkt</li>
+	                <li>Unterpunkt</li>
+	            </ul>
+	        </li>
+	        <li>Dritter Punkt</li>
+	    </ul>
+
+	    <table>
+	        <thead>
+	            <tr>
+	                <th>Spalte 1</th>
+	                <th>Spalte 2</th>
+	                <th>Spalte 2</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	            <tr>
+	                <td>1</td>
+	                <td>2</td>
+	                <td>3</td>
+	            </tr>
+	            <tr>
+	                <td>4</td>
+	                <td>5</td>
+	                <td>6</td>
+	            </tr>
+	            <tr>
+	                <td>7</td>
+	                <td>8</td>
+	                <td>9</td>
+	            </tr>
+	        </tbody>
+	    </table>
+
+	    <a href="./test.html">Test</a>
+
+	    <header>
+	        vielleicht
+	        <nav>Menüpunkte weiß nicht</nav>
+	        lieber testen
+	    </header>
+	    <main>lieber testen
+	        <section>
+	            <article>
+	                besser testen
+	            </article>
+	        </section>
+	    </main>
+	    <footer>
+
+	    </footer>
+
+	    <input action="/submit">
+	    <label for="name">Name</label>
+	    <input type="text" id="name" name="name" placeholder="Name">
+	    <br />
+	    <label for="email">E-Mail</label>
+	    <input type="email" id="email" name="email" placeholder="E-Mail">
+	    <label for="message">Nachricht</label>
+	    <textarea id="message" name="message" placeholder="Nachricht"></textarea>
+	    <input type="submit" value="Absenden">
+	    <input type="datetime-local" name="" id="">
+	    <input type="button" value="OK">
+	    </form>
+	</body>
+
+	</html>
+	```
+
+
+??? note "CSS Cascading"
+	```css
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>Cascading</title>
+	    <style>
+	        body {
+	            background-color: lightgoldenrodyellow;
+	            font-family: verdana;
+	        }
+
+	        section h2 {
+	            color: pink;
+	            text-align: center;
+	            text-transform: uppercase;
+	        }
+
+	        header, footer {
+	            background-color: aqua;
+	        }
+	        main {
+	            color: red;
+	        }
+
+	        section>p {
+	            color: blue;
+	        }
+
+	        ol>li {
+	            background-color: yellowgreen;
+	        }
+
+	        .bgYellow {
+	            background-color: yellow;
+	        }
+
+	        .fgBrown {
+	            color: brown;
+	        }
+
+	        #firstH2 {
+	            font-weight: 400;
+	        }
+
+	        a {
+	            text-decoration: none;
+	        }
+
+	        a:hover {
+	            font-weight: 800;
+	        }
+
+	        a:visited {
+	            font-weight: 800;
+	            color:red;
+	        }
+	    </style>
+	</head>
+	<body>
+	    <header>
+	        <h1 style="padding: 30px; margin-bottom: 100px;">Cascading</h1>
+	    </header>
+	    <main>
+	        <section>
+	            <h2 id="firstH2">Section 1</h2>
+	            <article>
+	                <p class="bgYellow fgBrown">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+	                <p class="bgYellow fgBrown">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+	            </article>
+	            <article>
+	                <p class="bgYellow">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+	                <p  class="fgBrown">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+	            </article>
+	            <p>direktes Kind einer section</p>
+	        </section>
+	        <section>
+	            <h2>Section 2</h2>
+	            <article>
+	                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+	                hallo ballo
+	                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+	            </article>
+	            <article>
+	                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+	                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+	            </article>
+	        </section>
+	        <ol>
+	            <li>item 1
+	                <ul>
+	                    <li>subitem</li>
+	                    <li>subitem</li>
+	                    <li>subitem</li>
+	                </ul>
+	            </li>
+	            <li>item 2</li>
+	            <li>item 3</li>
+	            <li>item 4</li>
+	            <li>item 5</li>
+	        </ol>
+	    </main>
+	    <aside>
+	        <h2>Aside</h2>
+	        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+	        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
+	    </aside>
+	    <footer>
+	        <p><a href="./index.html">Zurück</a></p>
+	    </footer>
+
+	</body>
+	</html>
+	```
+
+
+??? note "CSS Boxmodel"
+	```css
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>Box-Model</title>
+	    <style>
+	        div {
+	            width: 320px;
+	            padding: 10px;
+	            border: 5px solid gray;
+	            margin: 0;
+	        }
+	    </style>
+	</head>
+	<body>
+	    <header>
+	        <h1>Box-Model</h1>
+	    </header>
+	    <main>
+	        <img src="./Logos/fiw.jpg" alt="fiw logo" style="width:350px"/>
+	        <div>Das FIW-Logo hat eine Breite von 350px (width:350px).
+	            Der Inhalt dieser Box hat eine Breite von 320px.
+	            Dazu kommt padding von 10px (auf beiden Seiten)
+	            und ein Rahmen mit der Breite von 5px. Macht zusammen
+	            350px.
+	        </div>
+	    </main>
+	    <footer>
+	        <p><a href="./index.html">Zurück</a></p>
+	    </footer>
+
+	</body>
+	</html>
+	```
+
+
+??? note "CSS Rangfolge"
+	```css
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>Reihenfolge Selektoren</title>
+	    <style>
+	        a:link {
+	        color: blue; 
+	        }
+	        
+	        .link {
+	            
+	        color: green;
+	        }
+	        
+	        #navigation a.link {
+	        color: red;
+	        }
+
+	        li a {
+	        color: magenta; 
+	        }
+	        
+	        #navigation li a {
+	            color: black;
+	        }
+	    </style>
+	</head>
+	<body>
+	    <header>
+	        <h1>Reihenfolge Wirkung Selektoren</h1>
+	    </header>
+	    <main>
+	          <ul id="navigation">
+	            <li><a href="./index.html" class="link">Startseite</a></li>
+	            <li><a href="./grid.html" class="link">Grid</a></li>
+	        </ul>
+	  <h2>Prinzip</h2>
+	  <dl>
+		<dt>Kategorie A</dt>
+		<dd>erhält den Wert 1, wenn CSS-Definitionen direkt im style-Attribut eines HTML-Elementes notiert sind</dd>
+		<dt>Kategorie B</dt>
+		<dd>erhält den Wert 1 bei Selektoren für Elemente mit id-Attributen</dd>
+	    	<dt>Kategorie C</dt>
+		<dd>Anzahl der von einem Selektor betroffenen Klassen und Pseudoklassen</dd>
+	    	<dt>Kategorie D</dt>
+		<dd>Anzahl der von einem Selektor betroffenen Elementnamen und Pseudo-Elemente</dd>
+	</dl>
+	<ol>
+	    <li>Bei der Reihenfolge der Sortierung gilt: A > B > C > D, also z.B. 1 0 0 0 vor (größer als) 0 1 2 2.</li>
+	    <li>Bei Gleichheit gilt die letzte Definition</li>
+	</ol>
+	    </main>
+	    <footer>
+	        <p><a href="./index.html">Zurück</a></p>
+	    </footer>
+
+	</body>
+	</html>
+	```
 
 ## Semesteraufgabe
 
