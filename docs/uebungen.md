@@ -361,4 +361,16 @@
       ![Uebung2](./files/57_uebung2_3.png) 
 
 
+#### Übung 3
+
+??? question "Übungsaufgabe 3 (Grid und Box-Model)"
+    - Erstellen Sie einen `Uebung3`-Ordner und darin eine Datei `uebung3.html`. 
+    - Laden Sie sich [hier die Datei images.zip](./files/images.zip) herunter, entpacken Sie sie und schieben Sie den `images`-Ordner samt Inhalt in den `Uebung3`-Ordner.
+    - Implementieren Sie die `uebung3.html` so, dass *ungefähr* folgendes Aussehen entsteht:
+      ![Uebung3](./files/212_uebung3.png) 
+    - Sie können die CSS-Eigenschaften innerhalb der `uebung3.html` im `<style>`-Element definieren oder wieder in einer externen Datei. 
+    - Ziele der Übung sind die Anwendung von *CSS-Grid* und ein Verständnis vom *Box-Model* sowie die Verwendung von Größen. Lassen Sie Ihrer Kreativität freien Lauf!
+
+
+
 
