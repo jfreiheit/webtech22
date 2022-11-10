@@ -372,5 +372,16 @@
     - Ziele der Übung sind die Anwendung von *CSS-Grid* und ein Verständnis vom *Box-Model* sowie die Verwendung von Größen. Lassen Sie Ihrer Kreativität freien Lauf!
 
 
+#### Übung 4
+
+??? question "Übungsaufgabe 4 (Bootstrap und JavaScript)"
+    - Erstellen Sie einen `Uebung4`-Ordner und darin eine Datei `uebung4.html`. 
+    - Implementieren Sie die `uebung4.html` mithilfe von Bootstrap so, dass *ungefähr* folgendes Aussehen entsteht:
+      ![Uebung4](./files/256_uebung4.png){ width="300" }
+    - Sind in das Formular Daten eingegeben und wird der `Registrieren`-Button gedrückt, dann erscheint mithilfe einer JavaScript-Funktion:
+        ![Uebung4](./files/257_uebung4.png){ width="300" } 
+    - Wird der `Abbrechen`-Button gedrückt, werden alle bereits eingegebenen Daten wieder aus den Textfeldern entfernt.   
+    - Ziele der Übung sind die Anwendung von *CSS-Bootstrap* und *JavaScript*.
+
 
 

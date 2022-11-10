@@ -12,9 +12,9 @@ Nachfolgend der vorläufige Wochenplan (wird eventuell angepasst).
 |-|-------|--------------------|-------|-----------------|------------------|
 | 1. | 10.-14.10.2022 | [Einführung](./einfuehrung/#webtechnologien-einfuhrung) und [Organisatorisches](./#organisatorisches) | [Übung 0](./uebungen/#ubung-0) | - | - | 
 | 2. | 17.-21.10.2022 | [HTML](./html/) | [Übung 1](./uebungen/#ubung-1) | Idee | 25.10.2022 | 
-| 3. | 24.-28.10.2022 | CSS (Eigenschaften und Selektoren | [Übung 2](./uebungen/#ubung-2) | - | 01.11.2022 | 
-| 4. | 31.-04.11.2022 | CSS (Layout) | [Übung 3](./uebungen/#ubung-3) | Konzept | 08.11.2022 | 
-| 5. | 07.-11.11.2022 | RWD (responsive Webdesign) | [Übung 4](./uebungen/#ubung-4) | - | 15.11.2022 | 
+| 3. | 24.-28.10.2022 | [CSS (Eigenschaften und Selektoren](./css/#css) | [Übung 2](./uebungen/#ubung-2) | - | 01.11.2022 | 
+| 4. | 31.-04.11.2022 | [CSS (Grid)](./css/#grid) | [Übung 3](./uebungen/#ubung-3) | Konzept | 08.11.2022 | 
+| 5. | 07.-11.11.2022 | [RWD (responsive Webdesign)](./rwd/#responsive-web-design) | [Übung 4](./uebungen/#ubung-4) | - | 15.11.2022 | 
 | 6. | 14.-18.11.2022 | JavaScript (DOM) | [Übung 5](./uebungen/#ubung-5) | Datenmodell | 22.11.2022 | 
 | 7. | 21.-25.11.2022 | Angular (Einführung und Komponenten) | [Übung 6](./uebungen/#ubung-6) | Schnittstelle | 29.11.2022 | 
 | 8. | 28.-02.12.2022 | Angular (Bindings und Direktiven) + JSON | [Übung 7](./uebungen/#ubung-7) | Frontend (c+r)| 06.12.2022 | 
@@ -146,7 +146,7 @@ Für die Kommunikation untereinander verwenden wir [**Slack**](https://slack.com
 
 
 ??? note "CSS Cascading"
-	```css
+	```html
 	<!DOCTYPE html>
 	<html lang="en">
 	<head>
@@ -265,7 +265,7 @@ Für die Kommunikation untereinander verwenden wir [**Slack**](https://slack.com
 
 
 ??? note "CSS Boxmodel"
-	```css
+	```html
 	<!DOCTYPE html>
 	<html lang="en">
 	<head>
@@ -305,7 +305,7 @@ Für die Kommunikation untereinander verwenden wir [**Slack**](https://slack.com
 
 
 ??? note "CSS Rangfolge"
-	```css
+	```html
 	<!DOCTYPE html>
 	<html lang="en">
 	<head>
@@ -368,6 +368,223 @@ Für die Kommunikation untereinander verwenden wir [**Slack**](https://slack.com
 	</body>
 	</html>
 	```
+
+
+??? note "display"
+	```html
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>display</title>
+	    <style>
+	        p {
+	            color: red;
+	        }
+
+	        p.ex1 {
+	            display: none;
+	        }
+	        p.ex2 {
+	            display: inline;
+	        }
+	        p.ex3 {
+	            display: block;
+	        }
+	        p.ex4 {
+	            display: inline-block;
+	        }
+	        nav {
+	            background-color: darkgray;
+	            color: white;
+	            
+	  text-align: center; 
+	        }
+	        nav li {
+	            display: inline-block;
+	            padding: 3%;
+	        }
+	        nav ul li a {
+	            color:white;
+	            text-decoration: none;
+	        }
+	    </style>
+	</head>
+	<body>
+	<header>
+	    <nav>
+	<ul>
+	    <li><a href="./boxmodel.html">Boxmodel</a></li>
+	    <li><a href="./cascading.html">Cascading</a></li>
+	    <li><a href="#">Display</a></li>
+	    <li><a href="./grid">Grid</a></li>
+	</ul>
+	    </nav>
+	</header>
+	<main>
+	<h1>The display Property</h1>
+
+	<h2>display: none:</h2>
+	<div>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. <p class="ex1">none!</p> Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.
+	</div>
+
+	<h2>display: inline:</h2>
+	<div>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. <p class="ex2">inline!</p> Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.
+	</div>
+
+	<h2>display: block:</h2>
+	<div>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. <p class="ex3">block!</p> Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.
+	</div>
+
+	<h2>display: inline-block:</h2>
+	<div>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. <p class="ex4">neue Zeile und dann inline!</p> Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.
+	</div>   
+
+	<ul>
+	    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display?retiredLocale=de">Gibt noch sehr viele andere</a></li>
+	    <li><a href="./index.html">Zurück</a></li>
+	</ul>
+	</main>
+	    <footer>
+	    
+	    </footer>
+	</body>
+	</html>
+	```
+
+
+??? note "grid"
+	```html
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>CSS-Grid</title>
+	    <style>
+
+	        .orange {
+	            background-color: orange;
+	            opacity: 0.5;
+	            border: 2px solid gray;
+	            border-radius: 5px;
+	            padding: 30px;
+	        }
+
+	        .wrapper {
+	            display: grid;
+	            grid-template-columns: repeat(3, 1fr);
+	            grid-gap: 10px;
+	            grid-auto-rows: minmax(100px, auto);
+	        }
+
+	        .one {
+	            grid-column: 1 / 3;
+	            grid-row: 1;
+	        }
+
+	        .two {
+	            grid-column: 2 / 4;
+	            grid-row: 1 / 3;
+	        }
+
+	        .three {
+	            grid-column: 1;
+	            grid-row: 2 / 5;
+	        }
+
+	        .four {
+	            grid-column: 3;
+	            grid-row: 3;
+	        }
+	    </style>
+	</head>
+	<body>
+	    <header>
+	        <h1>CSS-Grid</h1>
+	    </header>
+	    <main class="wrapper">
+	        <div class="one orange">One</div>
+	        <div class="two orange">Two</div>
+	        <div class="three orange">Three</div>
+	        <div class="four orange">Four</div>
+	        <div class="five orange">Five</div>
+	        <div class="six orange">Six</div>
+	    </main>
+	    <footer>
+	        <p><a href="https://www.w3schools.com/cssref/pr_grid.php">grid</a></p>
+	        <p><a href="https://www.w3schools.com/cssref/pr_grid-template-columns.php">grid-template-columns</a></p>
+	        <p><a href="https://css-tricks.com/introduction-fr-css-unit/">fr - fraction</a></p>
+	        <p><a href="./index.html">Zurück</a></p>
+	    </footer>
+
+	</body>
+	</html>
+	```
+
+
+??? note "rwd - 1"
+	```html
+	<!DOCTYPE html>
+	<html lang="en">
+
+	<head>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>Document</title>
+	    <style>
+	        div {
+	            margin: auto;
+	            width: 100%;
+	            height: 100%;
+	            text-align: center;
+	            background-color: red;
+	            padding-top: 20%;
+	            padding-bottom: 20%;
+	            font-size: medium;
+	        }
+
+	        @media screen and (min-width: 800px) {
+	            div {
+	                background-color: blue;
+	                color: white;
+	                font-size: large;
+	            }
+	        }
+
+	        @media (min-width: 1200px) {
+	            div {
+	                background-color: darkgreen;
+	                color: white;
+	                font-size: xx-large;
+	            }
+	        }
+
+	        @media (orientation: portrait) {
+	            div {
+	                background-color: yellow;
+	                color: brown;
+	                writing-mode: vertical-rl;
+	            }
+	        }
+	    </style>
+	</head>
+
+	<body>
+	    <div>Ändern Sie die Breite des Browsers, um den Effekt zu sehen.</div>
+	</body>
+	</body>
+
+	</html>
+	```
+
 
 ## Semesteraufgabe
 
