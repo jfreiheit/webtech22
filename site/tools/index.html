@@ -1006,6 +1006,9 @@ ein. Den Paketmanager <code>npm</code> können Sie sich mit <code>node.js</code>
 <div class="highlight"><pre><span></span><code>sudo chown -R <span class="sb">`</span>whoami<span class="sb">`</span> ~/.npm
 sudo chown -R <span class="sb">`</span>whoami<span class="sb">`</span> /usr/local/lib/node_modules
 </code></pre></div>
+<p>Sollten Sie bei der Installation der Angular-CLI <code>Execution Policy</code>-Errors erhalten (oder danach bei <code>ng version</code>), dann arbeiten Sie an einem Windows-Rechner ;-). Geben Sie dann im Terminal ein: </p>
+<div class="highlight"><pre><span></span><code>Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+</code></pre></div>
 <p>Danach sollte <code>npm install -g @angular/cli</code> funktionieren. </p>
 <h3 id="installationen">Installationen<a class="headerlink" href="#installationen" title="Permanent link">&para;</a></h3>
 <p>Um den Paketmanager <code>npm</code> zu installieren, laden sie sich <code>node.js</code> <a href="https://nodejs.org/en/download/"><strong>hier</strong></a> herunter und installieren Sie es. Nach erfolgreicher Installation sollte sowohl </p>
@@ -1019,7 +1022,7 @@ sudo chown -R <span class="sb">`</span>whoami<span class="sb">`</span> /usr/loca
 <div class="highlight"><pre><span></span><code>npm install -g @angular/cli 
 </code></pre></div>
 <p>installieren. Danach sollte </p>
-<div class="highlight"><pre><span></span><code>ng --version 
+<div class="highlight"><pre><span></span><code>ng version 
 </code></pre></div>
 <p>funktionieren und Ihnen etwas in dieser Art ausgeben:</p>
 <div class="highlight"><pre><span></span><code>     _                      _                 ____ _     ___
@@ -1030,23 +1033,20 @@ sudo chown -R <span class="sb">`</span>whoami<span class="sb">`</span> /usr/loca
                 <span class="p">|</span>___/
 
 
-Angular CLI: <span class="m">11</span>.0.1
-Node: <span class="m">14</span>.15.0
+Angular CLI: <span class="m">15</span>.0.0
+Node: <span class="m">14</span>.20.0
+Package Manager: npm <span class="m">9</span>.1.2
 OS: darwin x64
 
 Angular: 
 ... 
-Ivy Workspace: 
 
 Package                      Version
 ------------------------------------------------------
-@angular-devkit/architect    <span class="m">0</span>.1100.1 <span class="o">(</span>cli-only<span class="o">)</span>
-@angular-devkit/core         <span class="m">11</span>.0.1 <span class="o">(</span>cli-only<span class="o">)</span>
-@angular-devkit/schematics   <span class="m">11</span>.0.1 <span class="o">(</span>cli-only<span class="o">)</span>
-@schematics/angular          <span class="m">11</span>.0.1 <span class="o">(</span>cli-only<span class="o">)</span>
-@schematics/update           <span class="m">0</span>.1100.1 <span class="o">(</span>cli-only<span class="o">)</span>
-rxjs                         <span class="m">6</span>.6.3
-typescript                   <span class="m">4</span>.0.5
+@angular-devkit/architect    <span class="m">0</span>.1500.0 <span class="o">(</span>cli-only<span class="o">)</span>
+@angular-devkit/core         <span class="m">15</span>.0.0 <span class="o">(</span>cli-only<span class="o">)</span>
+@angular-devkit/schematics   <span class="m">15</span>.0.0 <span class="o">(</span>cli-only<span class="o">)</span>
+@schematics/angular          <span class="m">15</span>.0.0 <span class="o">(</span>cli-only<span class="o">)</span>
 </code></pre></div>
 <p>Jetzt können wir unser <a href="./angular/#erstes-projekt-erstellen">erstes Angular-Projekt</a> erstellen. </p>
 <h3 id="update-angularcli">Update @angular/cli<a class="headerlink" href="#update-angularcli" title="Permanent link">&para;</a></h3>

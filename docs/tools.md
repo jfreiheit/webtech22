@@ -300,6 +300,14 @@ sudo chown -R `whoami` ~/.npm
 sudo chown -R `whoami` /usr/local/lib/node_modules
 ```
 
+
+Sollten Sie bei der Installation der Angular-CLI `Execution Policy`-Errors erhalten (oder danach bei `ng version`), dann arbeiten Sie an einem Windows-Rechner ;-). Geben Sie dann im Terminal ein: 
+
+```bash
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```
+
+
 Danach sollte `npm install -g @angular/cli` funktionieren. 
 
 
@@ -328,7 +336,7 @@ npm install -g @angular/cli
 installieren. Danach sollte 
 
 ```bash
-ng --version 
+ng version 
 ```
 
 funktionieren und Ihnen etwas in dieser Art ausgeben:
@@ -343,23 +351,21 @@ funktionieren und Ihnen etwas in dieser Art ausgeben:
                 |___/
     
 
-Angular CLI: 11.0.1
-Node: 14.15.0
+Angular CLI: 15.0.0
+Node: 14.20.0
+Package Manager: npm 9.1.2
 OS: darwin x64
 
 Angular: 
 ... 
-Ivy Workspace: 
 
 Package                      Version
 ------------------------------------------------------
-@angular-devkit/architect    0.1100.1 (cli-only)
-@angular-devkit/core         11.0.1 (cli-only)
-@angular-devkit/schematics   11.0.1 (cli-only)
-@schematics/angular          11.0.1 (cli-only)
-@schematics/update           0.1100.1 (cli-only)
-rxjs                         6.6.3
-typescript                   4.0.5
+@angular-devkit/architect    0.1500.0 (cli-only)
+@angular-devkit/core         15.0.0 (cli-only)
+@angular-devkit/schematics   15.0.0 (cli-only)
+@schematics/angular          15.0.0 (cli-only)
+    
 ```
 
 Jetzt können wir unser [erstes Angular-Projekt](./angular/#erstes-projekt-erstellen) erstellen. 

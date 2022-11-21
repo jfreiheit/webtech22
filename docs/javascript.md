@@ -257,6 +257,195 @@ Wir haben uns nun einige Beispiele angesehen, wie wir HTML-Elemente ändern kön
 - `node.classList.add()`        - CSS-Klassen zum Element hinzufügen
 - `node.classList.remove()`     - CSS-Klassen vom Element entfernen
 
+#### Auslesen der Werte in Formularen
+
+Wir zeigen noch ein einfaches Beispiel, in dem das Auslesen von Werten in Formularen gezeigt wird. In Formularen (`<form>`) gibt es die Besonderheit, dass das Absenden eines Formulares (`submit`) ein Neuladen der Seite zur Folge hat. Das liegt daran, dass die Formularwerte an den Webserver gesendet werden und der Browser die aktuelle Adresse neu lädt (teilweise mit den eingegeben Werten in der URL, manchmal wird auch nur ein `? ` an die URL angehängt - das diskutieren wir später nochmal genauer). Dieses `default`-Verhalten wollen wir zunächst verhindern. Wir zeigen im Folgenden, wie das geht.
+
+Angenommen, wir haben folgenden HTML-Code (unter Verwendung von Bootstrap):
+
+```html linenums="1"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Übung 4</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Teilnehmerin Registrierung</h1>
+    <form class="row g-3">
+
+        <div class="col-md-6">  
+            <input type="text" class="form-control" id="firstname"
+                placeholder="First name" required>
+            <div id="firstnameFeedback" class="invalid-feedback">
+                Bitte Vornamen eingeben!
+            </div>
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="lastname" placeholder="Last name" required>
+            <div id="lastnameFeedback" class="invalid-feedback">
+                Bitte Nachnamen eingeben!
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <input type="email" class="form-control" id="email" placeholder="E-Mail" required>
+            <div id="emailFeedback" class="invalid-feedback">
+                Bitte E-Mail eingeben!
+            </div>
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="ipaddress" placeholder="IP-Address" required>
+            <div id="ipaddressFeedback" class="invalid-feedback">
+                Bitte IP-Adresse eingeben!
+            </div>
+        </div>
+
+        <div class="col-3">
+            <button class="btn btn-secondary" type="reset" onclick="reset()">Abbrechen</button>
+        </div>
+        <div class="col-3">
+            <button class="btn btn-success" onclick="register()" type="submit">Registrieren</button>
+        </div>
+    </form>
+    </div>
+</body>
+</html>
+```
+
+Es entsteht folgende Ansicht:
+
+![Formular](./files/258_javascript.png)
+
+Wenn Sie die Breite des Viewports (Browsers) weiter verringern, erscheinen alle Eingabefelder untereinander (`md`-Option der `col`-Klassen).
+
+Die `register()`-Funktion könnte nun wie folgt aussehen:
+
+```js linenums="1"
+<script>
+    function register() {
+
+        let fname = document.querySelector('#firstname').value;
+        let lname = document.querySelector('#lastname').value;
+        let email = document.querySelector('#email').value;
+        let ipadr = document.querySelector('#ipaddress').value;
+
+        console.log(fname);
+        console.log(lname);
+        console.log(email);
+        console.log(ipadr);
+
+    }
+</script>
+```
+
+Wir greifen also mithilfe von `querySelector()` auf die Input-Elemente zu (hätten wir auch mit `getElementById()` machen können), um den jeweiligen `value` auszulesen. Wir geben diesen Wert hier zunächst jeweils nur auf die Konsole aus. Diese Ausgaben sehen wir aber gar nicht, weil die Konsole durch das Neuladen der Seite wieder gelöscht wird. Dieses Neuladen ensteht durch das Standardverhalten beim `Submit` eines Formulars (siehe oben). Wir wollen zunächst nochmal zeigen, dass durch das `Click`-Ereignis des Buttons auch das `Submit`-Ereignis des Formulars ausgelöst wird, da es sich bei dem Button `Registrieren` um einen `submit`-Button des Formulars handelt. Dazu führen wir folgende Änderungen um HTML-Code durch:
+
+
+```html linenums="1" hl_lines="13 46"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Übung 4</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Teilnehmerin Registrierung</h1>
+    <form class="row g-3" onsubmit="alert('submit form')">
+
+        <div class="col-md-6">  
+            <input type="text" class="form-control" id="firstname"
+                placeholder="First name" required>
+            <div id="firstnameFeedback" class="invalid-feedback">
+                Bitte Vornamen eingeben!
+            </div>
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="lastname" placeholder="Last name" required>
+            <div id="lastnameFeedback" class="invalid-feedback">
+                Bitte Nachnamen eingeben!
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <input type="email" class="form-control" id="email" placeholder="E-Mail" required>
+            <div id="emailFeedback" class="invalid-feedback">
+                Bitte E-Mail eingeben!
+            </div>
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="ipaddress" placeholder="IP-Address" required>
+            <div id="ipaddressFeedback" class="invalid-feedback">
+                Bitte IP-Adresse eingeben!
+            </div>
+        </div>
+
+        <div class="col-3">
+            <button class="btn btn-secondary" type="reset" onclick="reset()">Abbrechen</button>
+        </div>
+        <div class="col-3">
+            <button class="btn btn-success" onclick="alert('click button')" type="submit">Registrieren</button>
+        </div>
+    </form>
+    </div>
+</body>
+</html>
+```
+
+Wir reagieren also auf das `Click`-Ereignis mit einem `alert()` und ebenso auf das `Submit`-Ereignis des Formulars. Wenn wir nun den `Registrieren`-Button klicken, dann erscheint zunächst die Nachricht `click button` und wenn wir dieses Nachrichtenfenster schließen auch gleich die Nachricht `submit form`. Es werden also beide Ereignisse ausgelöst, wovon das `Submit`-Ereignis das neuladen der Seite nach sich zieht. 
+
+Wenn Sie nun für den Button wieder `onclick="register()"` vereinbaren, dann sehen Sie, dass die Werte auf die Konsole ausgegeben werden und das `alert`-Fenster für das Formular erscheint. Nachdem Sie das Fenster schließen, wird die Seite neu geladen und die Konsole wird gelöscht. Wir verhindern dieses neuladen, indem wir für das Formular `onsubmit="return false;"` definieren. Dann wird das Neuladen der Seite verhindert. 
+
+```js linenums="1"
+<script>
+    function register() {
+
+        let fname = document.querySelector('#firstname').value;
+        let lname = document.querySelector('#lastname').value;
+        let email = document.querySelector('#email').value;
+        let ipadr = document.querySelector('#ipaddress').value;
+
+        console.log(fname);
+        console.log(lname);
+        console.log(email);
+        console.log(ipadr);
+
+    }
+</script>
+```
+
+Eine andere Möglichkeit wäre gewesen, der `register()`-Funktion das auslösende `Event` als Objekt zu übergeben (wird dann automatisch übergeben) und für dieses `Event` die `preventDefault()`-Funktion aufzurufen:
+
+```html linenums="46"
+<button class="btn btn-success" type="submit" onclick="register(event)">Registrieren</button>
+```
+
+```js linenums="1" hl_lines="1 13"
+    function register(event) {
+
+        let fname = document.querySelector('#firstname').value;
+        let lname = document.querySelector('#lastname').value;
+        let email = document.querySelector('#email').value;
+        let ipadr = document.querySelector('#ipaddress').value;
+
+        console.log(fname);
+        console.log(lname);
+        console.log(email);
+        console.log(ipadr);
+
+        event.preventDefault();
+    }
+```
+
+Zur Funktion `preventDefault()` siehe [hier](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault).
 
 ### Elemente hinzufügen und löschen
 
