@@ -469,6 +469,36 @@
   
   
     <li class="md-nav__item">
+      <a href="../angular/" class="md-nav__link">
+        Angular
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../angular2/" class="md-nav__link">
+        JSON und Direktiven
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../uebungen/" class="md-nav__link">
         Übungen
       </a>
@@ -692,7 +722,9 @@
 <li>innerhalb eines <code>&lt;style&gt;</code>-Elementes ebenfalls im <code>&lt;head&gt;</code> des HTML-Dokumentes (siehe unten),</li>
 <li>als <code>style</code>-Attribut eines HTML-Elementes (siehe unten).</li>
 </ol>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">3 Orte der CSS-Definitionen - HTML</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">3 Orte der CSS-Definitionen - HTML</label><label for="__tabbed_1_2">mystyle.css</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;de&quot;</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
@@ -717,11 +749,12 @@
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">mystyle.css</label><div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nt">body</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">vardana</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
+</div>
 </div>
 </div>
 <p>Im obigen Beispiel wird in der externen CSS-Datei <code>mystyle.css</code> definiert, dass der im gesamten Dokument verwendete Font <em>Verdana</em> sein soll. Im <code>&lt;style&gt;</code>-Element wird als Schriftfarbe für <code>&lt;h1&gt;</code>-Überschriften <em>rot</em> festgelegt, das gilt für alle <code>&lt;h1&gt;</code>-Überschriften des Dokumentes. Das <code>style</code>-Attribut des HTML-Elementes <code>&lt;p&gt;</code> legt für <strong>diesen</strong> Absatz fest, dass er <em>blau umrandet</em> sein soll. Das gilt nicht für alle <code>&lt;p&gt;</code>-Elemente, sondern nur für das Element mit dem <code>style</code>-Attribut.</p>
@@ -992,11 +1025,13 @@
 </tbody>
 </table>
 <p>Pseudo-Elemente sind so ähnlich wie Pseudo-Klassen, werden aber über <code>::</code> angesprochen anstelle <code>:</code> bei Pseudo-Klassen. Hier ein Beispiel für ein Pseudo-Element:</p>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">HTML</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">HTML</label><label for="__tabbed_2_2">CSS mit Pseudo-Elementen</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </code></pre></div>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">CSS mit Pseudo-Elementen</label><div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nt">p</span><span class="p">::</span><span class="nd">first-letter</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">font-size</span><span class="p">:</span><span class="mi">300</span><span class="kt">%</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -1004,6 +1039,7 @@
 <span class="w">    </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
+</div>
 </div>
 </div>
 <p>Das Ergebnis sieht dann so aus: </p>
@@ -1056,7 +1092,9 @@
 <p>Zusammen mit dem Inhalt des Elementes wird dieser Zusammenhang <em>Box Model</em> genannt. Folgende Darstellung zeigt das Box Model:</p>
 <p><img alt="Box Model" src="../files/50_boxmodel.png" /></p>
 <p>Das Box Model besagt, dass alle HTML-Elemente als eine rechteckige "Box" verstanden werden können und diese Box aus dem Inhalt, <code>padding</code>, <code>border</code> und <code>margin</code> besteht. </p>
-<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Beispiel Box Model - HTML</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Beispiel Box Model - HTML</label><label for="__tabbed_3_2">Beispiel Box Model - CSS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Box Model<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./images/fiw.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;fiw logo&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:350px&quot;</span><span class="p">/&gt;</span>
@@ -1069,7 +1107,7 @@
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </code></pre></div>
 </div>
-<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Beispiel Box Model - CSS</label><div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nt">div</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">320</span><span class="kt">px</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span><span class="w"></span>
@@ -1077,6 +1115,7 @@
 <span class="w">    </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
+</div>
 </div>
 </div>
 <p>Das Bild hat eine Breite von <code>350px</code>(siehe <code>style</code>-Attribut von <code>img</code>). Der Inhalt des <code>div</code>-Containers hat eine Breite von <code>320px</code>. Der Abstand des Inhalts zum Rahmen ist links und rechts jeweils <code>10px</code> und der Rahmen ist links und rechts jeweils <code>5px</code> groß. Ergibt zusammen eine Breite von (<code>320</code>+<code>10</code>+<code>10</code>+<code>5</code>+<code>5</code> = <code>350</code>). Somit ist das <code>div</code> inklusive <code>padding</code> und <code>border</code> exakt so breit wie das Bild:</p>
@@ -1158,7 +1197,9 @@
 <p>Wir werden sehen, dass das Grid-Konzept, das wir zukünftig verwenden werden, auf der <code>float</code>-Eigenschaft (zusammen mit <code>width</code>) basiert. Ein Konzept, welches von der Komplexität "zwischen" <code>float</code> und dem Grid-Konzept liegt, ist <code>flexbox</code>. Mit <code>flexbox</code> ist das Nebeneinanderpositionieren von Containern recht einfach - insbesondere lassen sich auch recht leicht unterschiedliche Spaltenbreiten definieren- Wir gehen hier nicht weiter auf <code>flexbox</code> ein, sondern verweisen auf z.B. <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox"><strong>A Guide to Flexbox</strong></a>. </p>
 <h3 id="grid">Grid<a class="headerlink" href="#grid" title="Permanent link">&para;</a></h3>
 <p><code>flexbox</code> verwendet <code>float</code> und <code>CSS Grid</code> (oder nur <code>Grid</code>) verwendet <code>flexbox</code>. Während <code>flexbox</code> nur in ein Dimension das Layout gestaltet (nämlich horizontal), kann <code>Grid</code> für einen vollständigen Layout-Entwurf verwendet werden (nämlich horizontal und vertikal). Dazu wird unsere Webseite als eine Matrix verstanden, bestehend aus <em>Zellen</em>, die in <em>Zeilen</em> und <em>Spalten</em> angeordnet sind. Am besten, wir betrachten ein <a href="https://developer.mozilla.org/de/docs/Web/CSS/CSS_Grid_Layout">Beispiel</a>:</p>
-<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">HTML</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">HTML</label><label for="__tabbed_4_2">CSS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1176,7 +1217,7 @@
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
 </div>
-<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">CSS</label><div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="p">.</span><span class="nc">wrapper</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span><span class="w"></span>
 <span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="nf">repeat</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">);</span><span class="w"></span>
@@ -1216,6 +1257,7 @@
 <span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="kt">px</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
+</div>
 </div>
 </div>
 <p>Die Webseite sieht dann so aus:</p>

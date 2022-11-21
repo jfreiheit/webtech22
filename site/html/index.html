@@ -505,6 +505,36 @@
   
   
     <li class="md-nav__item">
+      <a href="../angular/" class="md-nav__link">
+        Angular
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../angular2/" class="md-nav__link">
+        JSON und Direktiven
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../uebungen/" class="md-nav__link">
         Übungen
       </a>
@@ -800,7 +830,9 @@ Typische HTML-Elemente für Metadaten sind: </p>
 <li><code>&lt;script&gt;</code> : zum Definieren von Client-seitigen JavaScript-Funktionen, </li>
 <li><code>&lt;base&gt;</code> : zum Festlegen, der URL, von der aus alle Pfadangaben relativ sind. </li>
 </ul>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Beispiel Metadaten</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Beispiel Metadaten</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code> <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;description&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;meta data&quot;</span><span class="p">&gt;</span>
@@ -823,6 +855,7 @@ Typische HTML-Elemente für Metadaten sind: </p>
   <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Metadaten<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 </code></pre></div>
+</div>
 </div>
 </div>
 <h2 id="block-und-inline-elemente">Block- und Inline-Elemente<a class="headerlink" href="#block-und-inline-elemente" title="Permanent link">&para;</a></h2>
@@ -902,7 +935,9 @@ Typische HTML-Elemente für Metadaten sind: </p>
 <p>Das Formatieren der Tabellen (Rahmen, rechtsbündig usw.) sollte stets CSS überlassen werden.</p>
 <h4 id="listen">Listen<a class="headerlink" href="#listen" title="Permanent link">&para;</a></h4>
 <p>Es gibt nummerierte Listen (<em>ordered list</em> <code>&lt;ol&gt;</code>) und nicht-nummerierte Listen (<em>unordered list</em> <code>&lt;ul&gt;</code>). Die Einträge in einer Liste sind die <em>list items</em> <code>&lt;li&gt;</code>. Listen können auch ineinander verschachtelt werden. Dabei ist nur zu beachten, dass Listen immer nur <em>list items</em> enthalten sollen und die list items dann selbst wieder eine neue Liste enthalten können.</p>
-<div class="tabbed-set" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">ordered list</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">ordered list</label><label for="__tabbed_2_2">unordered list</label><label for="__tabbed_2_3">verschachtelte Liste</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>eins<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>zwei<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
@@ -910,7 +945,7 @@ Typische HTML-Elemente für Metadaten sind: </p>
 <span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
 </code></pre></div>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">unordered list</label><div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>eins<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>zwei<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
@@ -918,7 +953,7 @@ Typische HTML-Elemente für Metadaten sind: </p>
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </code></pre></div>
 </div>
-<input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3">verschachtelte Liste</label><div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
       <span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
@@ -937,6 +972,7 @@ Typische HTML-Elemente für Metadaten sind: </p>
   <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
 </code></pre></div>
+</div>
 </div>
 </div>
 <h4 id="container-elemente">Container-Elemente<a class="headerlink" href="#container-elemente" title="Permanent link">&para;</a></h4>
@@ -1215,7 +1251,10 @@ Typische HTML-Elemente für Metadaten sind: </p>
 <li><a href="../files/01_WT_HTML.pdf">Folien HTML</a></li>
 <li>um das untenstehende Beispiel auszuführen, benötigen Sie die Datei <a href="../files/fiw.jpg"><strong>fiw.jpg</strong></a>, die Sie in einem <code>Logos</code>-Ordner ablegen sollten, um wenig Änderungsaufwand bei der folgenden HTML-Datei zu haben</li>
 </ul>
-<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">alle Beispiele in einem</label><div class="tabbed-content"></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">alle Beispiele in einem</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
 </div>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>

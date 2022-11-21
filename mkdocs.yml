@@ -53,7 +53,8 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tasklist:
       custom_checkbox: true
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true 
   - pymdownx.tilde
   - codehilite:
       guess_lang: false
@@ -68,5 +69,7 @@ nav:
     - CSS: css.md
     - RWD: rwd.md 
     - JavaScript: javascript.md 
+    - Angular: angular.md 
+    - JSON und Direktiven: angular2.md
     - Übungen: uebungen.md
     - Werkzeuge: tools.md
