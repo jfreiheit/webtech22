@@ -620,6 +620,108 @@ Hervorgehoben sind wieder die Zeilen, in dennen sich etwas geändert hat.
 
 Es entsteht die exakt gleiche Webseite wie in dem Beispiel davor (siehe Beispiel aus [**addEventListener**](./javascript/#addeventlistener)).
 
+
+## Ein Beispielformular mit Elementerzeugung
+
+Wir betrachten noch ein einfaches Beispiel, in dem durch Eingaben neue Eingabefelder erzeugt werden. Betrachten wir zunächst den HTML-Code:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <title>Javascript</title>
+</head>
+<body class="container">
+    <h1>Formular auslesen</h1>
+    <h4>Kommentare</h4>
+
+    <form id="form" onsubmit="return false;"> 
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="input1" placeholder="Kommentar 1" onchange="fixeInput()">
+            <label for="input1">Kommentar 1</label>
+        </div>
+    </form> 
+
+</body>
+</html>
+```
+
+Folgende Ansicht wird erzeugt:
+
+![Create](./files/261_javascript.png)
+
+Nach erfolgter Eingabe wird durch die `Enter`-Taste die `fixeInput()`-Funktion aufgerufen. Wir implementieren diese Funktion wie folgt:
+
+```js linenums="1"
+    let nr = 1;
+
+    function fixeInput() {
+        let inputId = "input" + nr;
+        let ul = document.querySelector('#ul');
+        let input = document.getElementById(inputId);
+        input.disabled = "true";
+
+        let newDiv = document.createElement('div');
+        newDiv.classList.add("form-floating", "mb-3");
+        let newInput = document.createElement('input');
+        newInput.classList.add("form-control");
+        nr++;
+        let newInputId = "input" + nr;
+        newInput.id = newInputId;
+        newInput.placeholder = "Kommentar " + nr;
+        newInput.addEventListener("change", fixeInput);
+        newDiv.appendChild(newInput);
+
+        let newLabel = document.createElement('label');
+        newLabel.for = newInputId;
+        newLabel.innerText = "Kommentar " + nr;
+        newDiv.appendChild(newLabel);
+
+        let form = document.querySelector('#form');
+        let button = document.querySelector('#submitBtn');
+        form.insertBefore(newDiv, button);
+        newInput.focus({ focusVisible: true });
+    }
+```
+
+Wir definieren eine globale Variable `nr` (Zeile `1`). In der Funktion wird diese Variable verwendet, um z.B. die `id` für das aktuelle `input`-Element zu bestimmen (Zeile `4`) und eine neue `id` für das neu zu erzeugende `input`-Element zu definieren (Zeile `14`). In den Zeilen `9` und `10` wird ein neues `div`-Element erzeugt, so dass es in HTML wie folgt aussieht:
+
+```html
+<div class="form-floating mb-3">
+
+</div>
+```
+
+In den Zeilen `11-17` wird ein neues `input`-Element erzeugt und diesem `input`-Element die Ereignisbehandlung des `change`-Events zugewiesen (Zeile `17`) - ebenfalls Aufruf der `fixeInput()`-Funktion. In Zeile `18` wird dieses neue `input`-Element dem erzeugten `div`-Element hinzugefügt, so dass für z.B. `nr==2` folgendes HTML entsteht:
+
+```html
+<div class="form-floating mb-3">
+    <input type="text" class="form-control" id="input2" placeholder="Kommentar 2" onchange="fixeInput()">
+</div>
+```
+
+In Zeilen `20-23` wird das entsprechende `label` erzeugt und ebenfalls dem `div` hinzugefügt:
+
+
+```html
+<div class="form-floating mb-3">
+    <input type="text" class="form-control" id="input2" placeholder="Kommentar 2" onchange="fixeInput()">
+    <label for="input2">Kommentar 2</label>
+</div>
+```
+
+So entsteht bei jedem Eintrag ein neues `div` inklusive `input`- und `label`-Element, wobai `nr` jeweils hochgezählt wird und so die `id`s `input2`, `input3`, `input4` ... bzw. die `placeholder` und `label`-Inhalte `Kommentar 1`, `Kommentar 2`, `Kommentar 3`... entstehen:
+
+![Create](./files/262_javascript.png)
+
+Die bereits ausgefüllten `input`-Elemente werden auf `disabled` gesetzt (`readonly` geht auch), so dass sie nicht mehr bearbeitet werden können. 
+
+
+
 ## JavaScript - Sprachelemente
 
 ### `var`, `let` und `const`
@@ -658,6 +760,202 @@ person.name=function(){ return this.vorname + " " + this.nachname };
 ```
 
 Der Aufruf erfolgt dann über `person.name();`
+
+
+### Ein Beispiel mit einem JavaScript-Objekt
+
+Wir betrachten fplgendes JavaScript-Objekt, mit dem wir eine Farbe im [HSL-Format](https://www.w3schools.com/colors/colors_hsl.asp) repräsentieren:
+
+```js
+colorHSL = {
+    hue:  50,
+    saturation: 50,
+    lightness: 50,
+    name: () => `hsl(${colorHSL.hue} , ${colorHSL.saturation}%, ${colorHSL.lightness}%)`
+}
+```
+
+Beachten Sie, dass ein JavaScript-Objekt (im Gegensatz zu einem Objekt im JSON-Format) auch Funktionen als Eigenschaften besitzen kann, siehe Eigenschaft `name` im Objekt `colorHSL`. Zur Verwendung dieses Objektes erstellen wir uns zunächst folgendes HTML:
+
+```html linenums="1"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <title>Javascript</title>
+    <style>
+        div#output {
+            height: 300px;
+        }
+    </style>
+</head>
+<body class="container" onload="setBackgroundColorDiv()">
+    
+    <h1>JavaScript-Objekte</h1>
+    <div id="output">
+
+    </div>
+    <div class="my-3">
+        <div class="row">
+            <div class="col-2">
+                <label for="hueIP" class="form-label">Hue (Farbton)</label>
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-range" id="hueOP" value="50">
+            </div>
+            <div class="col-8">
+                <input type="range" class="form-range" min="0" max="360" id="hueIP" oninput="newHue()" value="50">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <label for="satIP" class="form-label">Saturation (Sättigung)</label>
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-range" id="satOP" value="50">
+            </div>
+            <div class="col-8">
+                <input type="range" class="form-range" min="0" max="100" id="satIP" oninput="newSat()" value="50">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <label for="lightIP" class="form-label">Lightness (Helligkeit)</label>
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-range" id="lightOP" value="50">
+            </div>
+            <div class="col-8">
+                <input type="range" class="form-range" min="0" max="100" id="lightIP" oninput="newLight()" value="50">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+```
+
+Das ergibt folgendes Aussehen:
+
+![Object](./files/263_javascript.png)
+
+Für die `<input type="range"`-Felder wird das `input`-Event behandelt. Für jeden Slider wird eine eigene Funktion aufgerufen, das hätte man aber auch alles in einer Funktion erledigen können. Hier der JavaScript-Code, der per `<script>`-Element eingebunden wird:
+
+```js linenums="1"
+    let colorHSL = {};
+
+    function setBackgroundColorDiv() {
+        colorHSL = {
+            hue:  50,
+            saturation: 50,
+            lightness: 50,
+            name: () => `hsl(${colorHSL.hue} , ${colorHSL.saturation}%, ${colorHSL.lightness}%)`
+        }
+        let outputDiv = document.querySelector('#output');
+        outputDiv.style.backgroundColor = colorHSL.name();
+        console.log(colorHSL.name());
+    }
+
+    function newHue() {
+        let sliderValue = document.querySelector('#hueIP').value;
+        colorHSL.hue = sliderValue;
+        document.querySelector('#hueOP').value = sliderValue;
+        document.querySelector('#output').style.backgroundColor = colorHSL.name();
+        console.log(colorHSL.name())
+    }
+
+    function newSat() {
+        let sliderValue = document.querySelector('#satIP').value;
+        colorHSL.saturation = sliderValue;
+        document.querySelector('#satOP').value = sliderValue;
+        document.querySelector('#output').style.backgroundColor = colorHSL.name();
+        console.log(colorHSL.name())
+    }
+
+    function newLight() {
+        let sliderValue = document.querySelector('#lightIP').value;
+        colorHSL.lightness = sliderValue;
+        document.querySelector('#lightOP').value = sliderValue;
+        document.querySelector('#output').style.backgroundColor = colorHSL.name();
+        console.log(colorHSL.name())
+    }
+```
+
+Die Funktion `setBackgroundColorDiv()` definiert zunächst die Eigenschaften des JavaScript-Objektes `colorHSL`. Die Variable ist global definiert, damit alle Funktionen auf diese Variable Zugriff haben. Die Funktion `setBackgroundColorDiv()` wird durch das `load`-Event aufgerufen (siehe Zeile `15` im HTML-Code). Die Funktion `name` im `colorHSL`-Objekt gibt den CSS-Wert der Farbe als String zurück. Beachten Sie die Verwendung der `back ticks` für den String. Diese Erlauben die [Interpolation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals?retiredLocale=de) unter Verwendung des `${}`-Operators.
+
+Die drei Funktionen `newXXX` hätten auch durch eine ersetzt werden können:
+
+```js linenums="1"
+    function newValues() {
+        let sliderValueH = document.querySelector('#hueIP').value;
+        let sliderValueS = document.querySelector('#satIP').value;
+        let sliderValueL = document.querySelector('#lightIP').value;
+
+        colorHSL.hue = sliderValueH;
+        colorHSL.saturation = sliderValueS;
+        colorHSL.lightness = sliderValueL;
+
+        document.querySelector('#hueOP').value = sliderValueH;
+        document.querySelector('#satOP').value = sliderValueS;
+        document.querySelector('#lightOP').value = sliderValueL;
+
+        document.querySelector('#output').style.backgroundColor = colorHSL.name();
+        console.log(colorHSL.name())
+    }
+```
+
+!!! hint "Objektausgabe auf Konsole"
+    Angenommen, Sie wollen ein Objekt auf die Konsole ausgeben und zuvor noch eine eigene Ausgabe. Verwenden Sie dann nicht den Zeichenkettenverbindungsoperator `+`, also nicht z.B. `console.log('colorHSL' + colorHSL);`. Das führt nur dazu, dass für das Objekt `toString()` aufgerufen wird und das ergibt dann `colorHSL[object Object]`. Verwenden Sie stattdessen ein Komma, z.B. `console.log('colorHSL', colorHSL);`. Das ergibt dann das Gewünschte: `colorHSL {hue: 50, saturation: 50, lightness: 50, name: ƒ}`. 
+
+#### JSON.parse() und JSON.stringify()
+
+Mithilfe von [JSON.stringify()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) können Sie ein JavaScript-Objekt in das JSON-Format überführen. Beachten Sie, dass Funktionen im JSON-Format nicht erlaubt sind. Aus obigem `colorHSL`-Objekt würde mithilfe von `JSON.stringify(colorHSL)` folgendes JSON erzeugt werden:
+
+```json
+{
+    "hue":50,
+    "saturation":50,
+    "lightness":50
+}
+```
+
+Mithilfe von `JSON.parse()` erzeugen Sie aus einem JSON ein JavaScript-Objekt. Beachten Sie, dass `let newColorHSL = JSON.parse(JSON.stringify(colorHSL))` ein JavaScript-Objekt ohne die Funktion `name` erzeugt:
+
+```js
+{
+    hue: 50, 
+    saturation: 50, 
+    lightness: 50
+}
+```
+
+### Optionale Verkettung
+
+Der `?`-Operator wird verwendet, wenn nicht sicher ist, ob eine Eigenschaft existiert bzw. ob ein Wert für die Eigenschaft gesetzt ist. Betrachten wir folgendes Beispiel:
+
+```js linenums="1"
+let person = {
+    vorname : "Maria",
+    nachname: "Musterfrau",
+    adresse : {
+        strasse : "Wilhelminenhofstr.",
+        nummer: 75,
+        ort: "Berlin",
+        plz: 12459
+    }
+}
+```
+
+Dann kann der `?`-Operator z.B. so verwendet werden:
+
+```js linenums="1"
+person.adresse?.ort
+```
+
+Die Idee dahinter ist, dass auf die Eigenschaft zugegriffen werden kann, wenn sie existiert und wenn sie einen Wert besitzt. Dieser Operator vermeidet Laufzeitfehler bzw. eine Abfrage auf Existenz.  
+
  
 ### Arrays
 
@@ -713,20 +1011,21 @@ var staedte = [
 
 Dann sind die Elemente des Arrays numerisch indiziert. 
 
+
 ### JavaScript ist dynamisch typisiert
 
 Im Gegensatz zu z.B. Java ist JavaScript nicht statisch, sondern dynamisch typisiert. Der Wert einer Variablen bestimmt deren Typ. Beispiel:
 
 ```javascript
-    var number = 16;                                // number  
-    var name = "Johnson";                           // string
-    var cars = ["Saab", "Volvo", "BMW"];            // object (Array)
-    var obj = {firstName:"John", lastName:"Doe"};   // object
-    var func = new Function();                      // function
-    var correct = true;                             // boolean
-    var x;                                          // now x is undefined
-    var x = 5;                                      // now x is a Number
-    var x = "John";                                 // now x is a String
+let number = 16;                                // number  
+let name = "Johnson";                           // string
+let cars = ["Saab", "Volvo", "BMW"];            // object (Array)
+let obj = {firstName:"John", lastName:"Doe"};   // object
+let func = new Function();                      // function
+let correct = true;                             // boolean
+let x;                                          // now x is undefined
+let x = 5;                                      // now x is a Number
+let x = "John";                                 // now x is a String
 ``` 
 
 `typeof` kann verwendet werden, ob zu überprüfen, ob eine Variable überhaupt definiert ist und/oder von welchem Typ sie ist. Es liefert folgende Resultate:
@@ -743,7 +1042,7 @@ Beispiel:
 ```html
 <div id="myDiv"></div>
 <script>
-    var x;
+    let x;
     document.getElementById("myDiv").innerHTML+=typeof(x)+"<br/>";  // undefined
     x="12";
     document.getElementById("myDiv").innerHTML+=typeof(x)+"<br/>";  // string
@@ -781,19 +1080,19 @@ Es wird eine Funktion `myFunction()` definiert, der 2 Parameter `a` und `b` übe
 Außerdem können Funktionen als *anonyme* Funktionen deklariert werden. Es ist möglich, dass eine Variable auf eine (anonyme) Funktion zeigt. Diese Variable kann dann wie die Funktion selbst verwendet werden. Beispiel:
 
 ```javascript
-var x = function (a, b) {return a * b};
+let x = function (a, b) {return a * b};
 ``` 
 Die Funktion kann nun über z.B. `x(4,3);` aufgerufen werden. 
 
 Eine weitere (aber selten verwendete) Möglichkeit, eine Funktion zu definieren, ist die Verwendung des `Function()`-Konstruktors. Beispiel:
 
 ```javascript
-var myFunction = new Function("a", "b", "return a * b");
+let myFunction = new Function("a", "b", "return a * b");
 ``` 
 Diese Funktion kann dann (wie oben mit `x`) mit `myFunction(4,3);` aufgerufen werden. Aber, wie gesagt, das ist eher unüblich, denn es ist äquivalent zu:
 
 ```javascript
-var myFunction = function (a, b) {return a * b};
+let myFunction = function (a, b) {return a * b};
 ``` 
 mit dem Aufruf `myFunction(4,3);`. Die Verwendung des `Function()`-Konstruktors zeigt aber, dass jede Funktion vom Typ `function` ist. In JavaScript gibt es also einen Typ `function`.  Würde man für das Beispiel mit `x` z.B. `typeof(x)` aufrufen, ist das Resultat `function`.
 
@@ -803,7 +1102,7 @@ Die Anzahl der Parameter kann, muss aber nicht in der Funktionsdefinition angege
 
 ```javascript
 function summe() {
-    var i, sum = 0;
+    let i, sum = 0;
     for(i = 0; i < arguments.length; i++) {
         sum += arguments[i];
     }
@@ -848,9 +1147,9 @@ processUserInput(greeting);
 
 In den Zeilen 1-3 wird eine Funktion `greeting()` definiert, welche einen `name` erwartet. Diese Funktion gibt `Hello ` zusammen mit dem Namen in einem Alarmfenster aus. Die Funktion `greeting()` wird als *Callback*-Funktion in der Funktion `processUserInput()` (Zeilen 5-8) verwendet. Das heißt, die Funktion `greeting()` wird der Funktion `processUserInput()` als Parameter übergeben. Innerhalb der Funktion `processUserInput()` heißt die Referenz auf die Funktion `greeting()` `callback`. Der Parametername kann beliebig gewählt werden. Wir die Funktion `processUserInput()` aufgerufen (Zeile 10) und die Funktion `greeting()` als Parameter übergeben, dann erscheint zunächst ein Eingabefenster, in dem der Name eingeben wird und dieser Name wird der `greeting()`-Funktion als Parameter übergeben. Es erscheint das Alarmfenster mit der Ausgabe `Hello ` plus dem Namen. Der Funktion `processUserInput()` könnte auch jede andere Funktion als Callback-Funktion übergeben werden. 
 
-## Promises
+### Promises
 
-Eine *Promise* ist das Ergebnis einer asynchronen Operation. Es gibt vier Status einer Promis (uns interessiert in der Regel nur `resolved` oder `rejected`):
+Eine *Promise* ist das Ergebnis einer asynchronen Operation. Es gibt vier Status einer Promise (uns interessiert in der Regel nur `resolved` oder `rejected`):
 
 | *Status* | *Erklärung* |
 |----------|-------------|
@@ -895,6 +1194,118 @@ Der entscheidende Punkt ist, dass ein Promise-Objekt eine `then`-Methode besitzt
 
 Die `then`-Funktion selbst gibt übrigens wieder ein `Promise`-Objekt zurück. Somit können mehrere Promises verkettet werden.
 
+#### async/await vs. then
+
+Wir schauen uns noch ein weiteres Beispiel an. Gegeben seien die beiden folgenden Funktionen:
+
+```js linenums="1"
+function makeRequest(file) {
+    return new Promise( (resolve, reject) => {
+        console.log('making request for ' + file)
+        if(file == 'index') {
+            resolve('index exists')
+        } else {
+            reject(file + " does not exist")
+        }
+    })
+}
+
+function processRequest(response) {
+    return new Promise((resolve, reject) => {
+        console.log('processing response ')
+        resolve('processing done for ' + response)      
+    })
+}
+```
+
+Beide Funktionen geben ein Promise-Objekt zurück. Wir verwenden zunächst `then()`, um diese Funktionen zu verwenden:
+
+```js linenums="1"
+makeRequest('index')
+.then( response => {
+    console.log('response received')
+    return processRequest(response)
+})
+.then( processedResponse => {
+    console.log(processedResponse)
+})
+.catch( err => console.log(err))
+```
+
+Wir übergeben der Funktion `makeRequest()` den String `"index"`. Dadurch wird die Promise in dieser Funktion erfüllt (`resolve`). Die Ausgabe für diesen Fall sieht so aus:
+
+```
+making request for index
+response received
+processing response
+processing done for index exists
+```
+
+In der `.then()`-Folge von `makeRequest()` wird die Funktion `processRequest()` aufgerufen und dieser Funktion die `response` der `makeRequest()`-Promise übergeben (`'index exists'`). Diese Promise wird zurückgegeben (`return processRequest(response)`) und dann ebenfalls mit `.then()` aufgefangen. Die Promise von `processRequest` besitzt nur ein `resolve` und kein `reject`. 
+
+Falls wir nicht `'index'` übergeben, sondern etwas anderes, löst die Promise von `makeRequest()` ein `reject` aus:
+
+```js linenums="1"
+makeRequest('object')
+.then( response => {
+    console.log('response received')
+    return processRequest(response)
+})
+.then( processedResponse => {
+    console.log(processedResponse)
+})
+.catch( err => console.log(err))
+```
+
+Die Ausgabe ist dann wie folgt:
+
+```
+making request for object
+object does not exist
+```
+
+Die zweite Zeile der Ausgabe wird durch den `reject`-Fall der `makeRequest`-Promise ausgelöst und durch den Abfangen des Fehlers `.catch( err => console.log(err))` ausgegeben. 
+
+Eine solche Folge von `.then()`-Ketten wird schnell unübersichtlich. Deshalb wurden die Schlüsselwörter `async` und `await` eingeführt. Prinzipiell würde die obige Abfrage mithilfe von `await` so aussehen:
+
+```js
+const response = await makeRequest('index');
+console.log('response received')
+const processedResponse = await processRequest(response)
+console.log(processedResponse)
+```
+
+Das ist sicherlich deutlich übersichtlicher. Dabei gibt es jedoch zwei Dinge zu beachten. Erstens haben wir den Fehlerfall noch nicht abgefangen. Das erledigen wir mithilfe von `try{} catch(err){}`:
+
+```js
+try {
+    const response = await makeRequest('index');
+    console.log('response received')
+    const processedResponse = await processRequest(response)
+    console.log(processedResponse)
+} catch(err) {
+    console.log(err)
+}
+```
+
+Das macht die Sache schon gleich nicht mehr ganz so übersichtlich. Zum anderen darf `await` nur in Funktionen verwendet werden, die als `async` deklariert sind. Das heißt, wir packen obigen Anweisungsblock in eine Funktion:
+
+```js
+async function asyncFunction() {
+    try {
+        const response = await makeRequest('index');
+        console.log('response received')
+        const processedResponse = await processRequest(response)
+        console.log(processedResponse)
+    } catch(err) {
+        console.log(err)
+    }
+}
+``` 
+
+Diese Funktion muss dann aufgerufen werden. Je nachdem, ob Sie `'index'` der `makeRequest()`-Funktion übergeben oder etwas anderes, erfolgt eine der beiden oben gezeigten Ausgaben. 
+
+Sie können selbst entscheiden, ob Sie `.then()`-Verkettungen verwenden wollen oder `async/ await`. Letzteres ist etwas moderner. 
 
 
 

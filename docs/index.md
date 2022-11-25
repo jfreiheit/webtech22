@@ -845,6 +845,88 @@ Für die Kommunikation untereinander verwenden wir [**Slack**](https://slack.com
 	</html>
 	```
 
+
+??? note "javascript"
+	```html
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>JavaScript</title>
+
+	</head>
+	<body>
+	    <h1>JavaScript</h1>
+	    <main>
+	        <h4>Eigenschaften</h4>
+	        <ul>
+	            <li>Skriptsprache (aus Performanzgründen aber compiliert - z.B. V8 in Chrome, SpiderMonkey in Firefox)</li>
+	            <li>dynamische Typisierung</li>
+	            <li>keine unterschiedlichen Referenztypen</li>
+	            <li>Vererbung durch <code>prototype</code></li>
+	            <li>Objekteigenschaften und -funktionen können einfach dem Objekt hinzugefügt werden</li>
+	        </ul>
+	        <h4>Nützliche Links</h4>
+	        <ul>
+	            <li><a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-262/">ECMA-262</a></li>
+	            <li><a href="https://dom.spec.whatwg.org/">Document Object Model (DOM)</a></li>
+	            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide">JavaScript Guide</a></li>
+	            <li><a href="https://www.w3schools.com/js/default.asp">JavaScript Tutorial</a></li>
+	            <li><a href="https://learnjavascript.online/">Learn JavaScript</a></li>
+	            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">JavaScript Reference</a></li>
+	        </ul>
+	        <h4>Ergebnisliste</h4>
+	        <ul id="ulresult">
+	            <li id="liresult1"></li>
+	        </ul>
+	        <input type="text" onchange="addContentText()" id="input" onfocus="changeColor()" onblur="changeColor()" placeholder="Name"/>
+	        <button type="button" onclick="helloFIW()">Klick Mich!</button>
+	    </main>
+	    <script>
+
+	        function helloFIW(name = 'FIW') {
+	            /*
+	            let name = 12;
+	            let number = 2;
+	            let test = name - number;
+	            */
+	            //console.log('Hello ' + test );
+	            console.log('Hello ' + name);
+	        }
+
+	        let result = (a, b) => a+b;
+
+	        console.log(result(3,4));
+
+	        function addContentText() {
+	            let input = document.getElementById('input');
+	            //console.log(input);
+	            let inputValue = input.value;
+	            console.log(inputValue);
+	            let liresult = document.querySelector('#liresult1');
+	            liresult.textContent = "<span style='color: red;'>" +inputValue+ '</span>';
+	        }
+
+	        function changeColor() {
+	            let input = document.getElementById('input');
+	            if(input.style.backgroundColor === "yellow")
+	            {
+	                input.style.backgroundColor = "white"
+	            }
+	            else {
+	                input.style.backgroundColor = "yellow";
+	            }
+
+	        }
+
+
+
+	    </script>
+	</body>
+	</html>
+	```
+
 ??? "Links zu Bootstrap"
 	
 	[CDN](https://getbootstrap.com/docs/5.2/getting-started/introduction/#cdn-links)</a> <br/>

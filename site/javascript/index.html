@@ -412,6 +412,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ein-beispielformular-mit-elementerzeugung" class="md-nav__link">
+    Ein Beispielformular mit Elementerzeugung
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#javascript-sprachelemente" class="md-nav__link">
     JavaScript - Sprachelemente
   </a>
@@ -429,6 +436,33 @@
           <li class="md-nav__item">
   <a href="#objekte" class="md-nav__link">
     Objekte
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ein-beispiel-mit-einem-javascript-objekt" class="md-nav__link">
+    Ein Beispiel mit einem JavaScript-Objekt
+  </a>
+  
+    <nav class="md-nav" aria-label="Ein Beispiel mit einem JavaScript-Objekt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jsonparse-und-jsonstringify" class="md-nav__link">
+    JSON.parse() und JSON.stringify()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optionale-verkettung" class="md-nav__link">
+    Optionale Verkettung
   </a>
   
 </li>
@@ -475,15 +509,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#promises" class="md-nav__link">
+    Promises
+  </a>
+  
+    <nav class="md-nav" aria-label="Promises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#asyncawait-vs-then" class="md-nav__link">
+    async/await vs. then
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#promises" class="md-nav__link">
-    Promises
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -670,6 +717,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ein-beispielformular-mit-elementerzeugung" class="md-nav__link">
+    Ein Beispielformular mit Elementerzeugung
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#javascript-sprachelemente" class="md-nav__link">
     JavaScript - Sprachelemente
   </a>
@@ -687,6 +741,33 @@
           <li class="md-nav__item">
   <a href="#objekte" class="md-nav__link">
     Objekte
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ein-beispiel-mit-einem-javascript-objekt" class="md-nav__link">
+    Ein Beispiel mit einem JavaScript-Objekt
+  </a>
+  
+    <nav class="md-nav" aria-label="Ein Beispiel mit einem JavaScript-Objekt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jsonparse-und-jsonstringify" class="md-nav__link">
+    JSON.parse() und JSON.stringify()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optionale-verkettung" class="md-nav__link">
+    Optionale Verkettung
   </a>
   
 </li>
@@ -733,15 +814,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#promises" class="md-nav__link">
+    Promises
+  </a>
+  
+    <nav class="md-nav" aria-label="Promises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#asyncawait-vs-then" class="md-nav__link">
+    async/await vs. then
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#promises" class="md-nav__link">
-    Promises
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1564,6 +1658,111 @@
 <li>Zeilen <code>31-46</code>: Die Funktion <code>createAllElements()</code> erzeugt zunächst ein <code>img</code>-Knoten mit allen erforderlichen Attributen. Außerdem wird dieser Knoten auch noch an das <code>dblclick</code>-Ereignis angemeldet und die Referenz auf die Funktion <code>cloneFunc</code> als Event-Handler übergeben. In Zeile <code>44</code> wird dieser <code>img</code>-Knoten dem <code>&lt;body&gt;</code> hinzugefügt, und zwar vor dem <code>&lt;script&gt;</code>-Element. Außerdem wird noch unser <code>&lt;div&gt;</code> mit der <code>id="div1"</code> erzeugt und ebenfalls vor dem <code>&lt;script&gt;</code>-Element (und hinter das <code>&lt;img&gt;</code>-Element) eingefügt. </li>
 </ul>
 <p>Es entsteht die exakt gleiche Webseite wie in dem Beispiel davor (siehe Beispiel aus <a href="./javascript/#addeventlistener"><strong>addEventListener</strong></a>).</p>
+<h2 id="ein-beispielformular-mit-elementerzeugung">Ein Beispielformular mit Elementerzeugung<a class="headerlink" href="#ein-beispielformular-mit-elementerzeugung" title="Permanent link">&para;</a></h2>
+<p>Wir betrachten noch ein einfaches Beispiel, in dem durch Eingaben neue Eingabefelder erzeugt werden. Betrachten wir zunächst den HTML-Code:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span>
+        <span class="na">integrity</span><span class="o">=</span><span class="s">&quot;sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65&quot;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&quot;anonymous&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Javascript<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Formular auslesen<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Kommentare<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;form&quot;</span> <span class="na">onsubmit</span><span class="o">=</span><span class="s">&quot;return false;&quot;</span><span class="p">&gt;</span> 
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-floating mb-3&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;input1&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Kommentar 1&quot;</span> <span class="na">onchange</span><span class="o">=</span><span class="s">&quot;fixeInput()&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;input1&quot;</span><span class="p">&gt;</span>Kommentar 1<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span> 
+
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Folgende Ansicht wird erzeugt:</p>
+<p><img alt="Create" src="../files/261_javascript.png" /></p>
+<p>Nach erfolgter Eingabe wird durch die <code>Enter</code>-Taste die <code>fixeInput()</code>-Funktion aufgerufen. Wir implementieren diese Funktion wie folgt:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">nr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">fixeInput</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">inputId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;input&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">nr</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">ul</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#ul&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">inputId</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="nx">input</span><span class="p">.</span><span class="nx">disabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">newDiv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="nx">newDiv</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;form-floating&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mb-3&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">newInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="nx">newInput</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;form-control&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="nx">nr</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">newInputId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;input&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">nr</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nx">newInput</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">newInputId</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nx">newInput</span><span class="p">.</span><span class="nx">placeholder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Kommentar &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">nr</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nx">newInput</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fixeInput</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="nx">newDiv</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">newInput</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">newLabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="nx">newLabel</span><span class="p">.</span><span class="k">for</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">newInputId</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nx">newLabel</span><span class="p">.</span><span class="nx">innerText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Kommentar &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">nr</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nx">newDiv</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">newLabel</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#form&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">button</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#submitBtn&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="nx">form</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">newDiv</span><span class="p">,</span><span class="w"> </span><span class="nx">button</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="nx">newInput</span><span class="p">.</span><span class="nx">focus</span><span class="p">({</span><span class="w"> </span><span class="nx">focusVisible</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>Wir definieren eine globale Variable <code>nr</code> (Zeile <code>1</code>). In der Funktion wird diese Variable verwendet, um z.B. die <code>id</code> für das aktuelle <code>input</code>-Element zu bestimmen (Zeile <code>4</code>) und eine neue <code>id</code> für das neu zu erzeugende <code>input</code>-Element zu definieren (Zeile <code>14</code>). In den Zeilen <code>9</code> und <code>10</code> wird ein neues <code>div</code>-Element erzeugt, so dass es in HTML wie folgt aussieht:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-floating mb-3&quot;</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>In den Zeilen <code>11-17</code> wird ein neues <code>input</code>-Element erzeugt und diesem <code>input</code>-Element die Ereignisbehandlung des <code>change</code>-Events zugewiesen (Zeile <code>17</code>) - ebenfalls Aufruf der <code>fixeInput()</code>-Funktion. In Zeile <code>18</code> wird dieses neue <code>input</code>-Element dem erzeugten <code>div</code>-Element hinzugefügt, so dass für z.B. <code>nr==2</code> folgendes HTML entsteht:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-floating mb-3&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;input2&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Kommentar 2&quot;</span> <span class="na">onchange</span><span class="o">=</span><span class="s">&quot;fixeInput()&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>In Zeilen <code>20-23</code> wird das entsprechende <code>label</code> erzeugt und ebenfalls dem <code>div</code> hinzugefügt:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-floating mb-3&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-control&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;input2&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Kommentar 2&quot;</span> <span class="na">onchange</span><span class="o">=</span><span class="s">&quot;fixeInput()&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;input2&quot;</span><span class="p">&gt;</span>Kommentar 2<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>So entsteht bei jedem Eintrag ein neues <code>div</code> inklusive <code>input</code>- und <code>label</code>-Element, wobai <code>nr</code> jeweils hochgezählt wird und so die <code>id</code>s <code>input2</code>, <code>input3</code>, <code>input4</code> ... bzw. die <code>placeholder</code> und <code>label</code>-Inhalte <code>Kommentar 1</code>, <code>Kommentar 2</code>, <code>Kommentar 3</code>... entstehen:</p>
+<p><img alt="Create" src="../files/262_javascript.png" /></p>
+<p>Die bereits ausgefüllten <code>input</code>-Elemente werden auf <code>disabled</code> gesetzt (<code>readonly</code> geht auch), so dass sie nicht mehr bearbeitet werden können. </p>
 <h2 id="javascript-sprachelemente">JavaScript - Sprachelemente<a class="headerlink" href="#javascript-sprachelemente" title="Permanent link">&para;</a></h2>
 <h3 id="var-let-und-const"><code>var</code>, <code>let</code> und <code>const</code><a class="headerlink" href="#var-let-und-const" title="Permanent link">&para;</a></h3>
 <p>Mithilfe der Schlüsselwörter <code>var</code>, <code>let</code> und <code>const</code> können in JavaScript Variablen deklariert werden. Wenn Sie eine Variable mit <code>var</code> deklarieren, dann ist diese Variable innerhalb der gesamten Funktion, in der Sie die Variable deklarieren, gültig. Dagegen hat <code>let</code> nur eine <em>Blockgültigkeit</em>, d.h. eine mit <code>let</code> deklarierte Variable ist nur in dem Anweisungsblock gültig, in dem sie deklariert wurde. Eine mit <code>let</code> deklarierte Variable verhält sich also wie eine in Java deklarierte Variable. <code>const</code> wird zur Deklaration von Konstanten verwendet. Es ist zu bachten: Falls es sich bei der mit <code>const</code> deklarierten Konstante um eine Referenzvariable handelt (also auf ein Objekt oder Array zeigt), dann kann diese Variable ihre Referenz zwar nicht mehr ändern, das jeweilige Objekt, auf das die Variable (konstant) zeigt, kann sich aber schon ändern.</p>
@@ -1587,6 +1786,286 @@
 <div class="highlight"><pre><span></span><code><span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">vorname</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">nachname</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
 </code></pre></div>
 <p>Der Aufruf erfolgt dann über <code>person.name();</code></p>
+<h3 id="ein-beispiel-mit-einem-javascript-objekt">Ein Beispiel mit einem JavaScript-Objekt<a class="headerlink" href="#ein-beispiel-mit-einem-javascript-objekt" title="Permanent link">&para;</a></h3>
+<p>Wir betrachten fplgendes JavaScript-Objekt, mit dem wir eine Farbe im <a href="https://www.w3schools.com/colors/colors_hsl.asp">HSL-Format</a> repräsentieren:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">colorHSL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">hue</span><span class="o">:</span><span class="w">  </span><span class="mf">50</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">saturation</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">lightness</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`hsl(</span><span class="si">${</span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">hue</span><span class="si">}</span><span class="sb"> , </span><span class="si">${</span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">saturation</span><span class="si">}</span><span class="sb">%, </span><span class="si">${</span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">lightness</span><span class="si">}</span><span class="sb">%)`</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Beachten Sie, dass ein JavaScript-Objekt (im Gegensatz zu einem Objekt im JSON-Format) auch Funktionen als Eigenschaften besitzen kann, siehe Eigenschaft <code>name</code> im Objekt <code>colorHSL</code>. Zur Verwendung dieses Objektes erstellen wir uns zunächst folgendes HTML:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span>
+        <span class="na">integrity</span><span class="o">=</span><span class="s">&quot;sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65&quot;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&quot;anonymous&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Javascript<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">div</span><span class="p">#</span><span class="nn">output</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="kt">px</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span> <span class="na">onload</span><span class="o">=</span><span class="s">&quot;setBackgroundColorDiv()&quot;</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>JavaScript-Objekte<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;output&quot;</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;my-3&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;row&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-2&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;hueIP&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-label&quot;</span><span class="p">&gt;</span>Hue (Farbton)<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-2&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-range&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;hueOP&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;50&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-8&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;range&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-range&quot;</span> <span class="na">min</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">max</span><span class="o">=</span><span class="s">&quot;360&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;hueIP&quot;</span> <span class="na">oninput</span><span class="o">=</span><span class="s">&quot;newHue()&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;50&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;row&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-2&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;satIP&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-label&quot;</span><span class="p">&gt;</span>Saturation (Sättigung)<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-2&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-range&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;satOP&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;50&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-8&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;range&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-range&quot;</span> <span class="na">min</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">max</span><span class="o">=</span><span class="s">&quot;100&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;satIP&quot;</span> <span class="na">oninput</span><span class="o">=</span><span class="s">&quot;newSat()&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;50&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;row&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-2&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;lightIP&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-label&quot;</span><span class="p">&gt;</span>Lightness (Helligkeit)<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-2&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-range&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;lightOP&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;50&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-8&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;range&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-range&quot;</span> <span class="na">min</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">max</span><span class="o">=</span><span class="s">&quot;100&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;lightIP&quot;</span> <span class="na">oninput</span><span class="o">=</span><span class="s">&quot;newLight()&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;50&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p>Das ergibt folgendes Aussehen:</p>
+<p><img alt="Object" src="../files/263_javascript.png" /></p>
+<p>Für die <code>&lt;input type="range"</code>-Felder wird das <code>input</code>-Event behandelt. Für jeden Slider wird eine eigene Funktion aufgerufen, das hätte man aber auch alles in einer Funktion erledigen können. Hier der JavaScript-Code, der per <code>&lt;script&gt;</code>-Element eingebunden wird:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">colorHSL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">setBackgroundColorDiv</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">colorHSL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">hue</span><span class="o">:</span><span class="w">  </span><span class="mf">50</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">saturation</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">lightness</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`hsl(</span><span class="si">${</span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">hue</span><span class="si">}</span><span class="sb"> , </span><span class="si">${</span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">saturation</span><span class="si">}</span><span class="sb">%, </span><span class="si">${</span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">lightness</span><span class="si">}</span><span class="sb">%)`</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">outputDiv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#output&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="nx">outputDiv</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">name</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">name</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">newHue</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">sliderValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#hueIP&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">hue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sliderValue</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#hueOP&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sliderValue</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#output&#39;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">name</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">name</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">newSat</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">sliderValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#satIP&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">saturation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sliderValue</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#satOP&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sliderValue</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#output&#39;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">name</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">name</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">newLight</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">sliderValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#lightIP&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">lightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sliderValue</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#lightOP&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sliderValue</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#output&#39;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">name</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">name</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>Die Funktion <code>setBackgroundColorDiv()</code> definiert zunächst die Eigenschaften des JavaScript-Objektes <code>colorHSL</code>. Die Variable ist global definiert, damit alle Funktionen auf diese Variable Zugriff haben. Die Funktion <code>setBackgroundColorDiv()</code> wird durch das <code>load</code>-Event aufgerufen (siehe Zeile <code>15</code> im HTML-Code). Die Funktion <code>name</code> im <code>colorHSL</code>-Objekt gibt den CSS-Wert der Farbe als String zurück. Beachten Sie die Verwendung der <code>back ticks</code> für den String. Diese Erlauben die <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals?retiredLocale=de">Interpolation</a> unter Verwendung des <code>${}</code>-Operators.</p>
+<p>Die drei Funktionen <code>newXXX</code> hätten auch durch eine ersetzt werden können:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">newValues</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">sliderValueH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#hueIP&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">sliderValueS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#satIP&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">sliderValueL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#lightIP&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">hue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sliderValueH</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">saturation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sliderValueS</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">lightness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sliderValueL</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#hueOP&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sliderValueH</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#satOP&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sliderValueS</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#lightOP&#39;</span><span class="p">).</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sliderValueL</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#output&#39;</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">name</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">colorHSL</span><span class="p">.</span><span class="nx">name</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition hint">
+<p class="admonition-title">Objektausgabe auf Konsole</p>
+<p>Angenommen, Sie wollen ein Objekt auf die Konsole ausgeben und zuvor noch eine eigene Ausgabe. Verwenden Sie dann nicht den Zeichenkettenverbindungsoperator <code>+</code>, also nicht z.B. <code>console.log('colorHSL' + colorHSL);</code>. Das führt nur dazu, dass für das Objekt <code>toString()</code> aufgerufen wird und das ergibt dann <code>colorHSL[object Object]</code>. Verwenden Sie stattdessen ein Komma, z.B. <code>console.log('colorHSL', colorHSL);</code>. Das ergibt dann das Gewünschte: <code>colorHSL {hue: 50, saturation: 50, lightness: 50, name: ƒ}</code>. </p>
+</div>
+<h4 id="jsonparse-und-jsonstringify">JSON.parse() und JSON.stringify()<a class="headerlink" href="#jsonparse-und-jsonstringify" title="Permanent link">&para;</a></h4>
+<p>Mithilfe von <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON">JSON.stringify()</a> können Sie ein JavaScript-Objekt in das JSON-Format überführen. Beachten Sie, dass Funktionen im JSON-Format nicht erlaubt sind. Aus obigem <code>colorHSL</code>-Objekt würde mithilfe von <code>JSON.stringify(colorHSL)</code> folgendes JSON erzeugt werden:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;hue&quot;</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;saturation&quot;</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;lightness&quot;</span><span class="p">:</span><span class="mi">50</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Mithilfe von <code>JSON.parse()</code> erzeugen Sie aus einem JSON ein JavaScript-Objekt. Beachten Sie, dass <code>let newColorHSL = JSON.parse(JSON.stringify(colorHSL))</code> ein JavaScript-Objekt ohne die Funktion <code>name</code> erzeugt:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">hue</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nx">saturation</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nx">lightness</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h3 id="optionale-verkettung">Optionale Verkettung<a class="headerlink" href="#optionale-verkettung" title="Permanent link">&para;</a></h3>
+<p>Der <code>?</code>-Operator wird verwendet, wenn nicht sicher ist, ob eine Eigenschaft existiert bzw. ob ein Wert für die Eigenschaft gesetzt ist. Betrachten wir folgendes Beispiel:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">vorname</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Maria&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">nachname</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Musterfrau&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">adresse</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">strasse</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Wilhelminenhofstr.&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">nummer</span><span class="o">:</span><span class="w"> </span><span class="mf">75</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">ort</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Berlin&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">plz</span><span class="o">:</span><span class="w"> </span><span class="mf">12459</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>Dann kann der <code>?</code>-Operator z.B. so verwendet werden:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nx">person</span><span class="p">.</span><span class="nx">adresse</span><span class="o">?</span><span class="p">.</span><span class="nx">ort</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>Die Idee dahinter ist, dass auf die Eigenschaft zugegriffen werden kann, wenn sie existiert und wenn sie einen Wert besitzt. Dieser Operator vermeidet Laufzeitfehler bzw. eine Abfrage auf Existenz.  </p>
 <h3 id="arrays">Arrays<a class="headerlink" href="#arrays" title="Permanent link">&para;</a></h3>
 <p>Arrays in JavaScript werden fast genauso behandelt wie in Java. Hier ein Beispiel:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1657,15 +2136,15 @@
 <p>Dann sind die Elemente des Arrays numerisch indiziert. </p>
 <h3 id="javascript-ist-dynamisch-typisiert">JavaScript ist dynamisch typisiert<a class="headerlink" href="#javascript-ist-dynamisch-typisiert" title="Permanent link">&para;</a></h3>
 <p>Im Gegensatz zu z.B. Java ist JavaScript nicht statisch, sondern dynamisch typisiert. Der Wert einer Variablen bestimmt deren Typ. Beispiel:</p>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">16</span><span class="p">;</span><span class="w">                                </span><span class="c1">// number  </span><span class="w"></span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Johnson&quot;</span><span class="p">;</span><span class="w">                           </span><span class="c1">// string</span><span class="w"></span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">cars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Saab&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;BMW&quot;</span><span class="p">];</span><span class="w">            </span><span class="c1">// object (Array)</span><span class="w"></span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">firstName</span><span class="o">:</span><span class="s2">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">lastName</span><span class="o">:</span><span class="s2">&quot;Doe&quot;</span><span class="p">};</span><span class="w">   </span><span class="c1">// object</span><span class="w"></span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Function</span><span class="p">();</span><span class="w">                      </span><span class="c1">// function</span><span class="w"></span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">correct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">                             </span><span class="c1">// boolean</span><span class="w"></span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span><span class="w">                                          </span><span class="c1">// now x is undefined</span><span class="w"></span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span><span class="w">                                      </span><span class="c1">// now x is a Number</span><span class="w"></span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">;</span><span class="w">                                 </span><span class="c1">// now x is a String</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">16</span><span class="p">;</span><span class="w">                                </span><span class="c1">// number  </span><span class="w"></span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Johnson&quot;</span><span class="p">;</span><span class="w">                           </span><span class="c1">// string</span><span class="w"></span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">cars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Saab&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Volvo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;BMW&quot;</span><span class="p">];</span><span class="w">            </span><span class="c1">// object (Array)</span><span class="w"></span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">firstName</span><span class="o">:</span><span class="s2">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">lastName</span><span class="o">:</span><span class="s2">&quot;Doe&quot;</span><span class="p">};</span><span class="w">   </span><span class="c1">// object</span><span class="w"></span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Function</span><span class="p">();</span><span class="w">                      </span><span class="c1">// function</span><span class="w"></span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">correct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">                             </span><span class="c1">// boolean</span><span class="w"></span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span><span class="w">                                          </span><span class="c1">// now x is undefined</span><span class="w"></span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span><span class="w">                                      </span><span class="c1">// now x is a Number</span><span class="w"></span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">;</span><span class="w">                                 </span><span class="c1">// now x is a String</span><span class="w"></span>
 </code></pre></div>
 <p><code>typeof</code> kann verwendet werden, ob zu überprüfen, ob eine Variable überhaupt definiert ist und/oder von welchem Typ sie ist. Es liefert folgende Resultate:</p>
 <ul>
@@ -1680,7 +2159,7 @@
 <p>Beispiel:
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myDiv&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="w"></span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myDiv&quot;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="o">+=</span><span class="ow">typeof</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// undefined</span><span class="w"></span>
 <span class="w">    </span><span class="nx">x</span><span class="o">=</span><span class="s2">&quot;12&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;myDiv&quot;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="o">+=</span><span class="ow">typeof</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;&lt;br/&gt;&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// string</span><span class="w"></span>
@@ -1710,20 +2189,20 @@
 </code></pre></div>
 <p>Es wird eine Funktion <code>myFunction()</code> definiert, der 2 Parameter <code>a</code> und <code>b</code> übergeben werden. Die Funktion berechnet das Produkt aus <code>a</code> und <code>b</code> und gibt dieses mithilfe von <code>return</code> zurück. Der zurückgegebene Wert wird als Inhalt des Absatzes <code>&lt;p&gt;</code> mit der <code>id="demo"</code> verwendet. <code>myFunction(4, 3);</code> ist der Aufruf der Funktion. </p>
 <p>Außerdem können Funktionen als <em>anonyme</em> Funktionen deklariert werden. Es ist möglich, dass eine Variable auf eine (anonyme) Funktion zeigt. Diese Variable kann dann wie die Funktion selbst verwendet werden. Beispiel:</p>
-<p><div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">b</span><span class="p">};</span><span class="w"></span>
+<p><div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">b</span><span class="p">};</span><span class="w"></span>
 </code></pre></div>
 Die Funktion kann nun über z.B. <code>x(4,3);</code> aufgerufen werden. </p>
 <p>Eine weitere (aber selten verwendete) Möglichkeit, eine Funktion zu definieren, ist die Verwendung des <code>Function()</code>-Konstruktors. Beispiel:</p>
-<p><div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">myFunction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Function</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;return a * b&quot;</span><span class="p">);</span><span class="w"></span>
+<p><div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">myFunction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Function</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;return a * b&quot;</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 Diese Funktion kann dann (wie oben mit <code>x</code>) mit <code>myFunction(4,3);</code> aufgerufen werden. Aber, wie gesagt, das ist eher unüblich, denn es ist äquivalent zu:</p>
-<p><div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">myFunction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">b</span><span class="p">};</span><span class="w"></span>
+<p><div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">myFunction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">b</span><span class="p">};</span><span class="w"></span>
 </code></pre></div>
 mit dem Aufruf <code>myFunction(4,3);</code>. Die Verwendung des <code>Function()</code>-Konstruktors zeigt aber, dass jede Funktion vom Typ <code>function</code> ist. In JavaScript gibt es also einen Typ <code>function</code>.  Würde man für das Beispiel mit <code>x</code> z.B. <code>typeof(x)</code> aufrufen, ist das Resultat <code>function</code>.</p>
 <h3 id="variable-anzahl-von-parametern">Variable Anzahl von Parametern<a class="headerlink" href="#variable-anzahl-von-parametern" title="Permanent link">&para;</a></h3>
 <p>Die Anzahl der Parameter kann, muss aber nicht in der Funktionsdefinition angegeben werden. Es geht immer (auch wenn eine feste Anzahl von Parametern angegeben wurde):</p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">summe</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nx">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">arguments</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
@@ -1764,8 +2243,8 @@ mit dem Aufruf <code>myFunction(4,3);</code>. Die Verwendung des <code>Function(
 <span class="nx">processUserInput</span><span class="p">(</span><span class="nx">greeting</span><span class="p">);</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <p>In den Zeilen 1-3 wird eine Funktion <code>greeting()</code> definiert, welche einen <code>name</code> erwartet. Diese Funktion gibt <code>Hello</code> zusammen mit dem Namen in einem Alarmfenster aus. Die Funktion <code>greeting()</code> wird als <em>Callback</em>-Funktion in der Funktion <code>processUserInput()</code> (Zeilen 5-8) verwendet. Das heißt, die Funktion <code>greeting()</code> wird der Funktion <code>processUserInput()</code> als Parameter übergeben. Innerhalb der Funktion <code>processUserInput()</code> heißt die Referenz auf die Funktion <code>greeting()</code> <code>callback</code>. Der Parametername kann beliebig gewählt werden. Wir die Funktion <code>processUserInput()</code> aufgerufen (Zeile 10) und die Funktion <code>greeting()</code> als Parameter übergeben, dann erscheint zunächst ein Eingabefenster, in dem der Name eingeben wird und dieser Name wird der <code>greeting()</code>-Funktion als Parameter übergeben. Es erscheint das Alarmfenster mit der Ausgabe <code>Hello</code> plus dem Namen. Der Funktion <code>processUserInput()</code> könnte auch jede andere Funktion als Callback-Funktion übergeben werden. </p>
-<h2 id="promises">Promises<a class="headerlink" href="#promises" title="Permanent link">&para;</a></h2>
-<p>Eine <em>Promise</em> ist das Ergebnis einer asynchronen Operation. Es gibt vier Status einer Promis (uns interessiert in der Regel nur <code>resolved</code> oder <code>rejected</code>):</p>
+<h3 id="promises">Promises<a class="headerlink" href="#promises" title="Permanent link">&para;</a></h3>
+<p>Eine <em>Promise</em> ist das Ergebnis einer asynchronen Operation. Es gibt vier Status einer Promise (uns interessiert in der Regel nur <code>resolved</code> oder <code>rejected</code>):</p>
 <table>
 <thead>
 <tr>
@@ -1819,6 +2298,122 @@ mit dem Aufruf <code>myFunction(4,3);</code>. Die Verwendung des <code>Function(
 </code></pre></div>
 <p>Der entscheidende Punkt ist, dass ein Promise-Objekt eine <code>then</code>-Methode besitzt. Dieser <code>then</code>-Methode können wiederum zwei Callback-Funktionen übergeben werden. Die erste Funktion wird durch die <code>resolve</code>-Funktion der Promise aufgerufen, die zweite Funktion, falls die Promise die <code>reject</code>-Funktion aufruft. Werden der <code>resolve</code>- und der <code>reject</code>-Funktion Argumente übergeben (so wie oben <code>resolve(results)</code> und <code>reject(error)</code>), dann können diese Argumente in der jeweiligen Callback-Funktion ausgewertet werden (<code>results</code>&rarr;<code>movies</code> bzw. <code>error</code>&rarr;<code>error</code>). </p>
 <p>Die <code>then</code>-Funktion selbst gibt übrigens wieder ein <code>Promise</code>-Objekt zurück. Somit können mehrere Promises verkettet werden.</p>
+<h4 id="asyncawait-vs-then">async/await vs. then<a class="headerlink" href="#asyncawait-vs-then" title="Permanent link">&para;</a></h4>
+<p>Wir schauen uns noch ein weiteres Beispiel an. Gegeben seien die beiden folgenden Funktionen:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">makeRequest</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;making request for &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="nx">file</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;index&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">resolve</span><span class="p">(</span><span class="s1">&#39;index exists&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">reject</span><span class="p">(</span><span class="nx">file</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot; does not exist&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">processRequest</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;processing response &#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="nx">resolve</span><span class="p">(</span><span class="s1">&#39;processing done for &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">response</span><span class="p">)</span><span class="w">      </span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>Beide Funktionen geben ein Promise-Objekt zurück. Wir verwenden zunächst <code>then()</code>, um diese Funktionen zu verwenden:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nx">makeRequest</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;response received&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">processRequest</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="w"> </span><span class="nx">processedResponse</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">processedResponse</span><span class="p">)</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+<span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">))</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>Wir übergeben der Funktion <code>makeRequest()</code> den String <code>"index"</code>. Dadurch wird die Promise in dieser Funktion erfüllt (<code>resolve</code>). Die Ausgabe für diesen Fall sieht so aus:</p>
+<div class="highlight"><pre><span></span><code>making request for index
+response received
+processing response
+processing done for index exists
+</code></pre></div>
+<p>In der <code>.then()</code>-Folge von <code>makeRequest()</code> wird die Funktion <code>processRequest()</code> aufgerufen und dieser Funktion die <code>response</code> der <code>makeRequest()</code>-Promise übergeben (<code>'index exists'</code>). Diese Promise wird zurückgegeben (<code>return processRequest(response)</code>) und dann ebenfalls mit <code>.then()</code> aufgefangen. Die Promise von <code>processRequest</code> besitzt nur ein <code>resolve</code> und kein <code>reject</code>. </p>
+<p>Falls wir nicht <code>'index'</code> übergeben, sondern etwas anderes, löst die Promise von <code>makeRequest()</code> ein <code>reject</code> aus:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nx">makeRequest</span><span class="p">(</span><span class="s1">&#39;object&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;response received&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">processRequest</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="w"> </span><span class="nx">processedResponse</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">processedResponse</span><span class="p">)</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+<span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">))</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>Die Ausgabe ist dann wie folgt:</p>
+<div class="highlight"><pre><span></span><code>making request for object
+object does not exist
+</code></pre></div>
+<p>Die zweite Zeile der Ausgabe wird durch den <code>reject</code>-Fall der <code>makeRequest</code>-Promise ausgelöst und durch den Abfangen des Fehlers <code>.catch( err =&gt; console.log(err))</code> ausgegeben. </p>
+<p>Eine solche Folge von <code>.then()</code>-Ketten wird schnell unübersichtlich. Deshalb wurden die Schlüsselwörter <code>async</code> und <code>await</code> eingeführt. Prinzipiell würde die obige Abfrage mithilfe von <code>await</code> so aussehen:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">makeRequest</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;response received&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">processedResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">processRequest</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">processedResponse</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>Das ist sicherlich deutlich übersichtlicher. Dabei gibt es jedoch zwei Dinge zu beachten. Erstens haben wir den Fehlerfall noch nicht abgefangen. Das erledigen wir mithilfe von <code>try{} catch(err){}</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">makeRequest</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;response received&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">processedResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">processRequest</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">processedResponse</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Das macht die Sache schon gleich nicht mehr ganz so übersichtlich. Zum anderen darf <code>await</code> nur in Funktionen verwendet werden, die als <code>async</code> deklariert sind. Das heißt, wir packen obigen Anweisungsblock in eine Funktion:</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">asyncFunction</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">makeRequest</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;response received&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">processedResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">processRequest</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">processedResponse</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Diese Funktion muss dann aufgerufen werden. Je nachdem, ob Sie <code>'index'</code> der <code>makeRequest()</code>-Funktion übergeben oder etwas anderes, erfolgt eine der beiden oben gezeigten Ausgaben. </p>
+<p>Sie können selbst entscheiden, ob Sie <code>.then()</code>-Verkettungen verwenden wollen oder <code>async/ await</code>. Letzteres ist etwas moderner. </p>
 
 
 
