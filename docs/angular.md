@@ -31,6 +31,11 @@ Name des Projektes. Wenn Sie gefragt werden, ob Sie **Angular routing**
 verwenden möchten, geben Sie ein `y` ein. Wenn Sie nach dem **stylesheet
 format** gefragt werden, können Sie `CSS` einfach mit `Enter` bestätigen.
 
+```bash
+? Would you like to add Angular routing? Yes
+? Which stylesheet format would you like to use? CSS
+```
+
 Wenn alles geklappt hat, erhalten Sie im Terminal eine Ausgabe in der Form:
 
 ![Angular-Projekt erstellt](./files/07_fertig.png)
@@ -66,23 +71,21 @@ erscheint am Ende eine Ausgabe, wie z.B.
 ```bash
 ✔ Browser application bundle generation complete.
 
-Initial Chunk Files   | Names         |      Size
-vendor.js             | vendor        |   2.10 MB
-polyfills.js          | polyfills     | 339.54 kB
-styles.css, styles.js | styles        | 212.38 kB
-main.js               | main          |  55.22 kB
-runtime.js            | runtime       |   6.85 kB
+Initial Chunk Files   | Names         |  Raw Size
+vendor.js             | vendor        |   2.12 MB | 
+polyfills.js          | polyfills     | 314.26 kB | 
+styles.css, styles.js | styles        | 209.39 kB | 
+main.js               | main          |  48.72 kB | 
+runtime.js            | runtime       |   6.51 kB | 
 
-                      | Initial Total |   2.70 MB
+                      | Initial Total |   2.69 MB
 
-Build at: 2021-11-15T09:35:55.434Z - Hash: 05483fb355731569 - Time: 10730ms
+Build at: 2022-11-30T09:43:56.236Z - Hash: 15a297db746e6251 - Time: 13321ms
 
 ** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
 
 
 ✔ Compiled successfully.
-
-
 ```
 
 Sie **müssen** jetzt immer compileren! Wenn Sie aber einmal `ng serve` ausgeführt haben, wird im Browser automatisch auf die Änderungen reagiert. Sie müssen also nicht jedes Mal neu `ng serve` eingeben, bzw. nicht jedes Mal neu auf das grüne Dreieck in Ihrer IDE klicken: ![ngserve](./files/86_ngserve.png)
@@ -103,8 +106,7 @@ ein. Folgende Seite sollte erscheinen:
 
 ## Angular-Projektstruktur
 
-Öffnen Sie die IDE Ihrer Wahl (Screenshots hier mit [PhpStorm]
-(https://www.jetbrains.com/de-de/phpstorm/). Wählen Sie unter
+Öffnen Sie die IDE Ihrer Wahl. Wählen Sie unter
 `Open Project` den Projektordner `first`. Klappen Sie das Projekt
 `first` auf, klappen Sie den Ordner `src` und dann den Ordner
 `app` auf. Der Projektexplorer zeigt folgendes Bild:
@@ -415,17 +417,28 @@ Zur weiteren Übung erzeugen wir uns noch weitere Komponenten. Zunächst eine Ko
 ng g c nav
 ```
 
-UM deutlich zu machen, dass sich die CSS-Definitionen für eine Komponente stets nur auf die Komponente beziehen, ändern wir die `nav.component.css`:
+Um deutlich zu machen, dass sich die CSS-Definitionen für eine Komponente stets nur auf die Komponente beziehen, ändern wir die `nav.component.css` (und - leicht anders- auch die `header.component.css`):
 
 === "nav.component.css"
     ```css
     p {
-        background-color: grey;
-        color: white;
-        padding: 1%;
-        padding-left: 2%;
+      background-color: grey;
+      color: white;
+      padding: 1%;
+      padding-left: 2%;
     }
     ```
+
+=== "header.component.css"
+    ```css
+    p {
+      background-color: lightgrey;
+      color: black;
+      padding: 2%;
+      padding-left: 2%;
+    }
+    ```
+
 
 Wir binden die `nav`-Komponente in die `app.component.html` ein:
 
@@ -488,22 +501,23 @@ Wir binden die `main`-Komponente in die `app`-Komponente ein und die Komponenten
 === "main.component.css"
     ```css
     #main {
-        background-color: rgb(226, 243, 188);
-        height: 200px;
-        padding: 1%;
+      background-color: rgb(226, 243, 188);
+      height: 200px;
+      padding: 1%;
     }
 
     #row {
-        display: flex;
+      display: grid;
+      grid-gap: 1%;
+      grid-template-columns: 1fr 1fr;
     }
 
     #left {
-        float: left;
-        background-color: rgb(235, 235, 240);
+      background-color: rgb(235, 235, 240);
     }
 
     #right {
-        background-color: rgb(191, 191, 243);
+      background-color: rgb(191, 191, 243);
     }
     ```
 
@@ -540,7 +554,7 @@ ng build
 
 Diese Anwendung erzeugt (genau wie `ng build --watch`) den `dist`-Ordner. Den darin befindlichen Ordner (hier: `first`) können Sie z.B. auf den Webserver kopieren und von dort die `first/index.html` aufrufen (bzw. Sie benennen den `first`-Ordner dort um). Beachten Sie, dass Sie in der `index.html` die Basis-Refereferenz-URL anpassen müssen, also den Eintrag `<base href="/">` anpassen. 
 
-In meinem Fall ist es z.B. so, dass in meinem *DocumentRoot* folgende Ordnerstruktur existiert: `/WT21/Angular/first/dist/first/`. Das heißt, mein Eintrag in der `index.html` muss dann lauten:
+In meinem Fall ist es z.B. so, dass in meinem *DocumentRoot* folgende Ordnerstruktur existiert: `/WT22/Angular/first/dist/first/`. Das heißt, mein Eintrag in der `index.html` muss dann lauten:
 
 ```html linenums="1" hl_lines="6"
 <!DOCTYPE html>
@@ -548,7 +562,7 @@ In meinem Fall ist es z.B. so, dass in meinem *DocumentRoot* folgende Ordnerstru
   <head>
     <meta charset="utf-8">
     <title>First</title>
-    <base href="/WT21/Angular/first/dist/first/">
+    <base href="/WT22/Angular/first/dist/first/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="styles.ef46db3751d8e999.css">
@@ -566,7 +580,7 @@ In meinem Fall ist es z.B. so, dass in meinem *DocumentRoot* folgende Ordnerstru
 Um die Basis-Refereferenz-URL nicht nachträglich anpassen zu müssen, können Sie auch gleich
 
 ```
-ng build --base-href=/WT21/Angular/first/dist/first/
+ng build --base-href=/WT22/Angular/first/dist/first/
 ```
 
 angeben. 
@@ -641,13 +655,66 @@ Der Service kann dann mittels *dependency injection* von einer Komponente verwen
       constructor(private myService: MyService) { }
 
       ngOnInit(): void {
-        this.example.methodOfMyService();
+        this.myService.methodOfMyService();
       }
 
     }
     ```
 
-Für ein Beispiel einer Service-Definition und der Verwendung eines Services siehe [`BookStoreService`](./books/##service-bookstoreservice). Für weiterführende Informationen siehe [https://angular.io/guide/architecture-services](https://angular.io/guide/architecture-services).
+Für weiterführende Informationen zu Services siehe [https://angular.io/guide/architecture-services](https://angular.io/guide/architecture-services). Wir werden Services ausgiebig nutzen. Für ein erstes kleines einführendes Beispiel nehmen wir an, dass folgende Datei [members.json](./files/members.json) im Ordner `src/assets` unseres Projektes liegt. Diese Datei laden wir mithilfe von `fetch()` innerhalb unserer `shared/my.service.ts`:
+
+=== "shared/my.service.ts"
+    ```javascript linenums="1"
+    import { Injectable } from '@angular/core';
+
+    @Injectable({
+      providedIn: 'root'
+    })
+    export class MyService {
+      members: any;
+
+      constructor() {}
+
+      getMembers() {
+        fetch('./assets/members.json')
+        .then( res => res.json() )
+        .then( jsonData => {
+          this.members = jsonData;
+          console.log('getQuestions', this.members);
+
+        })
+        return this.members;
+
+      }
+    }
+    ```
+
+Der Service stellt somit eine Funktion `getMembers()` für alle Komponenten zur Verfügung und stellt über diese Funktion das `members`-Array bereit. Wir könnten dieses Array z.B. in der `main.component.ts` einlesen:
+
+=== "main.component.ts"
+    ```javascript linenums="1"
+    import { Component, OnInit } from '@angular/core';
+    import { MyService } from '../shared/my.service';
+
+
+    @Component({
+      selector: 'htw-main',
+      templateUrl: './main.component.html',
+      styleUrls: ['./main.component.css']
+    })
+    export class MainComponent implements OnInit {
+      members: any ;
+
+      constructor(private myService: MyService) { }
+
+      ngOnInit(): void {
+        this.members = this.myService.getMembers();
+        console.log(this.members)
+      }
+    }
+    ```
+
+Wir geben dieses Array zunächst einfach nur auf der Konsole aus. Wir sehen aber bereits die Einbundung des Services und die Verwendung der `getMembers()`-Funktion des Services.
 
 
 ## Routing

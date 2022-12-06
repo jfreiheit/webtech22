@@ -735,6 +735,9 @@ dass Sie ein neues Projekt erzeugen wollen. <code>first</code> ist der
 Name des Projektes. Wenn Sie gefragt werden, ob Sie <strong>Angular routing</strong>
 verwenden möchten, geben Sie ein <code>y</code> ein. Wenn Sie nach dem <strong>stylesheet
 format</strong> gefragt werden, können Sie <code>CSS</code> einfach mit <code>Enter</code> bestätigen.</p>
+<div class="highlight"><pre><span></span><code>? Would you like to add Angular routing? Yes
+? Which stylesheet format would you like to use? CSS
+</code></pre></div>
 <p>Wenn alles geklappt hat, erhalten Sie im Terminal eine Ausgabe in der Form:</p>
 <p><img alt="Angular-Projekt erstellt" src="../files/07_fertig.png" /></p>
 <p>Es entsteht ein Ordner <code>first</code> in Ihrem Projekte-Verzeichnis. Wechseln Sie
@@ -755,16 +758,16 @@ Siehe z.B. <a href="https://www.stackchief.com/tutorials/npm%20install%20%7C%20h
 erscheint am Ende eine Ausgabe, wie z.B.</p>
 <div class="highlight"><pre><span></span><code>✔ Browser application bundle generation complete.
 
-Initial Chunk Files   <span class="p">|</span> Names         <span class="p">|</span>      Size
-vendor.js             <span class="p">|</span> vendor        <span class="p">|</span>   <span class="m">2</span>.10 MB
-polyfills.js          <span class="p">|</span> polyfills     <span class="p">|</span> <span class="m">339</span>.54 kB
-styles.css, styles.js <span class="p">|</span> styles        <span class="p">|</span> <span class="m">212</span>.38 kB
-main.js               <span class="p">|</span> main          <span class="p">|</span>  <span class="m">55</span>.22 kB
-runtime.js            <span class="p">|</span> runtime       <span class="p">|</span>   <span class="m">6</span>.85 kB
+Initial Chunk Files   <span class="p">|</span> Names         <span class="p">|</span>  Raw Size
+vendor.js             <span class="p">|</span> vendor        <span class="p">|</span>   <span class="m">2</span>.12 MB <span class="p">|</span> 
+polyfills.js          <span class="p">|</span> polyfills     <span class="p">|</span> <span class="m">314</span>.26 kB <span class="p">|</span> 
+styles.css, styles.js <span class="p">|</span> styles        <span class="p">|</span> <span class="m">209</span>.39 kB <span class="p">|</span> 
+main.js               <span class="p">|</span> main          <span class="p">|</span>  <span class="m">48</span>.72 kB <span class="p">|</span> 
+runtime.js            <span class="p">|</span> runtime       <span class="p">|</span>   <span class="m">6</span>.51 kB <span class="p">|</span> 
 
-                      <span class="p">|</span> Initial Total <span class="p">|</span>   <span class="m">2</span>.70 MB
+                      <span class="p">|</span> Initial Total <span class="p">|</span>   <span class="m">2</span>.69 MB
 
-Build at: <span class="m">2021</span>-11-15T09:35:55.434Z - Hash: 05483fb355731569 - Time: 10730ms
+Build at: <span class="m">2022</span>-11-30T09:43:56.236Z - Hash: 15a297db746e6251 - Time: 13321ms
 
 ** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
 
@@ -782,8 +785,7 @@ Build at: <span class="m">2021</span>-11-15T09:35:55.434Z - Hash: 05483fb3557315
 <p>Fertig! Sie haben Ihr erstes Angular-Projekt erstellt.</p>
 </div>
 <h2 id="angular-projektstruktur">Angular-Projektstruktur<a class="headerlink" href="#angular-projektstruktur" title="Permanent link">&para;</a></h2>
-<p>Öffnen Sie die IDE Ihrer Wahl (Screenshots hier mit [PhpStorm]
-(<a href="https://www.jetbrains.com/de-de/phpstorm/">https://www.jetbrains.com/de-de/phpstorm/</a>). Wählen Sie unter
+<p>Öffnen Sie die IDE Ihrer Wahl. Wählen Sie unter
 <code>Open Project</code> den Projektordner <code>first</code>. Klappen Sie das Projekt
 <code>first</code> auf, klappen Sie den Ordner <code>src</code> und dann den Ordner
 <code>app</code> auf. Der Projektexplorer zeigt folgendes Bild:</p>
@@ -1067,15 +1069,24 @@ Inhalt der dargestellten Seite anzupassen und die
 <p>Zur weiteren Übung erzeugen wir uns noch weitere Komponenten. Zunächst eine Komponenten zur Navigation <code>nav</code>:</p>
 <div class="highlight"><pre><span></span><code>ng g c nav
 </code></pre></div>
-<p>UM deutlich zu machen, dass sich die CSS-Definitionen für eine Komponente stets nur auf die Komponente beziehen, ändern wir die <code>nav.component.css</code>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">nav.component.css</label></div>
+<p>Um deutlich zu machen, dass sich die CSS-Definitionen für eine Komponente stets nur auf die Komponente beziehen, ändern wir die <code>nav.component.css</code> (und - leicht anders- auch die <code>header.component.css</code>):</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">nav.component.css</label><label for="__tabbed_5_2">header.component.css</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nt">p</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">grey</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">%</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">padding-left</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">%</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">grey</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">%</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">padding-left</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">%</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nt">p</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">lightgrey</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">black</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">%</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">padding-left</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">%</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
@@ -1134,22 +1145,23 @@ ng g c main/right
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="p">#</span><span class="nn">main</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nb">rgb</span><span class="p">(</span><span class="mi">226</span><span class="p">,</span><span class="w"> </span><span class="mi">243</span><span class="p">,</span><span class="w"> </span><span class="mi">188</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">%</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nb">rgb</span><span class="p">(</span><span class="mi">226</span><span class="p">,</span><span class="w"> </span><span class="mi">243</span><span class="p">,</span><span class="w"> </span><span class="mi">188</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">%</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="p">#</span><span class="nn">row</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="k">grid</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">grid-gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">%</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">grid-template-columns</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="w"> </span><span class="mi">1</span><span class="n">fr</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="p">#</span><span class="nn">left</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">float</span><span class="p">:</span><span class="w"> </span><span class="kc">left</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nb">rgb</span><span class="p">(</span><span class="mi">235</span><span class="p">,</span><span class="w"> </span><span class="mi">235</span><span class="p">,</span><span class="w"> </span><span class="mi">240</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nb">rgb</span><span class="p">(</span><span class="mi">235</span><span class="p">,</span><span class="w"> </span><span class="mi">235</span><span class="p">,</span><span class="w"> </span><span class="mi">240</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 
 <span class="p">#</span><span class="nn">right</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nb">rgb</span><span class="p">(</span><span class="mi">191</span><span class="p">,</span><span class="w"> </span><span class="mi">191</span><span class="p">,</span><span class="w"> </span><span class="mi">243</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="nb">rgb</span><span class="p">(</span><span class="mi">191</span><span class="p">,</span><span class="w"> </span><span class="mi">191</span><span class="p">,</span><span class="w"> </span><span class="mi">243</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
@@ -1170,7 +1182,7 @@ ng g c main/right
 <div class="highlight"><pre><span></span><code>ng build
 </code></pre></div>
 <p>Diese Anwendung erzeugt (genau wie <code>ng build --watch</code>) den <code>dist</code>-Ordner. Den darin befindlichen Ordner (hier: <code>first</code>) können Sie z.B. auf den Webserver kopieren und von dort die <code>first/index.html</code> aufrufen (bzw. Sie benennen den <code>first</code>-Ordner dort um). Beachten Sie, dass Sie in der <code>index.html</code> die Basis-Refereferenz-URL anpassen müssen, also den Eintrag <code>&lt;base href="/"&gt;</code> anpassen. </p>
-<p>In meinem Fall ist es z.B. so, dass in meinem <em>DocumentRoot</em> folgende Ordnerstruktur existiert: <code>/WT21/Angular/first/dist/first/</code>. Das heißt, mein Eintrag in der <code>index.html</code> muss dann lauten:</p>
+<p>In meinem Fall ist es z.B. so, dass in meinem <em>DocumentRoot</em> folgende Ordnerstruktur existiert: <code>/WT22/Angular/first/dist/first/</code>. Das heißt, mein Eintrag in der <code>index.html</code> muss dann lauten:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1193,7 +1205,7 @@ ng g c main/right
   <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>First<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-<span class="hll">    <span class="p">&lt;</span><span class="nt">base</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/WT21/Angular/first/dist/first/&quot;</span><span class="p">&gt;</span>
+<span class="hll">    <span class="p">&lt;</span><span class="nt">base</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/WT22/Angular/first/dist/first/&quot;</span><span class="p">&gt;</span>
 </span>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1&quot;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;icon&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;image/x-icon&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;favicon.ico&quot;</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;styles.ef46db3751d8e999.css&quot;</span><span class="p">&gt;</span>
@@ -1208,7 +1220,7 @@ ng g c main/right
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p>Um die Basis-Refereferenz-URL nicht nachträglich anpassen zu müssen, können Sie auch gleich</p>
-<div class="highlight"><pre><span></span><code>ng build --base-href=/WT21/Angular/first/dist/first/
+<div class="highlight"><pre><span></span><code>ng build --base-href=/WT22/Angular/first/dist/first/
 </code></pre></div>
 <p>angeben. </p>
 <h2 id="lifecycle-hooks">Lifecycle-Hooks<a class="headerlink" href="#lifecycle-hooks" title="Permanent link">&para;</a></h2>
@@ -1281,7 +1293,7 @@ ng g c main/right
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="kr">private</span><span class="w"> </span><span class="nx">myService</span><span class="o">:</span><span class="w"> </span><span class="nx">MyService</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 
 <span class="w">  </span><span class="nx">ngOnInit</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">example</span><span class="p">.</span><span class="nx">methodOfMyService</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">myService</span><span class="p">.</span><span class="nx">methodOfMyService</span><span class="p">();</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
 <span class="p">}</span><span class="w"></span>
@@ -1289,7 +1301,103 @@ ng g c main/right
 </div>
 </div>
 </div>
-<p>Für ein Beispiel einer Service-Definition und der Verwendung eines Services siehe <a href="./books/##service-bookstoreservice"><code>BookStoreService</code></a>. Für weiterführende Informationen siehe <a href="https://angular.io/guide/architecture-services">https://angular.io/guide/architecture-services</a>.</p>
+<p>Für weiterführende Informationen zu Services siehe <a href="https://angular.io/guide/architecture-services">https://angular.io/guide/architecture-services</a>. Wir werden Services ausgiebig nutzen. Für ein erstes kleines einführendes Beispiel nehmen wir an, dass folgende Datei <a href="../files/members.json">members.json</a> im Ordner <code>src/assets</code> unseres Projektes liegt. Diese Datei laden wir mithilfe von <code>fetch()</code> innerhalb unserer <code>shared/my.service.ts</code>:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">shared/my.service.ts</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Injectable</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span><span class="w"></span>
+
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">providedIn</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">MyService</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="nx">any</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+
+<span class="w">  </span><span class="nx">getMembers</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;./assets/members.json&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="w"> </span><span class="nx">jsonData</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jsonData</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;getQuestions&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<p>Der Service stellt somit eine Funktion <code>getMembers()</code> für alle Komponenten zur Verfügung und stellt über diese Funktion das <code>members</code>-Array bereit. Wir könnten dieses Array z.B. in der <code>main.component.ts</code> einlesen:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">main.component.ts</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Component</span><span class="p">,</span><span class="w"> </span><span class="nx">OnInit</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@angular/core&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">MyService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../shared/my.service&#39;</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span><span class="w"></span>
+<span class="w">  </span><span class="nx">selector</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;htw-main&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">templateUrl</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;./main.component.html&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">styleUrls</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;./main.component.css&#39;</span><span class="p">]</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">MainComponent</span><span class="w"> </span><span class="kr">implements</span><span class="w"> </span><span class="nx">OnInit</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="nx">any</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="kr">private</span><span class="w"> </span><span class="nx">myService</span><span class="o">:</span><span class="w"> </span><span class="nx">MyService</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="nx">ngOnInit</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">myService</span><span class="p">.</span><span class="nx">getMembers</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<p>Wir geben dieses Array zunächst einfach nur auf der Konsole aus. Wir sehen aber bereits die Einbundung des Services und die Verwendung der <code>getMembers()</code>-Funktion des Services.</p>
 <h2 id="routing">Routing<a class="headerlink" href="#routing" title="Permanent link">&para;</a></h2>
 <p><em>Routing</em> ist ein wesentliches Konzept für die Entwicklung von <em>Single-Page-Applikationen</em> (SPA). Bei Single-Page-Applikationen wird genau eine Seite vom Webserver geladen (typischerweise die <code>index.html</code> und alle weiteren, sich ändernden, Inhalte und Sichten werden in diese Seite nachgeladen). Das führt zunächst auch dazu, dass es für die Seite genau eine URL gibt, um auf sie zuzugreifen (z.B. <code>http://www.mydomain.de</code> bzw. <code>http://www.mydomain.de/index.html</code>). Möchte man aber Komponenten direkt in der URL ansprechen, z.B. <code>http://www.mydomain.de/login</code> für die Login-Komponente, so benötigen wir das <em>Routing</em> von Angular.</p>
 <p>Wir betrachten hier ein Beispiel, das <a href="https://angular.io/guide/router">https://angular.io/guide/router</a> entnommen ist und nur leicht abgewandelt wurde. Wir erstellen dazu zunächst ein neues Projekt <code>routing-lesson</code>. </p>
@@ -1308,7 +1416,7 @@ ng g c first
 ng g c second
 </code></pre></div>
 <p>Wird ein Angular-Projekt <strong>mit</strong> Routing erstellt, so existiert die Datei <code>app-routing.module.ts</code> im <code>src/app/</code>-Ordner. Diese Datei sieht ursprünglich so aus:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">app-routing.module.ts</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">app-routing.module.ts</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1335,7 +1443,7 @@ ng g c second
 </div>
 </div>
 <p>Bei dieser Klasse handelt es sich um ein eigenes Angular-Modul (als <code>@NgModule</code> dekoriert). Es wird deshalb auch in die <code>app.module.ts</code> integriert (dies geschieht automatisch, wenn wir <em>Routing</em> ausgewählt haben) - siehe Zeilen 4 und 17 im folgenden Listing:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">app.module.ts</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">app.module.ts</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1389,7 +1497,7 @@ ng g c second
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;mypath&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">component</span><span class="o">:</span><span class="w"> </span><span class="nx">MyComponent</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>Diese Angabe bewirkt, dass unter der URL <code>http://www.mydomain.de/mypath</code> die Komponente <code>MyComponent</code> aufgerufen wird. Angenommen, wir wollen, dass unsere Komponente <code>FirstComponent</code> unter dem Pfad <code>/first</code> aufgerufen wird und <code>SecondComponent</code> unter dem Pfad <code>/second</code>, dann sieht unsere Datei <code>app-routing.module.ts</code> wie folgt aus:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">app-routing.module.ts</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">app-routing.module.ts</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1428,7 +1536,7 @@ ng g c second
 </div>
 </div>
 <p>In den Zeilen 8 und 9 sind die beiden Routen definiert. Beachten Sie, dass die Pfadangaben ohne vorangestelltes Slash <code>/</code> erfolgen! Unter Verwendung der Selektoren <code>&lt;app-first&gt;</code> bzw. <code>&lt;app-second&gt;</code> könnten wir unsere Komponenten nun (statisch) in unsere Anwendung einbinden. Wollen wir das jedoch dem <em>Routing</em> überlassen, die Komponenten also dynamisch - abhängig von dem jeweils gewählten Pfad - einbinden lassen, verwenden wir stattdessen den Selektor <code>&lt;router-outlet&gt;</code>. Auch dieser ist bei gewähltem <em>Routing</em> bereits Teil des <code>AppComponent</code>-Templates:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">app.component.html</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">app.component.html</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- hier wurde viel vom ursprünglichen --&gt;</span>
@@ -1441,7 +1549,7 @@ ng g c second
 </div>
 </div>
 <p>Obiges Listing zeigt, dass das Template von <code>AppComponent</code> zunächst eine <code>&lt;h1&gt;</code>-Überschrift vorsieht und dann folgt das <code>&lt;router-outlet&gt;</code>, welches als Platzhalter für die durch das Routing ausgewählten Komponenten agiert. Angenommen, wir definieren die Templates f+r <code>FirstComponent</code> und <code>SecondComponent</code> wie folgt:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">first.component.html</label><label for="__tabbed_14_2">second.component.html</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">first.component.html</label><label for="__tabbed_16_2">second.component.html</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Hier ist FirstComponent<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
@@ -1458,7 +1566,7 @@ ng g c second
 <p>Wir haben nun Pfade erzeugt, mit denen man Komponenten direkt ansprechen kann. Im folgenden Abschnitt wird gezeigt, wie man diese Pfade in Hyperlinks nutzt.</p>
 <h3 id="routen-verlinken">Routen verlinken<a class="headerlink" href="#routen-verlinken" title="Permanent link">&para;</a></h3>
 <p>Wir kennen nun die möglichen Pfade unserer Anwendung <code>http://localhost:4200/</code>, <code>http://localhost:4200/first</code> und <code>http://localhost:4200/second</code> und würden diese Adressen z.B. gerne in Hyperlinks verwenden, um direkt zu den Views der jeweiligen Komponente zu springen, z.B. so:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">app.component.html</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:1"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">app.component.html</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hier ist AppComponent<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
@@ -1480,7 +1588,7 @@ ng g c second
 </div>
 <p>Das funktioniert auch, hat aber einen von uns nicht gewollten Effekt: Die Seite wird durch jeden Klick auf einen Hyperlink neu geladen. Das ist ja auch das gewünschte Verhalten eines Hyperlinks. Die Idee einer <em>Single-Page-Applikation</em> ist aber jedoch die, dass die Seite nur genau einmal geladen wird und dann dynamisch alle weiteren Inhalte. </p>
 <p>Das Nachladen wird vermieden, wenn wir als Attribut für unsere Pfade nicht <code>href</code> verwenden, sondern die Angular-Direktive <code>routerLink</code>. Dies gilt nur für interne Links! Aber es verhindert bei internen Links ein Neuladen der Seite.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="16:1"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">app.component.html</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:1"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">app.component.html</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hier ist AppComponent<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
@@ -1501,7 +1609,7 @@ ng g c second
 </div>
 </div>
 <p>Die obige Attributschreibweise kann auch durch <em>property binding</em> ersetzt werden. Dann übergeben Sie als Wert aber keinen String sondern ein 1-elementiges Array:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="17:1"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">app.component.html</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="19:1"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">app.component.html</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hier ist AppComponent<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
@@ -1535,7 +1643,7 @@ ng g c second
 </code></pre></div></td></tr></table></div>
 <p>Wir haben jetzt eine parametrisierten Pfad konfiguriert und wir haben auch betrachtet, wie der Aufruf einer solch parametrisierten Route erfolgen kann. Nun betrachten wir, wie der Wert eines Parameters in einer Komponentenklasse ausgelesen und verarbeitet werden kann. </p>
 <p>Wir führen dazu zunächst kleinere Änderungen an unserem obigen Beispiel der <code>routing-lesson</code>-App durch: </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">app-routing.module.ts</label><label for="__tabbed_18_2">first.component.html</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><input id="__tabbed_20_2" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">app-routing.module.ts</label><label for="__tabbed_20_2">first.component.html</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1581,7 +1689,7 @@ ng g c second
 </div>
 <p>In <code>app-routing.module.ts</code> haben wir einen weiteren Pfad hinzugefügt (Zeilennummer 8). Beachten Sie, dass ohne die Pfadkonfiguration in Zeilennummer 7 die Route <code>http://localhost:4200/first</code> (also ohne Parameterwert) nicht mehr existieren würde. Wenn ein Parameter erforderlich ist, dann muss er auch angegeben werden. Nur in Kombination der beiden Pfadkonfigurationen aus Zeilennummern 7 und 8 ist der Pfad sowohl mit als auch ohne Parameterwert möglich. </p>
 <p>Im Template der <code>FirstComponent</code> haben wir einen Absatz eingefügt, der als Inhalt den Wert der Eigenschaft <code>id</code> mittels Interpolation anzeigt. Der Absatz erscheint nur, wenn <code>id</code> auch einen Wert hat. Die Eigenschaft <code>id</code> muss allerdings noch in der <code>first.component.ts</code> angelegt werden:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="19:1"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">first.component.ts</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="21:1"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">first.component.ts</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1631,7 +1739,7 @@ ng g c second
 <p>Die aktuelle Implementierung von <code>first.component.ts</code> liest also während der Initialisierung der Komponente die Routenparameter aus. Finden jedoch am Parameterwert Änderungen statt, ohne dass die Komponente neu initialisiert wird, bekommt die Komponente von den Änderungen nichts mit. Die oben gezeigte Form der Implementierung ist deshalb nicht für alle Fälle geeignet. Vielmehr ist es besser auszunutzen, dass es sich bei <code>this.route.paramMap</code> (ohne <code>snapshot</code>) um ein <a href="https://angular.io/guide/observables-in-angular"><em>Observable</em></a> handelt.  </p>
 <p>Ein <em>Observable</em> kann so verstanden werden, dass er permanent eine bestimmte Sache beobachtet (z.B. ist der <code>EventEmitter</code> ein <em>Observable</em> und beobachtet permanent, ob das Ereignis ausgelöst wird; wenn ja, dann ruft <code>EventEmitter</code> die Funktion <code>emit()</code> auf &rarr; siehe <a href="./#eigene-ereignisse">Eigene Ereignisse</a>). Wenn sich etwas an dem beobachteten Objekt geändert hat, dann reagiert <em>Observable</em> sofort und ruft eine bestimmte Funktion auf. Das <em>Observable</em> <code>paramMap</code> beobachtet permanent die aktuelle Route und sobald sich etwas an dieser Route ändert, wird eine Funktion aufgerufen.</p>
 <p>Damit das <em>Observable</em> aber überhaupt den aktuellen Router permanent beobachtet, muss er an den Router angemeldet werden &rarr; das <em>Observable</em> "abboniert" den Router. Dies geschieht mithilfe der Funktion <code>subscribe()</code>. Dieser Funktion kann als Parameter eine Funktion übergeben werden. Diese Funktion wird aufgerufen, sobald sich am aktuellen Router etwas ändert. Wir ändern die Implementierung von <code>ngOnInit()</code> in der Klasse <code>first.component.ts</code> deshalb wie folgt:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="20:1"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">first.component.ts</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="22:1"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="__tabbed_22_1">first.component.ts</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1689,7 +1797,7 @@ ng g c second
 <li>in <code>app-routing.module.ts</code> kann im <code>routes</code>-Array auch noch die Eigenschaft <code>children</code> hinzugefügt werden, welche Pfadkonfigurationen zu den Kindkomponenten enthält</li>
 <li>in der <code>*.component.html</code> der Elternkomponente wird ein weiteres <code>&lt;router-outlet&gt;&lt;/router-outlet&gt;</code> hinzugefügt</li>
 </ul>
-<div class="tabbed-set tabbed-alternate" data-tabs="21:3"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><input id="__tabbed_21_2" name="__tabbed_21" type="radio" /><input id="__tabbed_21_3" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">app-routing.module.ts</label><label for="__tabbed_21_2">first.component.html</label><label for="__tabbed_21_3">app.component.html</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="23:3"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><input id="__tabbed_23_2" name="__tabbed_23" type="radio" /><input id="__tabbed_23_3" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="__tabbed_23_1">app-routing.module.ts</label><label for="__tabbed_23_2">first.component.html</label><label for="__tabbed_23_3">app.component.html</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1809,7 +1917,7 @@ ng g c second
 <li><code>navigateByUrl()</code></li>
 </ul>
 <p>Angenommen, wir erweitern unsere Komponente <code>SecondComponent</code> um einen Button. Durch den Klick auf den Button soll von der <code>SecondComponent</code> auf die <code>OneComponent</code> über die Route <code>/first/one</code> gewechselt werden:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="22:2"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><input id="__tabbed_22_2" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="__tabbed_22_1">second.component.html</label><label for="__tabbed_22_2">second.component.ts</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="24:2"><input checked="checked" id="__tabbed_24_1" name="__tabbed_24" type="radio" /><input id="__tabbed_24_2" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="__tabbed_24_1">second.component.html</label><label for="__tabbed_24_2">second.component.ts</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
