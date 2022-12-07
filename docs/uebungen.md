@@ -409,3 +409,277 @@
         - **Tipp:** Sie laufen in einer Schleife durch das Array, um alle Städte auszulesen. Fügen Sie darin eine Bedingung ein, dass Sie nur die Städte der Tabelle hinzufügen, die der Filter-Eingabe entsprechen.
 
 
+#### Übung 6
+    
+??? question "Übungsaufgabe 6 (JSON, Direktiven, Bindings)"
+    - Erstellen Sie ein neues Angular-Projekt `Uebung6` (siehe  [hier](../angular/#erstes-projekt-erstellen)). 
+    - Erstellen Sie mindestens eine `main`-Komponente (gerne auch noch `header` und `footer` - so ähnlich wie auf den Bildern, kann aber ganz anders aussehen). 
+    - Erstellen Sie im `assets`-Ordner eine Datei `members.json` mit folgendem Inhalt:
+
+        ??? "assets/members.json"
+
+            ```json
+            [{
+                "forename": "Catherine",
+                "surname": "Williams",
+                "email": "cwilliamsl@360.cn"
+            },
+            {
+                "forename": "Adam",
+                "surname": "Anderson",
+                "email": "aanderson8@google.fr"
+            },
+            {
+                "forename": "Susan",
+                "surname": "Andrews",
+                "email": "sandrewsn@google.co.jp"
+            },
+            {
+                "forename": "Catherine",
+                "surname": "Andrews",
+                "email": "candrewsp@noaa.gov"
+            },
+            {
+                "forename": "Alan",
+                "surname": "Bradley",
+                "email": "abradley1c@globo.com"
+            },
+            {
+                "forename": "Anne",
+                "surname": "Brooks",
+                "email": "abrooks16@bravesites.com"
+            },
+            {
+                "forename": "Russell",
+                "surname": "Brown",
+                "email": "rbrownq@nifty.com"
+            },
+            {
+                "forename": "Ryan",
+                "surname": "Burton",
+                "email": "rburton18@foxnews.com"
+            },
+            {
+                "forename": "Roy",
+                "surname": "Campbell",
+                "email": "rcampbell1@geocities.com"
+            },
+            {
+                "forename": "Russell",
+                "surname": "Campbell",
+                "email": "rcampbell17@eventbrite.com"
+            },
+            {
+                "forename": "Bonnie",
+                "surname": "Coleman",
+                "email": "bcoleman11@fc2.com"
+            },
+            {
+                "forename": "Ernest",
+                "surname": "Coleman",
+                "email": "ecoleman15@businessweek.com"
+            },
+            {
+                "forename": "Richard",
+                "surname": "Cruz",
+                "email": "rcruz7@unc.edu"
+            },
+            {
+                "forename": "Sean",
+                "surname": "Cruz",
+                "email": "scruz10@answers.com"
+            },
+            {
+                "forename": "Rebecca",
+                "surname": "Cunningham",
+                "email": "rcunninghamd@mac.com"
+            },
+            {
+                "forename": "Margaret",
+                "surname": "Evans",
+                "email": "mevansh@pcworld.com"
+            },
+            {
+                "forename": "Jeffrey",
+                "surname": "Ford",
+                "email": "jford14@cnet.com"
+            },
+            {
+                "forename": "Andrea",
+                "surname": "Gardner",
+                "email": "agardnerv@woothemes.com"
+            },
+            {
+                "forename": "Deborah",
+                "surname": "George",
+                "email": "dgeorge6@furl.net"
+            },
+            {
+                "forename": "Sean",
+                "surname": "Gibson",
+                "email": "sgibsony@alexa.com"
+            },
+            {
+                "forename": "Virginia",
+                "surname": "Graham",
+                "email": "vgrahamk@aol.com"
+            },
+            {
+                "forename": "Steven",
+                "surname": "Hamilton",
+                "email": "shamiltonu@state.tx.us"
+            },
+            {
+                "forename": "Virginia",
+                "surname": "Hawkins",
+                "email": "vhawkinsf@ehow.com"
+            },
+            {
+                "forename": "Edward",
+                "surname": "Hicks",
+                "email": "ehicksc@pcworld.com"
+            },
+            {
+                "forename": "Mark",
+                "surname": "Johnson",
+                "email": "mjohnsonj@hostgator.com"
+            },
+            {
+                "forename": "Ruth",
+                "surname": "Jordan",
+                "email": "rjordan1a@smugmug.com"
+            },
+            {
+                "forename": "Antonio",
+                "surname": "Kim",
+                "email": "akim4@odnoklassniki.ru"
+            },
+            {
+                "forename": "Jennifer",
+                "surname": "Marshall",
+                "email": "jmarshallt@gnu.org"
+            },
+            {
+                "forename": "Eric",
+                "surname": "Matthews",
+                "email": "ematthews5@independent.co.uk"
+            },
+            {
+                "forename": "Raymond",
+                "surname": "Mcdonald",
+                "email": "rmcdonald2@ihg.com"
+            },
+            {
+                "forename": "Eric",
+                "surname": "Miller",
+                "email": "emillere@creativecommons.org"
+            },
+            {
+                "forename": "Jonathan",
+                "surname": "Morales",
+                "email": "jmoralesa@ovh.net"
+            },
+            {
+                "forename": "Marie",
+                "surname": "Morgan",
+                "email": "mmorganb@cloudflare.com"
+            },
+            {
+                "forename": "Amanda",
+                "surname": "Nelson",
+                "email": "anelson13@indiatimes.com"
+            },
+            {
+                "forename": "Lisa",
+                "surname": "Olson",
+                "email": "lolsonr@telegraph.co.uk"
+            },
+            {
+                "forename": "Alice",
+                "surname": "Ortiz",
+                "email": "aortizw@histats.com"
+            },
+            {
+                "forename": "Peter",
+                "surname": "Phillips",
+                "email": "pphillipss@1688.com"
+            },
+            {
+                "forename": "Matthew",
+                "surname": "Porter",
+                "email": "mporter9@europa.eu"
+            },
+            {
+                "forename": "Tammy",
+                "surname": "Ray",
+                "email": "trayx@weather.com"
+            },
+            {
+                "forename": "Mark",
+                "surname": "Richardson",
+                "email": "mrichardson1d@ihg.com"
+            },
+            {
+                "forename": "Joan",
+                "surname": "Roberts",
+                "email": "jroberts12@alibaba.com"
+            },
+            {
+                "forename": "Kathleen",
+                "surname": "Rose",
+                "email": "kroseg@pinterest.com"
+            },
+            {
+                "forename": "Steve",
+                "surname": "Sanders",
+                "email": "ssanders1b@wikispaces.com"
+            },
+            {
+                "forename": "Shirley",
+                "surname": "Scott",
+                "email": "sscottm@macromedia.com"
+            },
+            {
+                "forename": "Lillian",
+                "surname": "Stephens",
+                "email": "lstephens19@hugedomains.com"
+            },
+            {
+                "forename": "Nicole",
+                "surname": "Thompson",
+                "email": "nthompson3@admin.ch"
+            },
+            {
+                "forename": "Marie",
+                "surname": "Thompson",
+                "email": "mthompsonz@yelp.com"
+            },
+            {
+                "forename": "Alan",
+                "surname": "Vasquez",
+                "email": "avasquezo@miibeian.gov.cn"
+            },
+            {
+                "forename": "Mildred",
+                "surname": "Watkins",
+                "email": "mwatkins0@miibeian.gov.cn"
+            },
+            {
+                "forename": "Eugene",
+                "surname": "Williams",
+                "email": "ewilliamsi@deliciousdays.com"
+            }
+            ]
+            ```
+
+    - Erstellen Sie einen Service `members.service.ts`, in dem die `members.json` per `fetch()` eingelesen wird und der eine Funktion zur Verfügung stellt, die alle `members` als Array zurückgibt. Erstellen Sie ein passendes `Members`-Interface, um die Typsicherheit zu verbessern.
+
+    - Erstellen Sie in der `main`-Komponente eine Tabelle mit 3 Spalten (Vorname, Nachname, E-Mail-Adresse) und fügen Sie die Daten aus der `members.json` in die Tabelle mithilfe der Strukturdirektive `*ngFor` (siehe [hier](../angular2/#strukturdirektiven)) und Interpolation (siehe [hier](../angular2/#interpolation)) ein. 
+    - Fügen Sie oberhalb der Tabelle einen Button hinzu. Verwenden Sie `buttonText` aus der `main.component.ts` als  Text im Button. Behandeln Sie das Klick-Ereignis des Buttons in der `tableOnOff()`-Funktion (siehe [hier](../angular2/#event-bindings)). 
+    - Ändern Sie in der `tableOnOff()`-Funktion die Werte von `tableOn` und `buttonText`. Vewenden Sie die Strukturdirektive `*ngIf` so, dass abhängig vom Wert von `tableOn` entweder die Tabelle erscheint oder das folgende Bild erscheint: 
+        ![uebung7](./files/218_uebung7.png)
+
+        Achten Sie auch auf die Änderung der Inschrift des Buttons:
+        ![uebung7](./files/219_uebung7.png) 
+
+    - Alle Bilder sind nur Anregungen, kann gerne ganz anders aussehen. Gerne können Sie auch Bootstrap einbinden und verwenden (siehe [hier](https://www.npmjs.com/package/@ng-bootstrap/ng-bootstrap)).

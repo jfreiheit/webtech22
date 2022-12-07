@@ -420,7 +420,7 @@ ergibt
 
 ![arrays](./files/264_arrays.png)
 
-### `push()`
+#### `push()`
 
 Mithilfe von `push` kann einem Array ein weiteres Element hinzugefügt werden, z.B. 
 

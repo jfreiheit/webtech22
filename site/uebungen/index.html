@@ -333,6 +333,36 @@
 
   
   
+  
+    <li class="md-nav__item">
+      <a href="../routing/" class="md-nav__link">
+        Routing und Services
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backend/" class="md-nav__link">
+        Backend (MongoDB)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
     
   
   
@@ -410,10 +440,32 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ubung-6" class="md-nav__link">
+    Übung 6
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../promises/" class="md-nav__link">
+        Promises
+      </a>
     </li>
   
 
@@ -497,6 +549,13 @@
         <li class="md-nav__item">
   <a href="#ubung-5" class="md-nav__link">
     Übung 5
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ubung-6" class="md-nav__link">
+    Übung 6
   </a>
   
 </li>
@@ -948,6 +1007,288 @@
 </li>
 </ul>
 </details>
+<h4 id="ubung-6">Übung 6<a class="headerlink" href="#ubung-6" title="Permanent link">&para;</a></h4>
+<details class="question">
+<summary>Übungsaufgabe 6 (JSON, Direktiven, Bindings)</summary>
+<ul>
+<li>Erstellen Sie ein neues Angular-Projekt <code>Uebung6</code> (siehe  <a href="../angular/#erstes-projekt-erstellen">hier</a>). </li>
+<li>Erstellen Sie mindestens eine <code>main</code>-Komponente (gerne auch noch <code>header</code> und <code>footer</code> - so ähnlich wie auf den Bildern, kann aber ganz anders aussehen). </li>
+<li>
+<p>Erstellen Sie im <code>assets</code>-Ordner eine Datei <code>members.json</code> mit folgendem Inhalt:</p>
+<details>
+<summary>assets/members.json</summary>
+<div class="highlight"><pre><span></span><code><span class="p">[{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Catherine&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Williams&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cwilliamsl@360.cn&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Adam&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Anderson&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aanderson8@google.fr&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Susan&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Andrews&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sandrewsn@google.co.jp&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Catherine&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Andrews&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;candrewsp@noaa.gov&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alan&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bradley&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;abradley1c@globo.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Anne&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Brooks&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;abrooks16@bravesites.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Russell&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Brown&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rbrownq@nifty.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ryan&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Burton&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rburton18@foxnews.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Roy&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Campbell&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rcampbell1@geocities.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Russell&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Campbell&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rcampbell17@eventbrite.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bonnie&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Coleman&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bcoleman11@fc2.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ernest&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Coleman&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ecoleman15@businessweek.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Richard&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cruz&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rcruz7@unc.edu&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sean&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cruz&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;scruz10@answers.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rebecca&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cunningham&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rcunninghamd@mac.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Margaret&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Evans&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mevansh@pcworld.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Jeffrey&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ford&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jford14@cnet.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Andrea&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gardner&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;agardnerv@woothemes.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Deborah&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;George&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dgeorge6@furl.net&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sean&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gibson&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sgibsony@alexa.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Virginia&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Graham&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vgrahamk@aol.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Steven&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hamilton&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shamiltonu@state.tx.us&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Virginia&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hawkins&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vhawkinsf@ehow.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Edward&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hicks&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ehicksc@pcworld.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mark&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Johnson&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mjohnsonj@hostgator.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ruth&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Jordan&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rjordan1a@smugmug.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Antonio&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kim&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;akim4@odnoklassniki.ru&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Jennifer&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Marshall&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jmarshallt@gnu.org&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Eric&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Matthews&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ematthews5@independent.co.uk&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Raymond&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mcdonald&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rmcdonald2@ihg.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Eric&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Miller&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;emillere@creativecommons.org&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Jonathan&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Morales&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jmoralesa@ovh.net&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Marie&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Morgan&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mmorganb@cloudflare.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Amanda&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nelson&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;anelson13@indiatimes.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Lisa&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Olson&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lolsonr@telegraph.co.uk&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ortiz&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aortizw@histats.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Peter&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Phillips&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pphillipss@1688.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Matthew&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Porter&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mporter9@europa.eu&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tammy&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ray&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trayx@weather.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mark&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Richardson&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mrichardson1d@ihg.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Joan&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Roberts&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jroberts12@alibaba.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kathleen&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rose&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;kroseg@pinterest.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Steve&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sanders&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ssanders1b@wikispaces.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Shirley&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Scott&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sscottm@macromedia.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Lillian&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Stephens&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lstephens19@hugedomains.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nicole&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Thompson&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nthompson3@admin.ch&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Marie&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Thompson&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mthompsonz@yelp.com&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alan&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Vasquez&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;avasquezo@miibeian.gov.cn&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mildred&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Watkins&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mwatkins0@miibeian.gov.cn&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;forename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Eugene&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;surname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Williams&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ewilliamsi@deliciousdays.com&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+</code></pre></div>
+</details>
+</li>
+<li>
+<p>Erstellen Sie einen Service <code>members.service.ts</code>, in dem die <code>members.json</code> per <code>fetch()</code> eingelesen wird und der eine Funktion zur Verfügung stellt, die alle <code>members</code> als Array zurückgibt. Erstellen Sie ein passendes <code>Members</code>-Interface, um die Typsicherheit zu verbessern.</p>
+</li>
+<li>
+<p>Erstellen Sie in der <code>main</code>-Komponente eine Tabelle mit 3 Spalten (Vorname, Nachname, E-Mail-Adresse) und fügen Sie die Daten aus der <code>members.json</code> in die Tabelle mithilfe der Strukturdirektive <code>*ngFor</code> (siehe <a href="../angular2/#strukturdirektiven">hier</a>) und Interpolation (siehe <a href="../angular2/#interpolation">hier</a>) ein. </p>
+</li>
+<li>Fügen Sie oberhalb der Tabelle einen Button hinzu. Verwenden Sie <code>buttonText</code> aus der <code>main.component.ts</code> als  Text im Button. Behandeln Sie das Klick-Ereignis des Buttons in der <code>tableOnOff()</code>-Funktion (siehe <a href="../angular2/#event-bindings">hier</a>). </li>
+<li>
+<p>Ändern Sie in der <code>tableOnOff()</code>-Funktion die Werte von <code>tableOn</code> und <code>buttonText</code>. Vewenden Sie die Strukturdirektive <code>*ngIf</code> so, dass abhängig vom Wert von <code>tableOn</code> entweder die Tabelle erscheint oder das folgende Bild erscheint: 
+    <img alt="uebung7" src="../files/218_uebung7.png" /></p>
+<p>Achten Sie auch auf die Änderung der Inschrift des Buttons:
+<img alt="uebung7" src="../files/219_uebung7.png" /> </p>
+</li>
+<li>
+<p>Alle Bilder sind nur Anregungen, kann gerne ganz anders aussehen. Gerne können Sie auch Bootstrap einbinden und verwenden (siehe <a href="https://www.npmjs.com/package/@ng-bootstrap/ng-bootstrap">hier</a>).</p>
+</li>
+</ul>
+</details>
 
 
 
@@ -968,7 +1309,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Fußzeile" >
       
         
-        <a href="../angular2/" class="md-footer__link md-footer__link--prev" aria-label="Zurück: JSON und Direktiven" rel="prev">
+        <a href="../backend/" class="md-footer__link md-footer__link--prev" aria-label="Zurück: Backend (MongoDB)" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -977,20 +1318,20 @@
               <span class="md-footer__direction">
                 Zurück
               </span>
-              JSON und Direktiven
+              Backend (MongoDB)
             </div>
           </div>
         </a>
       
       
         
-        <a href="../tools/" class="md-footer__link md-footer__link--next" aria-label="Weiter: Werkzeuge" rel="next">
+        <a href="../promises/" class="md-footer__link md-footer__link--next" aria-label="Weiter: Promises" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Weiter
               </span>
-              Werkzeuge
+              Promises
             </div>
           </div>
           <div class="md-footer__button md-icon">
