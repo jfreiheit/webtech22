@@ -135,31 +135,6 @@ In Zukunft fügen Sie Ihre neu erstellten Dateien und Ordner immer mit `git add 
 
 In Zukunft fügen Sie Ihre neu erstellten Dateien und Ordner immer mit `git add .` hinzu, erstellen neue Commits mit `git commit -m "Commit-Nachricht"` und pushen dann nach Github mit `git push`. 
 
-## Webserver
-
-Für das Modul benötigen wir einen Webserver. Wir verwenden den [**Apache Webserver**](https://httpd.apache.org/ ). Auf dem Mac ist er bereits vorhanden, auf Linux-Systemen meistens auch. Für Windows-Systeme wird die Installation von [**XAMPP**](https://www.apachefriends.org/de/index.html ) empfohlen. Hier finden Sie Anleitungen zur Einrichtung des Webservers:
-
-* Windows: 
-    * [https://www.ionos.de/digitalguide/server/tools/xampp-tutorial-so-erstellen-sie-ihren-lokalen-testserver/](https://www.ionos.de/digitalguide/server/tools/xampp-tutorial-so-erstellen-sie-ihren-lokalen-testserver/ )
-    * [https://werner-zenk.de/tipps/lokale_webserver_xampp.php](https://werner-zenk.de/tipps/lokale_webserver_xampp.php )
-    * Wichtig ist, dass Sie wissen, wo sich Ihr *DocumentRoot* befindet (zunächst `xampp\htdocs` - lässt sich aber [ändern](https://www.seo-head.de/entwicklung/xampp-htdocs-verzeichnis-aendern/ ))
-* Mac:
-	* der Apache-Webserver ist bereits installiert
-	* achten Sie darauf, dass Sie Ihr *DocumentRoot* kennen (meistens `Sites`, eventuell [**ändern**](https://sysadminde.com/questions/161529/how-to-change-document-root-for-apache2-in-mac-os-x))
-* Linux:
-    * die meisten Linux-Systeme haben bereits einen Webserver (auch hier wichtig, *DocumentRoot* zu kennen)
-    * wenn nicht, können Sie sich auch [XAMPP](https://www.apachefriends.org/de/index.html ) installieren
-
-Um zu testen, ob Ihr Webser läuft, erstellen Sie im *DocumentRoot* eine Datei `index.php` mit folgendem Inhalt:
-
-```
-<?php phpinfo(); ?>
-```
-
-und rufen in Ihrem Browser ``http://localhost/index.php`` auf. Es sollte eine ähnliche Ausgabe wie folgt erscheinen (nur Ausschnitt:
-
-![localhost](./files/41_localhost.png)
-
 
 ## Developer Tools
 
@@ -439,6 +414,61 @@ The server generated these startup warnings when booting:
 ---
 >
 ```
+
+### MongoDB Atlas
+
+Sie müssen sich MongoDB nicht on-premise installieren, sondern Sie können auch die Cloud-Version [MongoDB Atlas](https://www.mongodb.com/atlas) verwenden. Dazu benötigen Sie einen Account für MongoDB Atlas. Folgen Sie einfach den Installationsschritten, wenn Sie unter [https://www.mongodb.com/atlas/database](https://www.mongodb.com/atlas/database) auf `Try Free` klicken. 
+
+Um sich mit Atlas zu verbinden, benötigen Sie einen öffentlichen und einen privaten API-Key. Diese müssen Sie erzeugen. Folgen Sie dazu den Anweisungen unter [https://www.mongodb.com/docs/atlas/configure-api-access/](https://www.mongodb.com/docs/atlas/configure-api-access/).
+
+Wenn Sie sich ein Cluster erstellt haben, dann sehen Sie in der Atlas-Webseite einen `Connect`-Button, mit dessen Hilfe Sie die Verbindung zur Datenbank erstellen können (siehe Abbildung):
+
+![MongoDB](./files/265_mongodb.png)
+
+Der Verbindungsstring mit Atlas hat ungefähr die folgende Form:
+
+```bash
+mongodb+srv://<username>:<password>@cluster0.g3nbd.mongodb.net/test
+```
+
+### MongoDB Compass
+
+Ein nützliches Werkzeug zur Verwaltung Ihrer Datenbanken ist [MongoDB Compass](https://www.mongodb.com/products/compass). Es ist eine graphische Nutzeroberfläche, um die in der MongoDB gespeicherten Daten anzuschauen und zu verwalten. Sie könnten auch alles über die [MongoDB Shell](https://www.mongodb.com/products/shell) erledigen, aber mit Compass ist es komfortabler. Wählen Sie unter https://www.mongodb.com/products/compass den Button `Download Now` und folgen Sie den Installationsanweisungen. 
+
+
+### Mongosh - MongoDB in der Shell
+
+Die Verwaltung einer MongoDB kann entweder mithilfe von Compass oder mit der MongoDB Shell [mongosh](https://docs.mongodb.com/mongodb-shell/) erfolgen. Installationsanleitungen zu *mongosh* finden Sie [hier](https://docs.mongodb.com/mongodb-shell/install/#std-label-mdb-shell-install). Nach der Installation von *mongosh* geben wir im Terminal 
+
+```bash
+mongosh 
+```
+
+ein. Es erscheint etwas in der Form:
+
+```bash
+Current Mongosh Log ID: 61ae3471fef87d1bebfa13a1
+Connecting to:      mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000
+Using MongoDB:      5.0.3
+Using Mongosh:      1.1.6
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+------
+   The server generated these startup warnings when booting:
+   2021-12-03T08:35:22.188+01:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+Warning: Found ~/.mongorc.js, but not ~/.mongoshrc.js. ~/.mongorc.js will not be loaded.
+  You may want to copy or rename ~/.mongorc.js to ~/.mongoshrc.js.
+test> 
+```
+
+Die Warnung kann [ignoriert](https://www.mongodb.com/community/forums/t/warning-found-mongorc-js-but-not-mongoshrc-js-mongorc-js-will-not-be-loaded/129716/4) werden. Die Datei `mongorc.js` wurde erstellt, als einmal in die Shell `mongo` eingegeben wurde. Das ist aber `deprecated` und es soll stattdessen die `mongosh` verwendet werden, was wir ja auch machen. Die Eingabe von `mongosh` ist äquivalent zu `mongosh "mongodb://localhost:27017"`. Das bedeutet, dass die MongoDB auf dem Port `27017` läuft. Der Port kann auch geändert werden, siehe dazu [hier](https://docs.mongodb.com/mongodb-shell/connect/#local-mongodb-instance-on-a-non-default-port).
 
 ## Weitere Hilfen
 

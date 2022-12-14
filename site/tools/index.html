@@ -365,6 +365,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../backend_pg/" class="md-nav__link">
+        Backend (PostgreSQL)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../uebungen/" class="md-nav__link">
         Übungen
       </a>
@@ -476,13 +491,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#webserver" class="md-nav__link">
-    Webserver
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#developer-tools" class="md-nav__link">
     Developer Tools
   </a>
@@ -582,6 +590,33 @@
   <a href="#mongodb" class="md-nav__link">
     MongoDB
   </a>
+  
+    <nav class="md-nav" aria-label="MongoDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-atlas" class="md-nav__link">
+    MongoDB Atlas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-compass" class="md-nav__link">
+    MongoDB Compass
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongosh-mongodb-in-der-shell" class="md-nav__link">
+    Mongosh - MongoDB in der Shell
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -687,13 +722,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#webserver" class="md-nav__link">
-    Webserver
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#developer-tools" class="md-nav__link">
     Developer Tools
   </a>
@@ -793,6 +821,33 @@
   <a href="#mongodb" class="md-nav__link">
     MongoDB
   </a>
+  
+    <nav class="md-nav" aria-label="MongoDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-atlas" class="md-nav__link">
+    MongoDB Atlas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-compass" class="md-nav__link">
+    MongoDB Compass
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongosh-mongodb-in-der-shell" class="md-nav__link">
+    Mongosh - MongoDB in der Shell
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -939,31 +994,6 @@ git push
 <li>Pushen Sie die Dateien auf Ihr remote-Repository: <code>git push --set-upstream origin master</code>. </li>
 </ol>
 <p>In Zukunft fügen Sie Ihre neu erstellten Dateien und Ordner immer mit <code>git add .</code> hinzu, erstellen neue Commits mit <code>git commit -m "Commit-Nachricht"</code> und pushen dann nach Github mit <code>git push</code>. </p>
-<h2 id="webserver">Webserver<a class="headerlink" href="#webserver" title="Permanent link">&para;</a></h2>
-<p>Für das Modul benötigen wir einen Webserver. Wir verwenden den <a href="https://httpd.apache.org/"><strong>Apache Webserver</strong></a>. Auf dem Mac ist er bereits vorhanden, auf Linux-Systemen meistens auch. Für Windows-Systeme wird die Installation von <a href="https://www.apachefriends.org/de/index.html"><strong>XAMPP</strong></a> empfohlen. Hier finden Sie Anleitungen zur Einrichtung des Webservers:</p>
-<ul>
-<li>Windows: <ul>
-<li><a href="https://www.ionos.de/digitalguide/server/tools/xampp-tutorial-so-erstellen-sie-ihren-lokalen-testserver/">https://www.ionos.de/digitalguide/server/tools/xampp-tutorial-so-erstellen-sie-ihren-lokalen-testserver/</a></li>
-<li><a href="https://werner-zenk.de/tipps/lokale_webserver_xampp.php">https://werner-zenk.de/tipps/lokale_webserver_xampp.php</a></li>
-<li>Wichtig ist, dass Sie wissen, wo sich Ihr <em>DocumentRoot</em> befindet (zunächst <code>xampp\htdocs</code> - lässt sich aber <a href="https://www.seo-head.de/entwicklung/xampp-htdocs-verzeichnis-aendern/">ändern</a>)</li>
-</ul>
-</li>
-<li>Mac:<ul>
-<li>der Apache-Webserver ist bereits installiert</li>
-<li>achten Sie darauf, dass Sie Ihr <em>DocumentRoot</em> kennen (meistens <code>Sites</code>, eventuell <a href="https://sysadminde.com/questions/161529/how-to-change-document-root-for-apache2-in-mac-os-x"><strong>ändern</strong></a>)</li>
-</ul>
-</li>
-<li>Linux:<ul>
-<li>die meisten Linux-Systeme haben bereits einen Webserver (auch hier wichtig, <em>DocumentRoot</em> zu kennen)</li>
-<li>wenn nicht, können Sie sich auch <a href="https://www.apachefriends.org/de/index.html">XAMPP</a> installieren</li>
-</ul>
-</li>
-</ul>
-<p>Um zu testen, ob Ihr Webser läuft, erstellen Sie im <em>DocumentRoot</em> eine Datei <code>index.php</code> mit folgendem Inhalt:</p>
-<div class="highlight"><pre><span></span><code>&lt;?php phpinfo(); ?&gt;
-</code></pre></div>
-<p>und rufen in Ihrem Browser <code>http://localhost/index.php</code> auf. Es sollte eine ähnliche Ausgabe wie folgt erscheinen (nur Ausschnitt:</p>
-<p><img alt="localhost" src="../files/41_localhost.png" /></p>
 <h2 id="developer-tools">Developer Tools<a class="headerlink" href="#developer-tools" title="Permanent link">&para;</a></h2>
 <p>Alle Browser sind mit Werkzeugen ausgestattet, die es Web-Entwicklerinnen ermöglichen, im Browser Informationen über die Webanwendung zu erhalten. Für einige Browser ist hier angegeben, wie Sie diese Entwicklerwerkzeuge einschalten.</p>
 <h3 id="chrome">Chrome<a class="headerlink" href="#chrome" title="Permanent link">&para;</a></h3>
@@ -1146,6 +1176,42 @@ The server generated these startup warnings when booting:
 ---
 &gt;
 </code></pre></div>
+<h3 id="mongodb-atlas">MongoDB Atlas<a class="headerlink" href="#mongodb-atlas" title="Permanent link">&para;</a></h3>
+<p>Sie müssen sich MongoDB nicht on-premise installieren, sondern Sie können auch die Cloud-Version <a href="https://www.mongodb.com/atlas">MongoDB Atlas</a> verwenden. Dazu benötigen Sie einen Account für MongoDB Atlas. Folgen Sie einfach den Installationsschritten, wenn Sie unter <a href="https://www.mongodb.com/atlas/database">https://www.mongodb.com/atlas/database</a> auf <code>Try Free</code> klicken. </p>
+<p>Um sich mit Atlas zu verbinden, benötigen Sie einen öffentlichen und einen privaten API-Key. Diese müssen Sie erzeugen. Folgen Sie dazu den Anweisungen unter <a href="https://www.mongodb.com/docs/atlas/configure-api-access/">https://www.mongodb.com/docs/atlas/configure-api-access/</a>.</p>
+<p>Wenn Sie sich ein Cluster erstellt haben, dann sehen Sie in der Atlas-Webseite einen <code>Connect</code>-Button, mit dessen Hilfe Sie die Verbindung zur Datenbank erstellen können (siehe Abbildung):</p>
+<p><img alt="MongoDB" src="../files/265_mongodb.png" /></p>
+<p>Der Verbindungsstring mit Atlas hat ungefähr die folgende Form:</p>
+<div class="highlight"><pre><span></span><code>mongodb+srv://&lt;username&gt;:&lt;password&gt;@cluster0.g3nbd.mongodb.net/test
+</code></pre></div>
+<h3 id="mongodb-compass">MongoDB Compass<a class="headerlink" href="#mongodb-compass" title="Permanent link">&para;</a></h3>
+<p>Ein nützliches Werkzeug zur Verwaltung Ihrer Datenbanken ist <a href="https://www.mongodb.com/products/compass">MongoDB Compass</a>. Es ist eine graphische Nutzeroberfläche, um die in der MongoDB gespeicherten Daten anzuschauen und zu verwalten. Sie könnten auch alles über die <a href="https://www.mongodb.com/products/shell">MongoDB Shell</a> erledigen, aber mit Compass ist es komfortabler. Wählen Sie unter <a href="https://www.mongodb.com/products/compass">https://www.mongodb.com/products/compass</a> den Button <code>Download Now</code> und folgen Sie den Installationsanweisungen. </p>
+<h3 id="mongosh-mongodb-in-der-shell">Mongosh - MongoDB in der Shell<a class="headerlink" href="#mongosh-mongodb-in-der-shell" title="Permanent link">&para;</a></h3>
+<p>Die Verwaltung einer MongoDB kann entweder mithilfe von Compass oder mit der MongoDB Shell <a href="https://docs.mongodb.com/mongodb-shell/">mongosh</a> erfolgen. Installationsanleitungen zu <em>mongosh</em> finden Sie <a href="https://docs.mongodb.com/mongodb-shell/install/#std-label-mdb-shell-install">hier</a>. Nach der Installation von <em>mongosh</em> geben wir im Terminal </p>
+<div class="highlight"><pre><span></span><code>mongosh 
+</code></pre></div>
+<p>ein. Es erscheint etwas in der Form:</p>
+<div class="highlight"><pre><span></span><code>Current Mongosh Log ID: 61ae3471fef87d1bebfa13a1
+Connecting to:      mongodb://127.0.0.1:27017/?directConnection<span class="o">=</span>true<span class="p">&amp;</span><span class="nv">serverSelectionTimeoutMS</span><span class="o">=</span><span class="m">2000</span>
+Using MongoDB:      <span class="m">5</span>.0.3
+Using Mongosh:      <span class="m">1</span>.1.6
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+
+To <span class="nb">help</span> improve our products, anonymous usage data is collected and sent to MongoDB periodically <span class="o">(</span>https://www.mongodb.com/legal/privacy-policy<span class="o">)</span>.
+You can opt-out by running the disableTelemetry<span class="o">()</span> command.
+
+------
+   The server generated these startup warnings when booting:
+   <span class="m">2021</span>-12-03T08:35:22.188+01:00: Access control is not enabled <span class="k">for</span> the database. Read and write access to data and configuration is unrestricted
+------
+
+Warning: Found ~/.mongorc.js, but not ~/.mongoshrc.js. ~/.mongorc.js will not be loaded.
+  You may want to copy or rename ~/.mongorc.js to ~/.mongoshrc.js.
+test&gt; 
+</code></pre></div>
+<p>Die Warnung kann <a href="https://www.mongodb.com/community/forums/t/warning-found-mongorc-js-but-not-mongoshrc-js-mongorc-js-will-not-be-loaded/129716/4">ignoriert</a> werden. Die Datei <code>mongorc.js</code> wurde erstellt, als einmal in die Shell <code>mongo</code> eingegeben wurde. Das ist aber <code>deprecated</code> und es soll stattdessen die <code>mongosh</code> verwendet werden, was wir ja auch machen. Die Eingabe von <code>mongosh</code> ist äquivalent zu <code>mongosh "mongodb://localhost:27017"</code>. Das bedeutet, dass die MongoDB auf dem Port <code>27017</code> läuft. Der Port kann auch geändert werden, siehe dazu <a href="https://docs.mongodb.com/mongodb-shell/connect/#local-mongodb-instance-on-a-non-default-port">hier</a>.</p>
 <h2 id="weitere-hilfen">Weitere Hilfen<a class="headerlink" href="#weitere-hilfen" title="Permanent link">&para;</a></h2>
 <h3 id="prozesse-und-ports">Prozesse und Ports<a class="headerlink" href="#prozesse-und-ports" title="Permanent link">&para;</a></h3>
 <p>Wenn Sie herausbekommen wollen, welche Ports bereits belegt sind und durch welchen Prozess, dann geben Sie im Terminal ein:</p>

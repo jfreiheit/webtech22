@@ -131,7 +131,7 @@ In der `package.json` wurde die entsprechende Abhängigkeit eingetragen:
 	  "author": "J. Freiheit",
 	  "license": "ISC",
 	  "dependencies": {
-	    "express": "^4.17.1"
+	    "express": "^4.18.2"
 	  }
 	}
 	``` 
@@ -274,10 +274,10 @@ Die `package.json` sieht daraufhin so aus:
 	    "author": "J. Freiheit",
 	    "license": "ISC",
 	    "dependencies": {
-	        "express": "^4.17.1"
+	        "express": "^4.18.2"
 	    },
 	    "devDependencies": {
-	        "nodemon": "^2.0.15"
+	        "nodemon": "^2.0.20"
 	    }
 	}
 	```
@@ -302,10 +302,10 @@ Zur Verwendung von `nodemon` fügen wir in die `package.json` unter `"scripts"` 
 	    "author": "J. Freiheit",
 	    "license": "ISC",
 	    "dependencies": {
-	        "express": "^4.17.1"
+	        "express": "^4.18.2"
 	    },
 	    "devDependencies": {
-	        "nodemon": "^2.0.15"
+	        "nodemon": "^2.0.20"
 	    }
 	}
 	```
@@ -323,12 +323,12 @@ starten und muss auch nicht mehr gestoppt und neu gestartet werden, wenn Änderu
 > backend@1.0.0 watch
 > nodemon ./server.js
 
-[nodemon] 2.0.15
+[nodemon] 2.0.20
 [nodemon] to restart at any time, enter `rs`
 [nodemon] watching path(s): *.*
 [nodemon] watching extensions: js,mjs,json
 [nodemon] starting `node ./server.js`
-Server started and listening on port 3000 
+Server started and listening on port 3000 ... 
 
 ```
 
@@ -389,41 +389,11 @@ In die `package.json` wird das Paket und die entsprechende Abhängigkeit eingetr
 *Mongoose* stellt eine einfach zu verwendende Schnittstelle zwischen Node.js und MongoDB bereit. Die
 MongoDB benötigen wir aber trotzdem (wir könnten jedoch auch eine Cloud von MongoDB oder z.B. `mlab.com` verwenden). Bevor wir uns mit der MongoDB verbinden, erstellen wir zunächst noch eine Datenbank. 
 
+Um Datenbanken zu erstellen, zu befüllen, anzusehen und zu verwalten, können Sie entweder [MongoDB Compass](../tools/#mongodb-compass) oder [MongoDB Shell](../tools/#mongosh-mongodb-in-der-shell) verwenden. Ich empfehle Compass, weil es komfortabler ist. Im Folgenden ist der etwas kompliziertere Weg mit der MongoDB Shell gezeigt. Der hat aber den Vorteil, dass man die queries sieht, die verwendet werden. 
 
-### Mongosh - MongoDB in der Shell
+Sollten Sie Compass verwenden, dann nennen sie Ihre Datenbank und die Collection einfach jeweils `members` und fügen die Daten mithilfe [dieser Datei](./files/members.json) ein. Das Ergebnis sieht dann so aus:
 
-Um eine Datenbank mithilfe von MongoDB zu erstellen, verwenden wir [mongosh](https://docs.mongodb.com/mongodb-shell/). Installationsanleitungen zu *mongosh* finden Sie [hier](https://docs.mongodb.com/mongodb-shell/install/#std-label-mdb-shell-install). Nach der Installation von *mongosh* geben wir im Terminal 
-
-```bash
-mongosh 
-```
-
-ein. Es erscheint etwas in der Form:
-
-```bash
-Current Mongosh Log ID:	61ae3471fef87d1bebfa13a1
-Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000
-Using MongoDB:		5.0.3
-Using Mongosh:		1.1.6
-
-For mongosh info see: https://docs.mongodb.com/mongodb-shell/
-
-
-To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
-You can opt-out by running the disableTelemetry() command.
-
-------
-   The server generated these startup warnings when booting:
-   2021-12-03T08:35:22.188+01:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
-------
-
-Warning: Found ~/.mongorc.js, but not ~/.mongoshrc.js. ~/.mongorc.js will not be loaded.
-  You may want to copy or rename ~/.mongorc.js to ~/.mongoshrc.js.
-test> 
-```
-
-Die Warnung kann [ignoriert](https://www.mongodb.com/community/forums/t/warning-found-mongorc-js-but-not-mongoshrc-js-mongorc-js-will-not-be-loaded/129716/4) werden. Die Datei `mongorc.js` wurde erstellt, als einmal in die Shell `mongo` eingegeben wurde. Das ist aber `deprecated` und es soll stattdessen die `mongosh` verwendet werden, was wir ja auch machen. Die Eingabe von `mongosh` ist äquivalent zu `mongosh "mongodb://localhost:27017"`. Das bedeutet, dass die MongoDB auf dem Port `27017` läuft. Der Port kann auch geändert werden, siehe dazu [hier](https://docs.mongodb.com/mongodb-shell/connect/#local-mongodb-instance-on-a-non-default-port).
-
+![MongoDB](./files/266_mongodb.png)
 
 ### Datenbank erstellen
 
@@ -814,7 +784,7 @@ Sie geben `mongodb://127.0.0.1:27017` ein und dass Sie keine Authentifizierung v
 Um sich in Node.js mit der MongoDB zu verbinden, geben Sie 
 
 === "server.js"
-	```js linenums="1" hl_lines="3 11-17"
+	```js linenums="1" hl_lines="3 11-19"
 	const express = require('express');
 	const routes = require('./routes');
 	const mongoose = require('mongoose');
@@ -826,9 +796,11 @@ Um sich in Node.js mit der MongoDB zu verbinden, geben Sie
 	app.use('/', routes);
 
 	// connect to mongoDB
-	mongoose.connect('mongodb://127.0.0.1:27017/members', { useNewUrlParser: true, useUnifiedTopology: true });
+	mongoose.connect('mongodb+srv://<username>:<passwort>@cluster0.g3nbd.mongodb.net', { dbName: 'members' });
 	const db = mongoose.connection;
-	db.on('error', console.error.bind(console, 'connection error:'));
+	db.on('error', err => {
+	  logError(err);
+	});
 	db.once('open', () => {
 	    console.log('connected to DB');
 	});
@@ -842,7 +814,7 @@ Um sich in Node.js mit der MongoDB zu verbinden, geben Sie
 	});
 	```
 
-ein. Im Terminal sollte dann
+ein. Sie müssen natürlich Ihren Nutzerinnennamen und Ihr Passwort einsetzen. Sollten Sie eine MongoDB lokal installiert haben, dann verbinden Sie sich mit `mongodb://127.0.0.1:27017` (bzw. `mongodb://127.0.0.1:27017/members`). Im Terminal sollte dann
 
 ```bash
 [nodemon] restarting due to changes...
@@ -861,16 +833,24 @@ Für die "geheimen" Zugangsdaten (die jetzt noch gar nicht "geheim" sind) verwen
 npm install dotenv --save
 ```
 
-Im Projektordner erstellen wir und eine Datei `.env` (mit Punkt!) und schreiben darin:
-
+Im Projektordner erstellen wir und eine Datei `.env` (mit Punkt!) und schreiben darin entweder für die lokale MongoDB
 
 === ".env"
 	```js linenums="1"
 	DB_CONNECTION = mongodb://127.0.0.1:27017/members
 	```
 
+oder für die Atlas-Verbindung
+
+=== ".env"
+	```js linenums="1"
+	DB_CONNECTION = mongodb+srv://<username>:<passwort>@cluster0.g3nbd.mongodb.net
+	DATABASE = members
+	```
+
+
 Beachten Sie, dass der Wert nicht in Hochkomma steht und dass auch kein Semikolon folgt! 
-Wir fügen `dotenv` n die `server.js` ein und greifen mithilfe von `process.env.DB_CONNECTION` auf den Wert von `DB_CONNECTION` zu:
+Wir fügen `dotenv` n die `server.js` ein und greifen mithilfe von `process.env.DB_CONNECTION` auf den Wert von `DB_CONNECTION` zu (und mit `process.env.DATEBASE` auf den Wert von `DATABASE`) :
 
 === "server.js"
 	```js linenums="1" hl_lines="4 13"
@@ -886,9 +866,11 @@ Wir fügen `dotenv` n die `server.js` ein und greifen mithilfe von `process.env.
 	app.use('/', routes);
 
 	// connect to mongoDB
-	mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true });
+	mongoose.connect(process.env.DB_CONNECTION, { dbName: process.env.DATABASE });
 	const db = mongoose.connection;
-	db.on('error', console.error.bind(console, 'connection error:'));
+	db.on('error', err => {
+	  logError(err);
+	});
 	db.once('open', () => {
 	    console.log('connected to DB');
 	});
@@ -922,9 +904,10 @@ Die Datei `members.js` bekommt folgenden Inhalt:
 	const mongoose = require('mongoose');
 
 	const schema = new mongoose.Schema({
-	    forename: String,
-	    surname: String,
-	    email: String
+	    firstname: String,
+	    lastname: String,
+	    email: String,
+	    ipaddress: String
 	});
 
 	module.exports = mongoose.model('Member', schema);
@@ -972,9 +955,10 @@ Als nächstes implementieren wir einen Endpunkt, an dem wir einen neuen Datensat
 	// post one member
 	router.post('/members', async(req, res) => {
 	    const newMember = new Member({
-	        forename: req.body.forename,
-	        surname: req.body.surname,
-	        email: req.body.email
+	        firstname: req.body.firstname,
+	        lastname: req.body.lastname,
+	        email: req.body.email,
+	        ipaddress: req.body.ipaddress
 	    })
 	    await newMember.save();
 	    res.send(newMember);
@@ -987,9 +971,10 @@ Nun geben wir in Postman `POST http://localhost:3000/members` ein und befüllen 
 
 ```json linenums="1"
 {
-        "forename": "Test1",
-        "surname": "Test2",
-        "email": "test3@email.de"
+    "firstname": "Maria",
+    "lastname": "Musterfrau",
+    "email": "maria@musterfrau.fr",
+    "ipaddress": "146.146.11.46"
 }
 ``` 
 
@@ -997,9 +982,11 @@ Achten Sie darauf, dass in der zweiten Menüzeile rechts `JSON` ausgewählt ist 
 
 ![postman](./files/95_postman.png)
 
-Schauen Sie auch in VSCode nach, ob der Datensatz dort erscheint:
+Schauen Sie auch in Compass nach, ob der Datensatz dort erscheint:
 
-![phpmyadmin](./files/221_mongodb.png)
+![phpmyadmin](./files/267_mongodb.png)
+
+
 
 
 #### R - read one
@@ -1027,7 +1014,7 @@ Die `id` wird aus der URL des Endpunktes ausgelesen, d.h. wenn wir bspw. den End
 
 Zum Finden eines einzelnen Datensatzes wird in MongoDB die Funktion `findOne()` verwendet (siehe [hier](https://docs.mongodb.com/manual/reference/method/db.collection.findOne)). Wird der Datensatz gefunden, d.h. existiert die entsprechende `_id`, dann wird dieser in der `response` zurückgesendet (Zeile `28`). Existiert er nicht, wird der HTTP-Statuscode `404` gesendet (Zeile `30`) und ein JSON mit der `error`-Nachricht `Member does not exist!` (Zeile `31`). 
 
-Nach Neustart des Servers geben wir in Postman z.B. `GET http://localhost:3000/members/61b0e4fcc050789546f979d3` ein (bei Ihnen sind die `_id`-Werte andere!) und erhalten:
+Nach Neustart des Servers geben wir in Postman z.B. `GET http://localhost:3000/members/639a0121ff0ff0884ce0dd24` ein (bei Ihnen sind die `_id`-Werte andere!) und erhalten:
 
 ![postman](./files/97_postman.png)
 
@@ -1051,16 +1038,20 @@ In der folgenden Implementierung haben wir uns für die HTTP-Anfragemethode `PAT
 	    try {
 	        const member = await Member.findOne({ _id: req.params.id })
 
-	        if (req.body.forename) {
-	            member.forename = req.body.forename
+	        if (req.body.firstname) {
+	            member.firstname = req.body.firstname
 	        }
 
-	        if (req.body.surname) {
-	            member.surname = req.body.surname
+	        if (req.body.lastname) {
+	            member.lastname = req.body.lastname
 	        }
 
 	        if (req.body.email) {
 	            member.email = req.body.email
+	        }
+
+            if (req.body.ipaddress) {
+	            member.ipaddress = req.body.ipaddress
 	        }
 
 	        await Member.updateOne({ _id: req.params.id }, member);
@@ -1076,12 +1067,12 @@ Wir können diese Funktion in Postman ausprobieren, indem wir im `body` z.B. das
 
 ```json linenums="1"
 {
-    "surname": "Test3",
-    "email": "test3@email.de"
+    "lastname": "Mustermann",
+    "email": "maria@mustermann.fr"
 }
 ```
 
-mit unserem Request übergeben und `PATCH http://localhost:3000/members/61b0e4fcc050789546f979d3` wählen (bei Ihnen eine andere `id`!). Der Datensatz mit der `_id=61b0e4fcc050789546f979d3` wird dann aktualisiert. 
+mit unserem Request übergeben und `PATCH http://localhost:3000/members/639a0121ff0ff0884ce0dd24` wählen (bei Ihnen eine andere `id`!). Der Datensatz mit der `_id=639a0121ff0ff0884ce0dd24` wird dann aktualisiert. 
 
 Vor Ausführung der Anfrage:
 
@@ -1113,7 +1104,7 @@ Jetzt implementieren wir noch den Endpunkt, um einen Datensatz zu löschen. Dazu
 	});
 	``` 
 
-Wenn wir nun in Postman z.B. `DELETE http://localhost:3000/members/61b0e4fcc050789546f979d3` wählen (bei Ihnen eine andere `id`!), wird der Datensatz mit der `_id=61b0e4fcc050789546f979d3` aus der Datenbank gelöscht. 
+Wenn wir nun in Postman z.B. `DELETE http://localhost:3000/members/639a0121ff0ff0884ce0dd24` wählen (bei Ihnen eine andere `id`!), wird der Datensatz mit der `_id=639a0121ff0ff0884ce0dd24` aus der Datenbank gelöscht. 
 
 Hier nochmal die vollständige `routes.js`:
 
@@ -1133,15 +1124,16 @@ Hier nochmal die vollständige `routes.js`:
 	// post one member
 	router.post('/members', async(req, res) => {
 	    const newMember = new Member({
-	        forename: req.body.forename,
-	        surname: req.body.surname,
-	        email: req.body.email
+	        firstname: req.body.firstname,
+	        lastname: req.body.lastname,
+	        email: req.body.email,
+	        ipaddress: req.body.ipaddress
 	    })
 	    await newMember.save();
 	    res.send(newMember);
 	});
 
-	// get one member via id
+	// post one member via id
 	router.get('/members/:id', async(req, res) => {
 	    try {
 	        const member = await Member.findOne({ _id: req.params.id });
@@ -1153,23 +1145,27 @@ Hier nochmal die vollständige `routes.js`:
 	            error: "Member does not exist!"
 	        });
 	    }
-	});
+	})
 
-	// update one member via id
+	// update one member
 	router.patch('/members/:id', async(req, res) => {
 	    try {
 	        const member = await Member.findOne({ _id: req.params.id })
 
-	        if (req.body.forename) {
-	            member.forename = req.body.forename
+	        if (req.body.firstname) {
+	            member.firstname = req.body.firstname
 	        }
 
-	        if (req.body.surname) {
-	            member.surname = req.body.surname
+	        if (req.body.lastname) {
+	            member.lastname = req.body.lastname
 	        }
 
 	        if (req.body.email) {
 	            member.email = req.body.email
+	        }
+
+	        if (req.body.ipaddress) {
+	            member.ipaddress = req.body.ipaddress
 	        }
 
 	        await Member.updateOne({ _id: req.params.id }, member);
@@ -1192,6 +1188,7 @@ Hier nochmal die vollständige `routes.js`:
 	});
 
 	module.exports = router;
+
 	```
 
 !!! success
@@ -1228,9 +1225,11 @@ ein. Öffnen Sie dann die `server.js` und fügen Sie die hervorgehobenen Zeilen 
 	app.use('/', routes);
 
 	// connect to mongoDB
-	mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true });
+	mongoose.connect(process.env.DB_CONNECTION, { dbName: process.env.DATABASE });
 	const db = mongoose.connection;
-	db.on('error', console.error.bind(console, 'connection error:'));
+	db.on('error', err => {
+	  logError(err);
+	});
 	db.once('open', () => {
 	    console.log('connected to DB');
 	});

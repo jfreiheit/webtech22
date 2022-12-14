@@ -21,6 +21,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>http://freiheit.f4.htw-berlin.de/webtech/backend_pg/</loc>
+         <lastmod>2022-12-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>http://freiheit.f4.htw-berlin.de/webtech/css/</loc>
          <lastmod>2022-12-14</lastmod>
          <changefreq>daily</changefreq>
