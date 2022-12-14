@@ -932,6 +932,186 @@ Für die Kommunikation untereinander verwenden wir [**Slack**](https://slack.com
 	[CDN](https://getbootstrap.com/docs/5.2/getting-started/introduction/#cdn-links)</a> <br/>
 	[Download](https://getbootstrap.com/docs/5.2/getting-started/download/#compiled-css-and-js)<br/>
 
+??? note "javascript - create"
+	```html
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+	        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	    <title>Javascript</title>
+	    <style>
+	        div#output {
+	            height: 300px;
+	        }
+	    </style>
+	</head>
+	<body class="container">
+	    <h1>Formular auslesen</h1>
+	    <h4>Kommentare</h4>
+
+	    <form id="form" onsubmit="return false;"> 
+	        <div class="form-floating mb-3">
+	            <input type="text" class="form-control" id="input1" placeholder="Kommentar 1" onchange="fixeInput()" />
+	            <label for="input1">Kommentar 1</label>
+	        </div>
+	    </form> 
+	    <script>
+	        let nr = 1;
+
+	        function fixeInput() {
+	            let curInputId = "input" + nr;
+	            let curInputElement = document.getElementById(curInputId);
+	            console.log(curInputElement.value);
+	            curInputElement.disabled = "true";
+
+	            let newDiv = document.createElement('div');
+	            newDiv.classList.add("form-floating", "mb-3");
+	            nr++;
+	            let newInputId = "input"+nr;
+	            let newInput = document.createElement('input');
+	            newInput.classList.add("form-control");
+	            newInput.placeholder = "Kommentar " + nr;
+	            newInput.id = newInputId;
+	            newInput.addEventListener("change", fixeInput);
+	            let newLabel = document.createElement('label');
+	            newLabel.for = newInputId;
+	            newLabel.textContent = "Kommentar " + nr;
+	            newDiv.appendChild(newInput);
+	            newDiv.appendChild(newLabel);
+	            let form = document.getElementById('form');
+	            form.appendChild(newDiv);
+
+	            newInput.focus();
+	        }
+	    </script>
+
+	</body>
+	</html>
+	```
+
+
+??? note "javascript - object"
+	```html
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+	        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	    <title>Javascript</title>
+	    <style>
+	        div#output {
+	            height: 300px;
+	        }
+	    </style>
+	</head>
+	<body class="container" onload="setBackgroundColorDiv()">
+	    
+	    <h1>JavaScript-Objekte</h1>
+	    <div id="output">
+
+	    </div>
+	    <div class="my-3">
+	        <div class="row">
+	            <div class="col-2">
+	                <label for="hueIP" class="form-label">Hue (Farbton)</label>
+	            </div>
+	            <div class="col-2">
+	                <input type="text" class="form-range" id="hueOP" value="50">
+	            </div>
+	            <div class="col-8">
+	                <input type="range" class="form-range" min="0" max="360" id="hueIP" oninput="newHue()" value="50">
+	            </div>
+	        </div>
+	        <div class="row">
+	            <div class="col-2">
+	                <label for="satIP" class="form-label">Saturation (Sättigung)</label>
+	            </div>
+	            <div class="col-2">
+	                <input type="text" class="form-range" id="satOP" value="50">
+	            </div>
+	            <div class="col-8">
+	                <input type="range" class="form-range" min="0" max="100" id="satIP" oninput="newSat()" value="50">
+	            </div>
+	        </div>
+	        <div class="row">
+	            <div class="col-2">
+	                <label for="lightIP" class="form-label">Lightness (Helligkeit)</label>
+	            </div>
+	            <div class="col-2">
+	                <input type="text" class="form-range" id="lightOP" value="50">
+	            </div>
+	            <div class="col-8">
+	                <input type="range" class="form-range" min="0" max="100" id="lightIP" oninput="newLight()" value="50">
+	            </div>
+	        </div>
+	    </div>
+	   <script>
+	    function setBackgroundColorDiv() {
+	        let colorHSL = {
+	            hue: 50,
+	            saturation: 50,
+	            lightness: 50,
+	            getColor: () => `hsl(${colorHSL.hue}, ${colorHSL.saturation}%, ${colorHSL.lightness}%)`
+	        }
+
+	        let div = document.getElementById('output');
+
+	        let cHSLJSON = JSON.stringify(colorHSL) ;
+	        console.log(cHSLJSON);
+
+	        let cHSLObj = JSON.parse(cHSLJSON);
+	        console.log(cHSLObj);
+	        
+	        div.style.backgroundColor = colorHSL.getColor();
+	    }
+
+	    function asyncBehaviour() {
+
+	        let a = 1;
+	        let b = 1;
+
+	        setTimeout( function () {
+	            console.log("timeout a = " + a);
+	        }, 100)
+
+	        fetch('./index.html')
+	        .then( () => console.log('fetch hat geklappt'))
+
+	        
+	        console.log("a = ", a);
+	        console.log("b = ", b);
+
+	        a = 10 
+	        
+
+	    }
+
+	    asyncBehaviour();
+	   </script>
+	</body>
+	</html>
+	```
+
+
+??? note "Angular-Projekt first"
+
+	- [Donload zip-Datei first.zip](./files/first.zip)
+	- entpacken
+	- in den projektordner wechseln und zunächst `npm i` ausführen
+	- dann `ng serve`
+
+
+??? note "Angular-Projekt part2"
+
+	- [Donload zip-Datei part2.zip](./files/part2.zip)
+	- entpacken
+	- in den projektordner wechseln und zunächst `npm i` ausführen
+	- dann `ng serve`
 
 ## Semesteraufgabe
 
