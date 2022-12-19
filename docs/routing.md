@@ -842,6 +842,21 @@ Dem `data`-Service fügen wir nun das `staedte`-Array zu und importieren das Int
 
 	```
 
+
+Angenommen, die Datei `staedte.json` liegt im `assets`-Ordner, dann können Sie die Datei auch wie folgt einlesen (anstatt die Daten in den Service zu kopieren):
+
+```js
+async getAll(): Promise<Data[]> {
+    let response = await fetch('./assets/staedte.json');
+    let staedteObj = await response.json();
+
+    return staedteObj.staedte;
+  }
+```
+
+Beachten Sie, dass Sie dann eine `Promise` zurückgeben, d.h. den Aufruf von `getAll()` können Sie dann wieder `then()`-verketten (oder `await/async` verwenden). 
+
+
 ### Verwendung des Services
 
 Wir zeigen die Verwendung des Services zunächst am Beispiel der `cities`-Komponente. Dort hatten wir bisher die Daten direkt gespeichert. Nun sollen sie dort über den Service eingebunden werden. Dazu ändern wir die `cities.component.ts` wie folgt:
