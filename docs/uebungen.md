@@ -409,6 +409,10 @@
         - **Tipp:** Sie laufen in einer Schleife durch das Array, um alle Städte auszulesen. Fügen Sie darin eine Bedingung ein, dass Sie nur die Städte der Tabelle hinzufügen, die der Filter-Eingabe entsprechen.
 
 
+??? "Quellcode Lösung Übung5"
+    Die [Uebung5Loesung.zip finden Sie hier](./files/Uebung5Loesung.zip).  
+
+
 #### Übung 6
     
 ??? question "Übungsaufgabe 6 (JSON, Direktiven, Bindings)"
@@ -683,3 +687,7 @@
         ![uebung7](./files/219_uebung7.png) 
 
     - Alle Bilder sind nur Anregungen, kann gerne ganz anders aussehen. Gerne können Sie auch Bootstrap einbinden und verwenden (siehe [hier](https://www.npmjs.com/package/@ng-bootstrap/ng-bootstrap)).
+
+
+??? "Quellcode Lösung Übung6"
+    Die [Uebung6.zip finden Sie hier](./files/Uebung6.zip). Der `node_modules`-Ordner darin ist leer. Sie müssen zunächst `npm i` ausführen, um ihn wieder zu befüllen. 

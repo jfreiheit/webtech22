@@ -538,6 +538,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../fe-be-anbindung/" class="md-nav__link">
+        Frontend-Backend-Anbindung
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../uebungen/" class="md-nav__link">
         Übungen
       </a>
@@ -747,6 +762,10 @@
 
 <h1 id="rest-api-mongodb">REST-API (MongoDB)<a class="headerlink" href="#rest-api-mongodb" title="Permanent link">&para;</a></h1>
 <p>Die wesentlichsten Konzepte, wie Komponenten, Services und Routing für Angular-Projekte haben wir bereits kennengelernt. Ehe wir uns weiter mit dem Frontend beschäftigen, erstellen wir einen Server, der uns die Daten liefert. Derzeit haben wir unsere Mockup-Daten noch clientseitig von einem Service verwalten lassen. Das wollen wir nun ändern. Die Daten speichern wir in einer Datenbank und stellen sie über eine REST-API bereit. </p>
+<details class="note">
+<summary>Video zur Vorlesung Backend(MongoDB)</summary>
+<p><iframe src="https://mediathek.htw-berlin.de/media/embed?key=0aa0f30ec91e4254db1e4a33d0eaff89&width=720&height=540&autoplay=false&controls=true&autolightsoff=false&loop=false&chapters=false&playlist=false&related=false&responsive=false&t=0&loadonclick=true&thumb=true" data-src="https://mediathek.htw-berlin.de/media/embed?key=0aa0f30ec91e4254db1e4a33d0eaff89&width=720&height=540&autoplay=false&controls=true&autolightsoff=false&loop=false&chapters=false&playlist=false&related=false&responsive=false&t=0&loadonclick=true" class="" width="720" height="540" frameborder="0" allowfullscreen="allowfullscreen" allowtransparency="true" scrolling="no" aria-label="media embed code" style=""></iframe></p>
+</details>
 <h2 id="rest">REST<a class="headerlink" href="#rest" title="Permanent link">&para;</a></h2>
 <p>Für diese Datenbank stellen wir die Implementierung einer Schnittstelle bereit, so dass wir die wesentlichen Datenbankanfragen darüber ausführen können. Diese wesentlichen Datenbankfragen werden mit <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> abgekürzt, für <strong>C</strong>reate, <strong>R</strong>ead, <strong>U</strong>pdate und <strong>D</strong>elete. Das bedeutet, wir implementieren Funktionalitäten, mit denen wir einen neuen Datensatz in die Datenbank einfügen (<em>create</em>), aus der Datenbank auslesen (<em>read</em>), in der Datenbank aktualisieren (<em>update</em>) und aus der Datenbank löschen (<em>delete</em>) können. </p>
 <p>Die Schnittstelle, die wir implementieren, ist eine sogenannte <a href="https://www.redhat.com/de/topics/api/what-is-a-rest-api">REST-API</a>. <em>REST</em> steht für <a href="https://de.wikipedia.org/wiki/Representational_State_Transfer"><em>Representational State Transfer</em></a> und basiert auf einigen wenigen Prinzipien:</p>

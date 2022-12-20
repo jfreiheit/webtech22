@@ -73,7 +73,8 @@ nav:
     - JSON und Direktiven: angular2.md
     - Routing und Services: routing.md 
     - Backend (MongoDB): backend.md 
-    - Backend (PostgreSQL): backend_pg.md 
+    - Backend (PostgreSQL): backend_pg.md
+    - Frontend-Backend-Anbindung: fe-be-anbindung.md 
     - Übungen: uebungen.md
     - Promises: promises.md 
     - Werkzeuge: tools.md
