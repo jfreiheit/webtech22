@@ -2,10 +2,6 @@
 
 Wir haben jetzt ein Backend, das als REST-Server funngiert. Über die Endpunkte der REST-API können wir auf die einzelnen Funktionen des Backends zugreifen, um die Daten in der [MongoDB](../backend/#rest-api) (oder der [PostgreSQL](../backend_pg/#rest-api-postgresql)) zu manipulieren (erzeugen, lesen, ändern und löschen - CRUD). Unser [Frontend](../routing/#routing-und-services) stellt zur Zeit nur einen [Daten-Service](../routing/#services) zur Verfügung, der die Daten client-seitig verwaltet. Dies wollen wir jetzt ändern. Das Frontend soll mit dem Backend kommunizieren, um die Daten zu nutzen, die das Backend zur Verfügung stellt. 
 
-
-??? "Video aus der Vorlesung am 20.12.2021"
-    <iframe src="https://mediathek.htw-berlin.de/media/embed?key=492b1bd45d825a2278ea364096780f54&width=720&height=420&autoplay=false&autolightsoff=false&loop=false&chapters=false&related=false&responsive=false&t=0" data-src="" class="iframeLoaded" width="720" height="420" frameborder="0" allowfullscreen="allowfullscreen" allowtransparency="true" scrolling="no" aria-label="media embed code" style=""></iframe>
-
 Wir werden uns ein **neues** Frontend erstellen und dabei die einzelnen Schritte genauer untersuchen (bzw. wiederholen). Das hat folgende Vorteile:
 
 - wir werden sicherer bei der Erstellung von Frontends mithilfe von Angular,
@@ -30,43 +26,11 @@ ng g c create
 ng g c detail
 ```
 
-Außerdem fügen wir Bootstrap hinzu. Da es mit dem anderen Bootstrap-Projekt bei einigen von Ihnen Kompatibilitätsprobleme gab, verwenden wir nun einmal [ngx-bootstrap](https://valor-software.com/ngx-bootstrap/#/). Ich hoffe, das klappt besser. 
+Außerdem fügen wir [Bootstrap](https://ng-bootstrap.github.io/#/getting-started) hinzu: 
 
 ```bash
-ng add ngx-bootstrap
+ng add @ng-bootstrap/ng-bootstrap
 ```
-
-Die Ausgabe sollte ungefähr so aussehen:
-
-```bash
-ℹ Using package manager: npm
-✔ Found compatible package version: ngx-bootstrap@7.1.0.
-✔ Package information loaded.
- 
-The package ngx-bootstrap@7.1.0 will be installed and executed.
-Would you like to proceed? Yes
-✔ Package successfully installed.
-    ✅️ Added "bootstrap
-    ✅️ Added "ngx-bootstrap
-UPDATE package.json (1127 bytes)
-UPDATE angular.json (3194 bytes)
-UPDATE src/app/app.module.ts (732 bytes)
-✔ Packages installed successfully.
-```
-
-und in der `angular.json` sollte irgendwo der folgende Eintrag zu finden sein:
-
-```json
-"styles": [
-  "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
-  "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-  "src/styles.css"
-],
-```
-
-
-!!! tip
-    Sollte es bei der Installation von Bootstrap Probleme geben, dann bleibt Ihnen immernoch die einfache Variante, Bootstrap über ein CDN direkt in die `index.html` einzubinden, mit z.B. `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">` (siehe [Bootstrap](https://getbootstrap.com/docs/5.1/getting-started/introduction/))
 
 
 ### Navigation und Routing
@@ -158,6 +122,16 @@ Hier die Routendefinitionen und das Einbinden der Komponenten:
     <app-footer></app-footer>
     ```
 
+Wir geben im Terminal innerhalb des `frontend`-Ordners `ng serve` ein, um das Projekt zu starten. Die Startseite sollte nun so aussehen:
+
+![frontend](./files/273_fe-be.png)
+
+bzw. bei breiterem Viewport:
+
+![frontend](./files/274_fe-be.png)
+
+Die Routen sollten ebenfalls funktionieren, d.h. wenn Sie auf die Menüeinträge in der Navigation klicken, wird die entsprechende Komponente angezeigt. 
+
 
 ## Service für HTTP
 
@@ -173,6 +147,9 @@ Wir bereits beim [Routing](../routing/#routing-und-services)-Thema eingeführt, 
 |DELETE  |/members |lösche alle Datensätze |
 
 Wobei der Wert der `id` nur ein Beispiel ist.  
+
+!!! warning "Achtung!"
+    Damit wir überhaupt das Backend nutzen können, muss es laufen! Vergessen Sie also nicht, Ihr Backend zu starten!
 
 Wir erstellen uns im Ordner `shared` einen `backend`-Service:
 
@@ -249,9 +226,10 @@ Wir übernehmen hier das Datenmodell, das wir für die MongoDB gewählt hatten. 
     ```ts linenums="1"
     export interface Member {
       _id: string;
-      forename: string;
-      surname: string;
+      firstname: string;
+      lastname: string;
       email: string;
+      ipaddress: string;
     }
     ```
 
@@ -324,22 +302,23 @@ In unserer `TableComponent` wollen wir die `getAll()`-Funktion unseres Backend-S
     }
 
     readAll(): void {
-        this.bs.getAll().subscribe(
-        (
-          response: Member[]) => {
-                  this.members = response;
-                  console.log(this.members);
-                  return this.members;
-          },
-          error => console.log(error)
-        );
-      }
+      this.bs.getAll().subscribe(
+            {
+              next: (response) => {
+                    this.members = response;
+                    console.log(this.members);
+                    return this.members;
+                  },
+              error: (err) => console.log(err),
+              complete: () => console.log('getAll() completed')
+            })
+    }
   }
   ```
 
 Zunächst binden wir den `BackendService` mittels *dependency injection* in unsere Komponente ein (Zeile `13`). In einer eigenen Funktion `readAll()` rufen wir nun die `getAll()`-Funktion des `BackendService` auf (Zeile `20`). Wie in dem Abschnitt zuvor erläutert, wird diese Funktion nur durch ein `subscribe()` ausgeführt. Die `subscribe()`-Funktion "holt" das `Observer`-Objekt, welches drei sogenannte *callback*-Funktionen definiert: `next`, `error` und `complete`. [Callback-Funktionen](../javascript/#callback-funktionen) sind [hier](../javascript/#callback-funktionen) erläutert. Wir haben also drei Parameter in der `subscribe()`-Funktion, von denen jedoch nur einer (`next`) erforderlich ist. `error` und `complete` sind optional. 
 
-Unter `next` erhalten wir die `response` zurück, also das angefragte Objekt. Wir verwenden dafür eine *Arrow-Funktion* (siehe [Arrow-Funktionen](../javascript/#arrow-funktionen)). Wie wir diese Funktion nennen, bleibt uns überlassen. Hier heißt sie `response`. Wir haben diese Funktion auch mit `Member[]` typisiert, da sie uns ein `Member`-Array zurückgibt. Der Inhalt dieser Funktion ist die Zuweisung der `response` auf unsere Eigenschaft `members` vom Typ `Member[]` (definiert in Zeile `11`) und der Rückgabe der `response` (wir geben `this.members` zurück, entspricht aber genau der `response`). Die Konsolenausgabe kann natürlich auch raus. 
+Unter `next` erhalten wir die `response` zurück, also das angefragte Objekt. Wir verwenden dafür eine *Arrow-Funktion* (siehe [Arrow-Funktionen](../javascript/#arrow-funktionen)). Wie wir diese Funktion nennen, bleibt uns überlassen. Hier heißt sie `response`. Der Inhalt dieser Funktion ist die Zuweisung der `response` auf unsere Eigenschaft `members` vom Typ `Member[]` (definiert in Zeile `11`) und der Rückgabe der `response` (wir geben `this.members` zurück, entspricht aber genau der `response`). Die Konsolenausgabe kann natürlich auch weggelassen werden. 
 
 
 ## Backend starten
@@ -364,59 +343,61 @@ Wir müssen unser Frontend compilieren `ng serve` und wenn wir dann im Browser `
 
 ![konsole](./files/101_konsole.png)
 
-Achtung! Man sieht nichts auf der Webseite, sondern wir geben die Datensätze derzeit nur in der Konsole der Entwicklertools aus!
+Achtung! Man sieht nichts auf der Webseite, sondern wir geben die Datensätze derzeit nur in der Konsole der Entwicklertools aus! 
+
+![frontend](./files/275_fe-be.png)
 
 !!! success
-  Wir haben das Backend an das Frontend angebunden. Wir haben die erste Anfrage an das Backend im Frontend umgesetzt, nämlich `GET /members`, indem wir im Frontend die `get()`-Funktion des `HttpClient` implementiert und diese in der `TableComponent`mittels `subscribe()` ausgeführt haben. Wir werden nun zunächst die Daten noch im HTML-Template darstellen und dann weitere Endpunkte unserer REST-API anbinden. 
+    Wir haben das Backend an das Frontend angebunden. Wir haben die erste Anfrage an das Backend im Frontend umgesetzt, nämlich `GET /members`, indem wir im Frontend die `get()`-Funktion des `HttpClient` implementiert und diese in der `TableComponent`mittels `subscribe()` ausgeführt haben. Wir werden nun zunächst die Daten noch im HTML-Template darstellen und dann weitere Endpunkte unserer REST-API anbinden. 
 
 
 ## R-ead -- TableComponent
 
-Wir wollen eine ansprechende Ansicht der Daten erzeugen. Wir werden die Daten in einer Tablle anzeigen und verwenden dazu Bootstrap-CSS-Klassen für das Design. Dazu wollen wir auch [Bootstrap-Icons](https://icons.getbootstrap.com/) (oder auch [diese](https://www.npmjs.com/package/ngx-bootstrap-icons)) verwenden. Diese installieren wir die Icons mit 
+Wir wollen eine ansprechende Ansicht der Daten erzeugen. Wir werden die Daten in einer Tablle anzeigen und verwenden dazu Bootstrap-CSS-Klassen für das Design. Dazu wollen wir auch [Bootstrap-Icons](https://icons.getbootstrap.com/) (oder auch [diese](https://www.npmjs.com/package/ngx-bootstrap-icons)) verwenden. Diese installieren wir mit 
 
 ```bash
 npm i bootstrap-icons
 ```
 
-(für die `ngx-bootstrap-icons` müssten Sie `npm i ngx-bootstrap-icons` eingeben). Um die Icons in der `TableComponent` einfach verwenden zu können, werden die Icons in der `table.component.css` importiert:
+(für die [ngx-bootstrap-icons](https://www.npmjs.com/package/ngx-bootstrap-icons) müssten Sie `npm i ngx-bootstrap-icons` eingeben). Um die Icons in der `TableComponent` einfach verwenden zu können, werden die Icons in der `table.component.css` importiert:
 
 === "table.component.css"
     ```css
     @import url('../../../node_modules/bootstrap-icons/font/bootstrap-icons.css');
     ```
 
-Die Bootstrap-Klassen für eine Tablle können [hier](https://getbootstrap.com/docs/5.0/content/tables/#accented-tables) entnommen werden. 
+Die Bootstrap-Klassen für eine Tablle können [hier](https://getbootstrap.com/docs/5.2/content/tables/#accented-tables) entnommen werden. 
 
 === "table.component.html"
     ```html linenums="1"
     <div class="container mt-3">
-        <h3 class="m-3">Alle Einträge</h3>
-        <div class="table-responsive">
-            <table class="m-3 table table-striped table-hover">
-                <caption>Alle <code>members</code></caption>
-                <thead>
-                    <tr>
-                        <th scope="col ">Nr</th>
-                        <th scope="col ">Vorname</th>
-                        <th scope="col ">Nachname</th>
-                        <th scope="col ">E-Mail</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let member of members; let i=index; ">
-                        <td>{{ i+1 }}</td>
-                        <td>{{ member.forename }}</td>
-                        <td>{{ member.surname }}</td>
-                        <td>
-                            <a [href]="'mailto:' + member.email"><span class="bi bi-envelope px-5"></span></a>
-                            <a [routerLink]="['/member', member._id]"> <span class=" bi bi-pencil-square px-5 "></span></a>
-                            <span (click)="delete(member._id)" class=" bi bi-trash px-5 "></span>
-                        </td>
-                    </tr>
-                </tbody>
+      <h3 class="m-3">Alle Einträge</h3>
+      <div class="table-responsive">
+        <table class="m-3 table table-striped table-hover">
+          <caption>Alle <code>members</code></caption>
+          <thead>
+            <tr>
+              <th scope="col ">Nr</th>
+              <th scope="col ">Vorname</th>
+              <th scope="col ">Nachname</th>
+              <th scope="col ">E-Mail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let member of members; let i=index; ">
+              <td>{{ i+1 }}</td>
+              <td>{{ member.firstname }}</td>
+              <td>{{ member.lastname }}</td>
+              <td>
+                <a [href]="'mailto:' + member.email"><span class="bi bi-envelope px-5"></span></a>
+                <a [routerLink]="['/member', member._id]"> <span class=" bi bi-pencil-square px-5 "></span></a>
+                <span (click)="delete(member._id)" class=" bi bi-trash px-5 "></span>
+              </td>
+            </tr>
+          </tbody>
 
-            </table>
-        </div>
+        </table>
+      </div>
     </div>
     ```
 
@@ -429,7 +410,7 @@ In Zeile `21` definieren wir ebenfalls einen Link, dieses Mal aber keinen Hyperl
 In Zeile `22` verwenden wir das Bootstrap-Icon [trash](https://icons.getbootstrap.com/icons/trash/). Dieses wird an das `click`-Ereignis angemeldet. Sobald das Icon angeklickt wird, wird die Methode `delete(id)` aufgerufen. Dieser Methode wird die jeweilige `_id` von `member` übergeben. Diese Methode `delete(id)` muss dazu in der `table.component.ts` definiert werden. Um die vollständige Implementierung der Methode kümmern wir uns später. Zunächst fügen wir sie nur ein, damit kein Fehler beim Übersetzen der Anwendung mehr passiert und geben einfach die übergebene `_id` auf die Konsole aus:
 
 === "table.component.ts"
-    ```ts linenums="1" hl_lines="30-32"
+    ```ts linenums="1" hl_lines="31-33"
     import { Component, OnInit } from '@angular/core';
     import { BackendService } from '../shared/backend.service';
     import { Member } from '../shared/member';
@@ -448,15 +429,16 @@ In Zeile `22` verwenden wir das Bootstrap-Icon [trash](https://icons.getbootstra
       }
 
       readAll(): void {
-          this.bs.getAll().subscribe(
-          (
-            response: Member[]) => {
-                    this.members = response;
-                    console.log(this.members);
-                    return this.members;
-            },
-            error => console.log(error)
-          );
+        this.bs.getAll().subscribe(
+          {
+            next: (response) => {
+                  this.members = response;
+                  console.log(this.members);
+                  return this.members;
+                },
+            error: (err) => console.log(err),
+            complete: () => console.log('getAll() completed')
+          })
       }
 
       delete(id: string): void {
@@ -525,20 +507,21 @@ Zunächst implementieren wir, dass der Datensatz von `member`, dessen `_id` in d
       ) { }
 
       ngOnInit(): void {
-        this.id = this.route.snapshot.paramMap.get('id') || '';
+        this.id = this.route.snapshot.paramMap.get('id') || '';
         this.readOne(this.id);
       }
 
       readOne(id: string): void {
           this.bs.getOne(id).subscribe(
-          (
-            response: Member) => {
+          {
+            next: (response: Member) => {
                     this.member = response;
                     console.log(this.member);
                     return this.member;
             },
-            error => console.log(error)
-          );
+            error: (err) => console.log(err),
+            complete: () => console.log('getOne() completed')
+          });
       }
 
     }
@@ -611,9 +594,9 @@ Um *reaktive Formulare* zu verwenden, ist es **wichtig**, das Modul `ReactiveFor
 Wenn das vergessen wird, sind die Fehlerausgaben wirklich nicht zielführend und es ist recht schwierig, diesen Fehler zu finden! *Reactive Forms* werden, im Gegensatz zu den *template-basierten Formularen*, hauptsächlich in der TypeScript-Klasse erstellt. Wir passen deshalb unsere `detail.component.ts` wie folgt an:
 
 === "detail.component.ts"
-    ```ts linenums="1" hl_lines="2 15 20 23-29 35-39"
+    ```ts linenums="1" hl_lines="2 15-20 39-44"
     import { Component, OnInit } from '@angular/core';
-    import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+    import { FormGroup, FormControl } from '@angular/forms';
     import { ActivatedRoute } from '@angular/router';
     import { BackendService } from '../shared/backend.service';
     import { Member } from '../shared/member';
@@ -623,46 +606,45 @@ Wenn das vergessen wird, sind die Fehlerausgaben wirklich nicht zielführend und
       templateUrl: './detail.component.html',
       styleUrls: ['./detail.component.css']
     })
-    export class DetailComponent implements OnInit {
+    export class DetailComponent  implements OnInit {
       id: string = '';
-      member!: Member;
-      form: FormGroup;
+      member!: Member ;
+      form = new FormGroup({
+            firstnameControl : new FormControl<string>(''),
+            lastnameControl: new FormControl<string>(''),
+            emailControl: new FormControl<string>(''),
+            ipaddressControl: new FormControl<string>(''),
+      });
 
       constructor(
         private route: ActivatedRoute,
-        private bs: BackendService,
-        private fb: FormBuilder,
-      )
-      {
-        this.form = this.fb.group(
-          {
-            forenameControl: ['', Validators.required],
-            surnameControl: ['', Validators.required],
-            emailControl: ['', Validators.required],
-          }
-        );
-      }
+        private bs: BackendService
+      ) { }
 
       ngOnInit(): void {
-        this.id = this.route.snapshot.paramMap.get('id') || '';
+        this.id = this.route.snapshot.paramMap.get('id') || '';
         this.readOne(this.id);
-        this.form.patchValue({
-          forenameControl: this.member?.forename,
-          surnameControl: this.member?.surname,
-          emailControl: this.member?.email
-        });
+
       }
 
       readOne(id: string): void {
           this.bs.getOne(id).subscribe(
-          (
-            response: Member) => {
+          {
+            next: (response) => {
                     this.member = response;
-                    console.log(this.member);
+                    console.log('member', this.member);
+                    this.form.patchValue({
+                      firstnameControl: this.member?.firstname,
+                      lastnameControl: this.member?.lastname,
+                      emailControl: this.member?.email,
+                      ipaddressControl: this.member?.ipaddress
+                    })
                     return this.member;
             },
-            error => console.log(error)
-          );
+            error: (err) => console.log(err),
+            complete: () => console.log('getOne() completed')
+          });
+
       }
 
       update(): void {
@@ -676,9 +658,9 @@ Wenn das vergessen wird, sind die Fehlerausgaben wirklich nicht zielführend und
     }
     ```
 
-Wir erstellen uns eine Referenzvariable `form` vom Typ `FormGroup` (Zeile `15`). Diese Variable zeigt auf unser Formular. Um das Formular zu erstellen, nutzen wir den `FormBuilder`. Diesen binden wir per *dependency injection*  in unsere Klasse ein (Zeile `20`). In den Zeilen `23-29` wird das Formular erzeugt. Es besteht aus drei Eingabefeldern, deren Eingabe jeweils validiert werden soll. Dazu werden [Validators](https://angular.io/guide/form-validation#validating-input-in-reactive-forms) verwendet, ein vordefinierter Service von Angular. 
+Wir erstellen uns eine Referenzvariable `form` vom Typ `FormGroup` (Zeile `15`). Diese Variable zeigt auf unser Formular. Das Formular besteht aus `FormControl`-Elementen, die wir in den Zeilen `16-19` erzeugen. Sie sind mit `string` typisiert, das kann aber auch weggelassen werden. 
 
-In den Zeilen `35-39` werden den Eingabefeldern bereits Werte zugewiesen. Diese Werte werden `member` entnommen, welches durch die `getOne(id)`-Funktion des `BackendService` befüllt wurde. Um die Werte in das Formular einzutragen, bietet die Klasse `FormGroup` zwei Funktionen an:
+In den Zeilen `39-44` werden den Eingabefeldern bereits Werte zugewiesen. Diese Werte werden `member` entnommen, welches durch die `getOne(id)`-Funktion des `BackendService` befüllt wurde. Um die Werte in das Formular einzutragen, bietet die Klasse `FormGroup` zwei Funktionen an:
 
 - `setValue()` - setzt für **alle** `FormControl`-Elemente innerhalb der `FormGroup` einen Wert (`value`)
 - `patchValue()` - kann allen oder **bestimmten** (einzelnen) `FormControl`-Elementen einen Wert (`value`) zuweisen. 
@@ -695,15 +677,16 @@ Um zu vermeiden, dass versucht wird, auf einen Wert zuzugreifen, der (noch) gar 
 Solange `objekt` noch `undefined` ist, wird nicht auf die (noch nicht existierende) `eigenschaft` zugegriffen. Wir verwenden den *safe navigation operator* in der `detail.component.ts` ein:
 
 === "detail.component.ts (Auszug mit safe navigation oprator)"
-  ```html linenums="35" 
-        this.form.patchValue({
-          forenameControl: this.member?.forename,
-          surnameControl: this.member?.surname,
-          emailControl: this.member?.email
-        });
+  ```html linenums="39" 
+    this.form.patchValue({
+      firstnameControl: this.member?.firstname,
+      lastnameControl: this.member?.lastname,
+      emailControl: this.member?.email,
+      ipaddressControl: this.member?.ipaddress
+    })
   ```
 
-Jetzt wird zunächst geprüft, ob `member` überhaupt definiert ist (also nicht `undefined`). Wenn nicht, wird gar nicht erst auf die Eigenschaft (z.B. `forename`) zugegriffen. Ohne den Operator erhalten Sie eine Fehlermeldung, da z.B. der Zugriff `undefined.forename` versucht würde.  
+Jetzt wird zunächst geprüft, ob `member` überhaupt definiert ist (also nicht `undefined`). Wenn nicht, wird gar nicht erst auf die Eigenschaft (z.B. `firstname`) zugegriffen. Ohne den Operator erhalten Sie eine Fehlermeldung, da z.B. der Zugriff `undefined.firstname` versucht würde.  Allerdings wird ja direkt nach der Wertzuweisung auf die `member`-Variable zugegriffen. Dadurch könnte hier der `safe navigation operator` auch weggelassen werden. 
 
 ### Reactive Forms in `*.component.html`
 
@@ -713,31 +696,44 @@ Das Formular existiert nun (als TypeScript-Objekt). Nun binden wir es in die `de
 === "detail.component.html"
     ```html linenums="1" 
     <main class="d-flex min-vh-100">
-        <fieldset class="container  mt-5">
-            <legend *ngIf="member" class="mb-4">Eintrag von {{ member.forename }} {{ member.surname }} aktualisieren
-            </legend>
-            <legend *ngIf="!member" class="mb-4">Eintrag aktualisieren</legend>
-            <form [formGroup]="form" (ngSubmit)="update()">
-                <div class="form-group row">
-                    <label class="col-2 col-form-label" for="forename">Vorname</label>
-                    <input type="text" class="col-10 form-control" id="forename" placeholder="Vorname" formControlName="forenameControl">
-                </div>
-                <div class="form-group row">
-                    <label class="col-2 col-form-label" for="surname">Nachname</label>
-                    <input type="text" class="col-10 form-control" id="surname" placeholder="Nachname" formControlName="surnameControl">
-                </div>
-                <div class="form-group row">
-                    <label class="col-2 col-form-label" for="email">E-Mail</label>
-                    <input type="email" class="col-10 form-control" id="email" placeholder="E-Mail" formControlName="emailControl">
-
-                </div>
-                <div class="form-group row  justify-content-end">
-                    <button type="submit" class="col-4 btn btn-secondary">Aktualisieren</button>
-                    <div class="col-2"></div>
-                    <button type="button" class="col-4 btn btn-secondary" (click)="cancel() ">Abbrechen</button>
-                </div>
-            </form>
-        </fieldset>
+      <fieldset class="container  mt-5">
+        <legend *ngIf="member" class="mb-4">Eintrag von {{ member.firstname }} {{ member.lastname }} aktualisieren
+        </legend>
+        <legend *ngIf="!member" class="mb-4">Eintrag aktualisieren</legend>
+        <form [formGroup]="form" (ngSubmit)="update()">
+          <div class="mb-3 row">
+            <label class="col-2 col-form-label" for="firstname">Vorname</label>
+            <div class="col-10">
+              <input type="text" class="form-control" id="firstname" placeholder="Vorname"
+              formControlName="firstnameControl" />
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label class="col-2 col-form-label" for="lastname">Nachname</label>
+            <div class="col-10">
+              <input type="text" class="col-10 form-control" id="lastname" placeholder="Nachname"
+              formControlName="lastnameControl" />
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label class="col-2 col-form-label" for="email">E-Mail</label>
+            <div class="col-10">
+              <input type="email" class="col-10 form-control" id="email" placeholder="E-Mail" formControlName="emailControl" />
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label class="col-2 col-form-label" for="ipaddress">IP-Adresse</label>
+            <div class="col-10">
+              <input type="text" class="col-10 form-control" id="ipaddress" placeholder="IP-Adresse" formControlName="ipaddressControl" />
+            </div>
+          </div>
+          <div class="row ">
+            <button type="submit" class="col-5 btn btn-secondary">Aktualisieren</button>
+            <div class="col-2"></div>
+            <button type="button" class="col-5 btn btn-secondary" (click)="cancel() ">Abbrechen</button>
+          </div>
+        </form>
+      </fieldset>
     </main>
     ```
 
@@ -745,80 +741,64 @@ Es entsteht folgende Ansicht:
 
 ![formular](./files/234_formular.png)
 
-Um sich an das `submit`-Ereignis anzumelden, wird für das `<form>`-Element `(ngSubmit)` hinzugefügt und als dessen Wert die Funktion, die aufgerufen werden soll, beim Absenden des Formulars - hier die Funktion `update()` (die wir gleich noch in `detail.component.ts` implementieren). Für den `Abbrechen`-Button melden wir uns an das `click`-Ereignis mithilfe von `(click)` und der Angabe der Funktion, die ausgeführt werden soll (hier `cancel()`) an. 
-
-Das *reaktive Formular* `form`, das wir in der `detail.component.ts` erzeugt haben, wird mittels `[formGroup]="form"` als *property binding* dem `<form>`-Element übergeben. Im derzeitigen Stand der Implementierung von `detail.component.ts` erscheinen jedoch die Werte noch nicht in den Eingabefeldern. Das wollen wir uns zunächst einmal genauer ansehen.
-
-### Asynchrones Abarbeiten
-
-Derzeit befüllen wir die Eingabefelder des Formulars mit Werten wir folgt (siehe oben `detailcomponent.ts`):
-
-```ts linenums="32"
-      ngOnInit(): void {
-        this.id = this.route.snapshot.paramMap.get('id') || '';
-        this.readOne(this.id);
-        this.form.patchValue({
-          forenameControl: this.member?.forename,
-          surnameControl: this.member?.surname,
-          emailControl: this.member?.email
-        });
-      }
-
-      readOne(id: string): void {
-          this.bs.getOne(id).subscribe(
-          (
-            response: Member) => {
-                    this.member = response;
-                    console.log(this.member);
-                    return this.member;
-            },
-            error => console.log(error)
-          );
-      }
-```
-
-Bei der Initialisierung der Komponente wird die `readOne(id)`-Funktion aufgerufen (Zeile `34`). In dieser Funktion wird `this.member` mit Werten befüllt, die durch die `getOne(id)`-Funktion des `BackendService` geliefert werden (Zeile `46`). Die Werte von `this.member` werden nach Aufruf der `readOne(id)`-Funktion verwendet, um den Eingabefeldern Werte zuzuweisen (Zeilen `36-38`). Allerdings erfolgt die Abarbeitung der `readOne(id)`-Funktion und das Befüllen der Eingabefelder **asynchron**, d.h. *nebenläufig*. Es kann sein (und hier ist es so), dass `member` überhaupt noch keine Werte hat, wenn diese beim Befüllen der Eingabefelder verwendet werden sollen. 
-
-Dies ist eigentlich eine typische Anwendung für [Promises](../promises/#promises). Hier benötigen wir dieses Konzept aber gar nicht. Wir müssen nur dafür sorgen, dass die Eingabefelder erst dann befüllt werden, wenn `member` einen Wert hat. Wir schieben das Befüllen der Eingabefelder deshalb in die `subscribe()`-Funktion des *Observables* `getOne(id)`:
-
-
-```ts linenums="32" hl_lines="13-17"
-    ngOnInit(): void {
-      this.id = this.route.snapshot.paramMap.get('id') || '';
-      this.readOne(this.id);
+=== "detail.component.css"
+    ```css
+    main {
+      background-color: rgba(99, 192, 235, 0.729);
     }
 
-    readOne(id: string): void {
-        this.bs.getOne(id).subscribe(
-        (
-          response: Member) => {
-                  this.member = response;
-                  console.log(this.member);
-
-                  this.form.patchValue({
-                    forenameControl: this.member?.forename,
-                    surnameControl: this.member?.surname,
-                    emailControl: this.member?.email
-                  });
-
-                  return this.member;
-          },
-          error => console.log(error)
-        );
+    legend {
+      font-weight: bold;
     }
+    ```
+
+### Eventuelle Anpassung des Backends
+
+Es kann sein, dass Ihr Backend für `GET /member/:id` nicht das Objekt selbst, sondern ein Array zurückgibt, das das Objekt enthält. Erwartet würde, dass z.B. dieses JavaScript-Objekt zurückgegeben wird: 
+
+```js
+{_id: '6399ec28bc9eaaf21290cc3b', firstname: 'Adam', lastname: 'Anderson', email: 'aanderson8@google.fr', ipaddress: '118.93.83.157'}
 ```
 
-Nun ist das Formular auch vorbefüllt.
+Es kann aber sein, dass Sie stattdessen
+
+```js
+[ 0 : {_id: '6399ec28bc9eaaf21290cc3b', firstname: 'Adam', lastname: 'Anderson', email: 'aanderson8@google.fr', ipaddress: '118.93.83.157'} ]
+```
+
+zurückbekommen. Im letzteren Fall ist es am einfachsten, wenn Sie das Backend wie folgt anpassen:
+
+=== "routes.js"
+    ```js linenums="27" hl_lines="6"
+    // get one member - Read 
+    router.get('/members/:id', async(req, res) => {
+        try {
+            const member = await Member.find({ _id: req.params.id });
+            console.log(req.params);
+            res.send(member[0]);
+        } catch {
+            res.status(404);
+            res.send({
+                error: 'Member does not exist'
+            })
+        }
+    })
+    ```
+
+also statt des Arrays, das die `find()`-query zurückgibt, den ersten Eintrag aus dem Array. Sie können stattdessen auch mal ausprobieren, was der Rückgabetyp von `findOne()` ist. 
 
 ### Submit- und Cancel-Ereignisbehandlung
+
+
+Um sich an das `submit`-Ereignis anzumelden, wird für das `<form>`-Element `(ngSubmit)` hinzugefügt und als dessen Wert die Funktion, die aufgerufen werden soll, beim Absenden des Formulars - hier die Funktion `update()` (die wir gleich noch in `detail.component.ts` implementieren). Für den `Abbrechen`-Button melden wir uns an das `click`-Ereignis mithilfe von `(click)` und der Angabe der Funktion, die ausgeführt werden soll (hier `cancel()`) an. 
 
 Wir implementieren nun die Funktionen `cancel()` und `update()`. Die `cancel()`-Funktion wird durch das `click`-Ereignis des `Abbrechen`-Buttons aufgerufen und die `update()`-Funktion durch den `submit`-Button `Aktualisieren` (siehe im Formular `(ngSubmit)="update()"`). Wenn wir auf `Abbrechen` klicken, dann wollen wir wieder zur Tabellenansicht zurück. Das erreichen wir mit dem Service `Location` aus `@angular/common`, der uns z.B. die `back()`-Funktion zur Verfügung stellt:
 
 === "detail.component.ts"
-    ```ts linenums="1" hl_lines="1 22 63"
+    ```ts linenums="1" hl_lines="1 26 60"
     import { Location } from '@angular/common';
     import { Component, OnInit } from '@angular/core';
-    import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+    import { FormGroup, FormControl } from '@angular/forms';
     import { ActivatedRoute } from '@angular/router';
     import { BackendService } from '../shared/backend.service';
     import { Member } from '../shared/member';
@@ -828,49 +808,46 @@ Wir implementieren nun die Funktionen `cancel()` und `update()`. Die `cancel()`-
       templateUrl: './detail.component.html',
       styleUrls: ['./detail.component.css']
     })
-    export class DetailComponent implements OnInit {
+    export class DetailComponent  implements OnInit {
       id: string = '';
-      member!: Member;
-      form: FormGroup;
+      member!: Member ;
+      form = new FormGroup({
+            firstnameControl : new FormControl<string>(''),
+            lastnameControl: new FormControl<string>(''),
+            emailControl: new FormControl<string>(''),
+            ipaddressControl: new FormControl<string>(''),
+      });
 
       constructor(
         private route: ActivatedRoute,
         private bs: BackendService,
-        private fb: FormBuilder,
         private location: Location
-      )
-      {
-        this.form = this.fb.group(
-          {
-            forenameControl: ['', Validators.required],
-            surnameControl: ['', Validators.required],
-            emailControl: ['', Validators.required],
-          }
-        );
-      }
+      ) { }
 
       ngOnInit(): void {
-        this.id = this.route.snapshot.paramMap.get('id') || '';
+        this.id = this.route.snapshot.paramMap.get('id') || '';
         this.readOne(this.id);
+
       }
 
       readOne(id: string): void {
           this.bs.getOne(id).subscribe(
-          (
-            response: Member) => {
+          {
+            next: (response) => {
                     this.member = response;
-                    console.log(this.member);
-
+                    console.log('member', this.member);
                     this.form.patchValue({
-                      forenameControl: this.member?.forename,
-                      surnameControl: this.member?.surname,
-                      emailControl: this.member?.email
-                    });
-
+                      firstnameControl: this.member.firstname,
+                      lastnameControl: this.member.lastname,
+                      emailControl: this.member.email,
+                      ipaddressControl: this.member.ipaddress
+                    })
                     return this.member;
             },
-            error => console.log(error)
-          );
+            error: (err) => console.log(err),
+            complete: () => console.log('getOne() completed')
+          });
+
       }
 
       update(): void {
@@ -882,6 +859,7 @@ Wir implementieren nun die Funktionen `cancel()` und `update()`. Die `cancel()`-
       }
 
     }
+
     ```
 
 
@@ -922,10 +900,10 @@ Wenn jedoch der `Aktualisieren`-Button gedrückt wird, dann soll der Datensatz i
 In der `detail.component.ts` werden in der `update()`-Funktion zunächst alle Werte des Formulars ausgelesen und in `this.member` gespeichert und dann wird die `update()`-Funktion des `BackendService` aufgerufen und ihr die `this.id` sowie `this.member` übergeben. Nachdem der Datensatz in der Datenbank aktualisiert wurde, wird wieder die `table`-Komponente aufgerufen. Dazu wird die `navigateByUrl()`-Funktion des `Router`-Services verwendet.
 
 === "detail.component.ts"
-    ```ts linenums="1" hl_lines="4 24 59-75"
+    ```ts linenums="1" hl_lines="4 27 57-74"
     import { Location } from '@angular/common';
     import { Component, OnInit } from '@angular/core';
-    import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+    import { FormGroup, FormControl } from '@angular/forms';
     import { ActivatedRoute, Router } from '@angular/router';
     import { BackendService } from '../shared/backend.service';
     import { Member } from '../shared/member';
@@ -935,66 +913,66 @@ In der `detail.component.ts` werden in der `update()`-Funktion zunächst alle We
       templateUrl: './detail.component.html',
       styleUrls: ['./detail.component.css']
     })
-    export class DetailComponent implements OnInit {
+    export class DetailComponent  implements OnInit {
       id: string = '';
-      member!: Member;
-      form: FormGroup;
+      member!: Member ;
+      form = new FormGroup({
+            firstnameControl : new FormControl<string>(''),
+            lastnameControl: new FormControl<string>(''),
+            emailControl: new FormControl<string>(''),
+            ipaddressControl: new FormControl<string>(''),
+      });
 
       constructor(
         private route: ActivatedRoute,
         private bs: BackendService,
-        private fb: FormBuilder,
         private location: Location,
         private router: Router
-      )
-      {
-        this.form = this.fb.group(
-          {
-            forenameControl: ['', Validators.required],
-            surnameControl: ['', Validators.required],
-            emailControl: ['', Validators.required],
-          }
-        );
-      }
+      ) { }
 
       ngOnInit(): void {
-        this.id = this.route.snapshot.paramMap.get('id') || '';
+        this.id = this.route.snapshot.paramMap.get('id') || '';
         this.readOne(this.id);
+
       }
 
       readOne(id: string): void {
           this.bs.getOne(id).subscribe(
-          (
-            response: Member) => {
+          {
+            next: (response) => {
                     this.member = response;
-                    console.log(this.member);
-
+                    console.log('member', this.member);
                     this.form.patchValue({
-                      forenameControl: this.member?.forename,
-                      surnameControl: this.member?.surname,
-                      emailControl: this.member?.email
-                    });
-
+                      firstnameControl: this.member.firstname,
+                      lastnameControl: this.member.lastname,
+                      emailControl: this.member.email,
+                      ipaddressControl: this.member.ipaddress
+                    })
                     return this.member;
             },
-            error => console.log(error)
-          );
+            error: (err) => console.log(err),
+            complete: () => console.log('getOne() completed')
+          });
+
       }
 
       update(): void {
         const values = this.form.value;
-        this.member.forename = values.forenameControl;
-        this.member.surname = values.surnameControl;
-        this.member.email = values.emailControl;
+        this.member.firstname = values.firstnameControl!;
+        this.member.lastname = values.lastnameControl!;
+        this.member.email = values.emailControl!;
+        this.member.ipaddress = values.ipaddressControl!;
         this.bs.update(this.id, this.member)
-          .subscribe(
-            response => {
+          .subscribe({
+            next: (response) => {
               console.log(response);
               console.log(response._id);
             },
-            error => {
-              console.log(error);
-            }
+            error: (err) => {
+              console.log(err);
+            },
+            complete: () => console.log('update() completed')
+          }
           );
         this.router.navigateByUrl('/table');
       }
@@ -1015,7 +993,7 @@ In der `table`-Komponente ist das Löschen eines Datensatzes bereits vorbereitet
 Wir implementieren zunächst eine `deleteOne(id)`-Funktion im `BackendService`. Es wird der Endpunkt `DELETE /members/:id` verwendet. 
 
 === "backend.service.ts"
-    ```ts linenums="1" hl_lines="22-24"
+    ```ts linenums="1" hl_lines="26-28"
     import { HttpClient } from '@angular/common/http';
     import { Injectable } from '@angular/core';
     import { Observable } from 'rxjs';
@@ -1047,12 +1025,12 @@ Wir implementieren zunächst eine `deleteOne(id)`-Funktion im `BackendService`. 
     }
     ```
 
-Im Gegensatz zu den anderen Endpunkten, kann die `response` beim Aufruf von `DELETE /members/:id` leer sein (wenn der Datensatz gelöscht wurde) oder es wird ein Objekt mit einem `error` zurückgesendet (siehe [hier](http://127.0.0.1:8000/webtech/backend/#d-delete-one)). Die Typisierung des `Observale` ist deshalb nicht `Member`, sondern `any`. Da vom Backend jedoch der HTTP-Status in der `response` zurückgegeben wird (`204` oder `404`) wollen wir auf diesen Status zugreifen. Wäre die `reponse` leer, ginge das jedoch nicht. Deshalb legen wir mit `{observe: 'response'}` als zweitem Parameter fest, dass in jedem Fall eine `response` durch das `Observable` erzeugt wird.
+Im Gegensatz zu den anderen Endpunkten, kann die `response` beim Aufruf von `DELETE /members/:id` leer sein (wenn der Datensatz gelöscht wurde) oder es wird ein Objekt mit einem `error` zurückgesendet (siehe [hier](http://127.0.0.1:8000/webtech/backend/#d-delete-one)). Die Typisierung des `Observale` ist deshalb nicht `Member`, sondern `any`. Da vom Backend jedoch der HTTP-Status in der `response` zurückgegeben wird (`204` oder `404`) wollen wir auf diesen Status zugreifen. Wäre die `response` leer, ginge das jedoch nicht. Deshalb legen wir mit `{observe: 'response'}` als zweitem Parameter fest, dass in jedem Fall eine `response` (und nicht nur der `body`) durch das `Observable` erzeugt wird.
 
 Wir verwenden diese Funktion nun in unserer `table.component.ts`:
 
 === "table.component.ts"
-    ```ts linenums="1" hl_lines="2 13 33-49 51-56"
+    ```ts linenums="1" hl_lines="2 13 15 34-51 53-58"
     import { Component, OnInit } from '@angular/core';
     import { Router } from '@angular/router';
     import { BackendService } from '../shared/backend.service';
@@ -1064,7 +1042,7 @@ Wir verwenden diese Funktion nun in unserer `table.component.ts`:
       styleUrls: ['./table.component.css']
     })
     export class TableComponent implements OnInit {
-      members!: Member[];
+      members: Member[] = [];
       deleted = false;
 
       constructor(private bs: BackendService, private router: Router) { }
@@ -1074,21 +1052,22 @@ Wir verwenden diese Funktion nun in unserer `table.component.ts`:
       }
 
       readAll(): void {
-          this.bs.getAll().subscribe(
-          (
-            response: Member[]) => {
-                    this.members = response;
-                    console.log(this.members);
-                    return this.members;
-            },
-            error => console.log(error)
-          );
+        this.bs.getAll().subscribe(
+          {
+            next: (response) => {
+                  this.members = response;
+                  console.log(this.members);
+                  return this.members;
+                },
+            error: (err) => console.log(err),
+            complete: () => console.log('getAll() completed')
+          })
       }
 
       delete(id: string): void {
         this.bs.deleteOne(id).subscribe(
-          (
-            response: any) => {
+          {
+            next: (response: any) => {
               console.log('response : ', response);
               if(response.status == 204){
                       console.log(response.status);
@@ -1099,8 +1078,9 @@ Wir verwenden diese Funktion nun in unserer `table.component.ts`:
                       this.reload(false);
                     }
             },
-            error => console.log(error)
-          );
+            error: (err) => console.log(err),
+            complete: () => console.log('deleteOne() completed')
+        });
       }
 
       reload(deleted: boolean)
@@ -1110,6 +1090,7 @@ Wir verwenden diese Funktion nun in unserer `table.component.ts`:
         this.router.navigateByUrl('/table');
       }
     }
+
     ```
 
 Wir haben gleich mehrer Sachen hinzugefügt. Zunächst ruft die `delete(id)`-Funktion wie gewohnt die `BackendService`-Funktion `deleteOne(id)` mit `subsribe()` auf. Wir haben darin eine Fallunterscheidung, je nach zurückgegebenem HTTP-Status integriert mit jeweiliger Konsolen-Ausgabe (die können natürlich raus). 
@@ -1117,44 +1098,45 @@ Wir haben gleich mehrer Sachen hinzugefügt. Zunächst ruft die `delete(id)`-Fun
 Um eine Nachricht anzeigen zu lassen, dass der Datensatz gelöscht wurde, fügen wir der TypeScript-Klasse die Eigenschaft `deleted` hinzu. Ist der Wert von `deleted` `false` wird die Tabelle angezeigt. Ist der Wert jedoch `true` wird die Löschnachricht angezeigt. In der Löschnachricht ist ein Button, dessen Klickereignis die Funktion `reload()` aufruft. In `reload()` wird die Tabelle neu geladen. Dazu werden zuvor nochmal alle Einträge aus der Datenbank mit `readAll()` geholt, damit man sieht, dass der Datensatz gelöscht wurde. Die `table.component.html` sieht nun so aus:
 
 === "table.component.html"
-    ```html linenums="1" hl_lines="2 13 33-49 51-56"
-    <div *ngIf="!deleted" class=" container mt-3 ">
-        <h3 class="m-3 ">Alle Einträge</h3>
-        <div class="table-responsive ">
-            <table class="m-3 table table-striped table-hover ">
-                <caption>Alle <code>members</code></caption>
-                <thead>
-                    <tr>
-                        <th scope="col ">Nr</th>
-                        <th scope="col ">Vorname</th>
-                        <th scope="col ">Nachname</th>
-                        <th scope="col ">E-Mail</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let member of members; let i=index; ">
-                        <td>{{ i+1 }}</td>
-                        <td>{{ member.forename }}</td>
-                        <td>{{ member.surname }}</td>
-                        <td>
-                            <a [href]=" 'mailto:' + member.email "><span class="bi bi-envelope px-5 "></span></a>
-                            <a [routerLink]="[ '/member', member._id] "> <span class=" bi bi-pencil-square px-5 "></span></a>
-                            <span (click)="delete(member._id) " class=" bi bi-trash px-5 "></span>
-                        </td>
-                    </tr>
-                </tbody>
+    ```html linenums="1" hl_lines="1 30-33"
+    <div *ngIf="!deleted" class="container mt-3">
+      <h3 class="m-3">Alle Einträge</h3>
+      <div class="table-responsive">
+        <table class="m-3 table table-striped table-hover">
+          <caption>Alle <code>members</code></caption>
+          <thead>
+            <tr>
+              <th scope="col ">Nr</th>
+              <th scope="col ">Vorname</th>
+              <th scope="col ">Nachname</th>
+              <th scope="col ">E-Mail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let member of members; let i=index; ">
+              <td>{{ i+1 }}</td>
+              <td>{{ member.firstname }}</td>
+              <td>{{ member.lastname }}</td>
+              <td>
+                <a [href]="'mailto:' + member.email"><span class="bi bi-envelope px-5"></span></a>
+                <a [routerLink]="['/member', member._id]"> <span class=" bi bi-pencil-square px-5 "></span></a>
+                <span (click)="delete(member._id)" class=" bi bi-trash px-5 "></span>
+              </td>
+            </tr>
+          </tbody>
 
-            </table>
-        </div>
+        </table>
+      </div>
     </div>
     <div *ngIf="deleted" class=" container mt-3 ">
-        <h3>Datensatz wurde gelöscht!</h3>
-        <button type="button" class="btn btn-secondary" (click)="reload(false)">Zurück zur Tabelle</button>
-    </div>    
+      <h3>Datensatz wurde gelöscht!</h3>
+      <button type="button" class="btn btn-secondary" (click)="reload(false)">Zurück zur Tabelle</button>
+    </div>
+       
     ```
 
 
 !!! success
-  Wir haben nun die CRUD-Funktionen im Frontend implementiert und dafür das Frontend an das Backend vollständig angebunden. Zwar fehlt hier noch Create, aber das sollten Sie selbständig leicht hinbekommen. Schauen Sie sich das Formular für Update an, dann sollte das kein Problem sein! Ist eine gute Übung! Der Entwicklungsstack Datenbank <-> Backend <-> Frontend ist damit fertig und abgeschlossen. Eine weitere gute Übung für Sie wäre, statt des MongoDB-Backends das PostgreSQL-Backend anzubinden. Sie werden feststellen, dass nur sehr wenige Anpassungen notwendig sind. Wir haben nun alle Voraussetzungen besprochen, um die Semesteraufgabe zu erledigen. Im Januar werden wir noch einige nützliche Details diskutieren, wie z.B. modale Dialoge, Nutzer- und Rollenverwaltung, Verschlüsseln von Passwörtern, Hochladen von Bildern und Drag&Drop. Eventuell schauen wir uns noch Drittanbieter-APIs an, z.B. OpenStreetmap, mal sehen. Ansonsten wünsche ich allen ein frohes und gesundes Weihnachtsfest und einen guten Rutsch ins neue Jahr! Bleiben Sie gesund und viel Spaß und Erfolg mit der Semesteraufgabe und dem restlichen Studium!
+    Wir haben nun die CRUD-Funktionen im Frontend implementiert und dafür das Frontend an das Backend vollständig angebunden. Zwar fehlt hier noch Create, aber das sollten Sie selbständig leicht hinbekommen. Schauen Sie sich das Formular für Update an, dann sollte das kein Problem sein! Ist eine gute Übung! Der Entwicklungsstack Datenbank <-> Backend <-> Frontend ist damit fertig und abgeschlossen. Eine weitere gute Übung für Sie wäre, statt des MongoDB-Backends das PostgreSQL-Backend anzubinden. Sie werden feststellen, dass nur sehr wenige Anpassungen notwendig sind. Wir haben nun alle Voraussetzungen besprochen, um die Semesteraufgabe zu erledigen. 
 
 

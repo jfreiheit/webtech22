@@ -802,7 +802,7 @@ Um sich in Node.js mit der MongoDB zu verbinden, geben Sie
 	mongoose.connect('mongodb+srv://<username>:<passwort>@cluster0.g3nbd.mongodb.net', { dbName: 'members' });
 	const db = mongoose.connection;
 	db.on('error', err => {
-	  logError(err);
+	  console.log(err);
 	});
 	db.once('open', () => {
 	    console.log('connected to DB');
@@ -872,7 +872,7 @@ Wir fügen `dotenv` n die `server.js` ein und greifen mithilfe von `process.env.
 	mongoose.connect(process.env.DB_CONNECTION, { dbName: process.env.DATABASE });
 	const db = mongoose.connection;
 	db.on('error', err => {
-	  logError(err);
+	  console.log(err);
 	});
 	db.once('open', () => {
 	    console.log('connected to DB');
@@ -1000,7 +1000,7 @@ Die `id` wird aus der URL des Endpunktes ausgelesen, d.h. wenn wir bspw. den End
 
 === "routes.js"
 	```javascript linenums="23"
-	// post one member via id
+	// get one member via id
 	router.get('/members/:id', async(req, res) => {
 	    try {
 	        const member = await Member.findOne({ _id: req.params.id });
@@ -1136,7 +1136,7 @@ Hier nochmal die vollständige `routes.js`:
 	    res.send(newMember);
 	});
 
-	// post one member via id
+	// get one member via id
 	router.get('/members/:id', async(req, res) => {
 	    try {
 	        const member = await Member.findOne({ _id: req.params.id });
@@ -1231,7 +1231,7 @@ ein. Öffnen Sie dann die `server.js` und fügen Sie die hervorgehobenen Zeilen 
 	mongoose.connect(process.env.DB_CONNECTION, { dbName: process.env.DATABASE });
 	const db = mongoose.connection;
 	db.on('error', err => {
-	  logError(err);
+	  console.log(err);
 	});
 	db.once('open', () => {
 	    console.log('connected to DB');

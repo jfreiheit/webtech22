@@ -691,3 +691,51 @@
 
 ??? "Quellcode Lösung Übung6"
     Die [Uebung6.zip finden Sie hier](./files/Uebung6.zip). Der `node_modules`-Ordner darin ist leer. Sie müssen zunächst `npm i` ausführen, um ihn wieder zu befüllen. 
+
+
+#### Übung 7
+    
+??? question "Übungsaufgabe 7 (REST-API)"
+    - Erstellen Sie eine REST-API mit folgenden Endpunkten:
+
+        - `GET /users`          /* gebe alle `user`-Einträge zurück */
+        - `POST /users`         /* erstelle einen neuen `user` */
+        - `GET /users/:name`    /* gibt den `user` mit `username == name` zurück */
+        - `DELETE /users/:id`   /* löscht den `user` mit `_id == id` */
+        - `PUT /users/:id`      /* ändert Daten von `user` mit `_id == id` */
+
+    - Geben Sie am Anfang Folgendes im Terminal innerhalb Ihres Projekteordners ein (ohne die Kommentare):
+
+        - `mkdir Uebung7`
+        - `cd Uebung7`
+        - `npm i`                    /* Erstellt das [Node.js](https://nodejs.dev/en/download/)-Projekt  */
+        - `npm i express --save`     /* [express.js](https://expressjs.com/de/)  */
+        - `npm i nodemon --save-dev` /* [nodemon](https://www.npmjs.com/package/nodemon) */
+        - `npm i mongoose --save`    /* [mongoose](https://mongoosejs.com/) */
+        - `npm i dotenv --save`      /* [dotenv](https://www.npmjs.com/package/dotenv)  */
+
+    - Vewenden Sie [MongoDB](https://www.mongodb.com/home) als Datenbankmanagementsystem. Installieren Sie sich entweder eine lokale Instanz ([MongoDB Community Server](https://www.mongodb.com/try/download/community)) oder verwenden Sie [MongoDB Atlas](https://www.mongodb.com/atlas/database). Für Letzteres benötigen Sie einen MongoDB-Account.
+
+    - Erstellen Sie folgendes Mongoose-Schema (Datenmodell):
+
+        ```js            
+        const schema = new mongoose.Schema({
+            username: String,
+            password: String,
+            email: String,
+            role: String
+        });
+        ```
+
+    - Beachten Sie!: Es soll **kein** neuer `User` angelegt werden, wenn der `username` bereits verwendet wird und/oder wenn die `email` bereits verwendet wird:
+
+        - Weder `username` noch `email` exitieren bereits:
+            ![Uebung7](./files/268_uebung7.png)
+        - `username` existiert bereits:
+            ![Uebung7](./files/269_uebung7.png)
+        - `email` existiert bereits:
+            ![Uebung7](./files/270_uebung7.png)
+
+    - `GET /user/:name` sucht nach dem `username`:
+
+        -  ![Uebung7](./files/272_uebung7.png)

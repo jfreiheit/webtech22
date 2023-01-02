@@ -477,6 +477,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ubung-7" class="md-nav__link">
+    Übung 7
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -586,6 +593,13 @@
         <li class="md-nav__item">
   <a href="#ubung-6" class="md-nav__link">
     Übung 6
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ubung-7" class="md-nav__link">
+    Übung 7
   </a>
   
 </li>
@@ -1326,6 +1340,64 @@
 <details>
 <summary>Quellcode Lösung Übung6</summary>
 <p>Die <a href="../files/Uebung6.zip">Uebung6.zip finden Sie hier</a>. Der <code>node_modules</code>-Ordner darin ist leer. Sie müssen zunächst <code>npm i</code> ausführen, um ihn wieder zu befüllen. </p>
+</details>
+<h4 id="ubung-7">Übung 7<a class="headerlink" href="#ubung-7" title="Permanent link">&para;</a></h4>
+<details class="question">
+<summary>Übungsaufgabe 7 (REST-API)</summary>
+<ul>
+<li>
+<p>Erstellen Sie eine REST-API mit folgenden Endpunkten:</p>
+<ul>
+<li><code>GET /users</code>          /* gebe alle <code>user</code>-Einträge zurück */</li>
+<li><code>POST /users</code>         /* erstelle einen neuen <code>user</code> */</li>
+<li><code>GET /users/:name</code>    /* gibt den <code>user</code> mit <code>username == name</code> zurück */</li>
+<li><code>DELETE /users/:id</code>   /* löscht den <code>user</code> mit <code>_id == id</code> */</li>
+<li><code>PUT /users/:id</code>      /* ändert Daten von <code>user</code> mit <code>_id == id</code> */</li>
+</ul>
+</li>
+<li>
+<p>Geben Sie am Anfang Folgendes im Terminal innerhalb Ihres Projekteordners ein (ohne die Kommentare):</p>
+<ul>
+<li><code>mkdir Uebung7</code></li>
+<li><code>cd Uebung7</code></li>
+<li><code>npm i</code>                    /* Erstellt das <a href="https://nodejs.dev/en/download/">Node.js</a>-Projekt  */</li>
+<li><code>npm i express --save</code>     /* <a href="https://expressjs.com/de/">express.js</a>  */</li>
+<li><code>npm i nodemon --save-dev</code> /* <a href="https://www.npmjs.com/package/nodemon">nodemon</a> */</li>
+<li><code>npm i mongoose --save</code>    /* <a href="https://mongoosejs.com/">mongoose</a> */</li>
+<li><code>npm i dotenv --save</code>      /* <a href="https://www.npmjs.com/package/dotenv">dotenv</a>  */</li>
+</ul>
+</li>
+<li>
+<p>Vewenden Sie <a href="https://www.mongodb.com/home">MongoDB</a> als Datenbankmanagementsystem. Installieren Sie sich entweder eine lokale Instanz (<a href="https://www.mongodb.com/try/download/community">MongoDB Community Server</a>) oder verwenden Sie <a href="https://www.mongodb.com/atlas/database">MongoDB Atlas</a>. Für Letzteres benötigen Sie einen MongoDB-Account.</p>
+</li>
+<li>
+<p>Erstellen Sie folgendes Mongoose-Schema (Datenmodell):</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="nx">username</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+</li>
+<li>
+<p>Beachten Sie!: Es soll <strong>kein</strong> neuer <code>User</code> angelegt werden, wenn der <code>username</code> bereits verwendet wird und/oder wenn die <code>email</code> bereits verwendet wird:</p>
+<ul>
+<li>Weder <code>username</code> noch <code>email</code> exitieren bereits:
+    <img alt="Uebung7" src="../files/268_uebung7.png" /></li>
+<li><code>username</code> existiert bereits:
+    <img alt="Uebung7" src="../files/269_uebung7.png" /></li>
+<li><code>email</code> existiert bereits:
+    <img alt="Uebung7" src="../files/270_uebung7.png" /></li>
+</ul>
+</li>
+<li>
+<p><code>GET /user/:name</code> sucht nach dem <code>username</code>:</p>
+<ul>
+<li><img alt="Uebung7" src="../files/272_uebung7.png" /></li>
+</ul>
+</li>
+</ul>
 </details>
 
 
