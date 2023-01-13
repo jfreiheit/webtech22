@@ -75,6 +75,7 @@ nav:
     - Backend (MongoDB): backend.md 
     - Backend (PostgreSQL): backend_pg.md
     - Frontend-Backend-Anbindung: fe-be-anbindung.md 
+    - RxJS und Guards: guards.md 
     - Übungen: uebungen.md
     - Promises: promises.md 
     - Werkzeuge: tools.md
