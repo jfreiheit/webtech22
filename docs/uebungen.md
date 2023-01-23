@@ -410,7 +410,7 @@
 
 
 ??? "Quellcode Lösung Übung5"
-    Die [Uebung5Loesung.zip finden Sie hier](./files/Uebung5Loesung.zip).  
+    Die [Uebung5 finden Sie hier](https://github.com/jfreiheit/WebTechUebungen/tree/main/Uebung5).  
 
 
 #### Übung 6
@@ -690,7 +690,7 @@
 
 
 ??? "Quellcode Lösung Übung6"
-    Die [Uebung6.zip finden Sie hier](./files/Uebung6.zip). Der `node_modules`-Ordner darin ist leer. Sie müssen zunächst `npm i` ausführen, um ihn wieder zu befüllen. 
+    Die [Uebung6 finden Sie hier](https://github.com/jfreiheit/WebTechUebungen/tree/main/Uebung6). Der `node_modules`-Ordner darin ist leer. Sie müssen zunächst `npm i` ausführen, um ihn wieder zu befüllen. 
 
 
 #### Übung 7

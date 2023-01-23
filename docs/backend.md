@@ -1002,11 +1002,11 @@ Die `id` wird aus der URL des Endpunktes ausgelesen, d.h. wenn wir bspw. den End
 	```javascript linenums="23"
 	// get one member via id
 	router.get('/members/:id', async(req, res) => {
-	    try {
-	        const member = await Member.findOne({ _id: req.params.id });
-	        console.log(req.params);
+	    const member = await Member.findOne({ _id: req.params.id });
+	    console.log(req.params);
+	    if(member) {
 	        res.send(member);
-	    } catch {
+	    } else {
 	        res.status(404);
 	        res.send({
 	            error: "Member does not exist!"
@@ -1138,11 +1138,11 @@ Hier nochmal die vollständige `routes.js`:
 
 	// get one member via id
 	router.get('/members/:id', async(req, res) => {
-	    try {
-	        const member = await Member.findOne({ _id: req.params.id });
-	        console.log(req.params);
+	    const member = await Member.findOne({ _id: req.params.id });
+	    console.log(req.params);
+	    if(member) {
 	        res.send(member);
-	    } catch {
+	    } else {
 	        res.status(404);
 	        res.send({
 	            error: "Member does not exist!"

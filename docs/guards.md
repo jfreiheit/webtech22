@@ -336,10 +336,10 @@ Die beiden Funktionen zum Löschen und Lesen einer Nutzerin sind so, wie wir sie
 	```js linenums="103"
 	// get one user via username
 	router.get('/:name', async(req, res) => {
-	    try {
-	        const user = await User.findOne({ username: req.params.name });
+	    const user = await User.findOne({ username: req.params.name });
+	    if(user) {
 	        res.send(user);
-	    } catch {
+	    } else {
 	        res.status(404);
 	        res.send({
 	            error: "User does not exist!"
