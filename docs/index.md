@@ -15,15 +15,15 @@ Nachfolgend der vorläufige Wochenplan (wird eventuell angepasst).
 | 3. | 24.-28.10.2022 | [CSS (Eigenschaften und Selektoren](./css/#css) | [Übung 2](./uebungen/#ubung-2) | - | 01.11.2022 | 
 | 4. | 31.-04.11.2022 | [CSS (Grid)](./css/#grid) | [Übung 3](./uebungen/#ubung-3) | Konzept | 08.11.2022 | 
 | 5. | 07.-11.11.2022 | [RWD (responsive Webdesign)](./rwd/#responsive-web-design) | [Übung 4](./uebungen/#ubung-4) | - | 15.11.2022 | 
-| 6. | 14.-18.11.2022 | JavaScript (DOM) | [Übung 5](./uebungen/#ubung-5) | Datenmodell | 22.11.2022 | 
-| 7. | 21.-25.11.2022 | Angular (Einführung und Komponenten) | [Übung 6](./uebungen/#ubung-6) | Schnittstelle | 29.11.2022 | 
-| 8. | 28.-02.12.2022 | Angular (Bindings und Direktiven) + JSON | [Übung 7](./uebungen/#ubung-7) | Frontend (c+r)| 06.12.2022 | 
-| 9. | 05.-09.12.2022 | Angular (Routing und Services) | [Übung 8](./uebungen/#ubung-8) | Frontend (u+d)| 13.12.2022 | 
-| 10. | 12.-16.12.2022 | Node.js + Express (REST-Server + MongoDB) | [Übung 9](./uebungen/#ubung-9) | Frontend fertig | 20.12.2021 | 
-| 11. | 19.-23.12.2022 | Angular (Anbindung ans Backend) | [Übung 10](./uebungen/#ubung-10) | Backend ( c ) | 10.01.2023 | 
+| 6. | 14.-18.11.2022 | [JavaScript (DOM)](./javascript/#javascript) | [Übung 5](./uebungen/#ubung-5) | Datenmodell | 22.11.2022 | 
+| 7. | 21.-25.11.2022 | [Angular (Einführung und Komponenten)](./angular/#angular) | [Übung 6](./uebungen/#ubung-6) | Schnittstelle | 29.11.2022 | 
+| 8. | 28.-02.12.2022 | [Angular (Bindings und Direktiven) + JSON](./angular2/#json-und-direktiven) | [Übung 7](./uebungen/#ubung-7) | Frontend (c+r)| 06.12.2022 | 
+| 9. | 05.-09.12.2022 | [Angular (Routing und Services)](./routing/#routing-und-services) |  | Frontend (u+d)| 13.12.2022 | 
+| 10. | 12.-16.12.2022 | [Node.js + Express (REST-Server + MongoDB)](./backend/#rest-api-mongodb) |  | Frontend fertig | 20.12.2021 | 
+| 11. | 19.-23.12.2022 | [Angular (Anbindung ans Backend)](./fe-be-anbindung/#frontend-backend-anbindung) |  | Backend ( c ) | 10.01.2023 | 
 | | | | | | | |
-| 12. | 02.-06.01.2023 | Nutzerverwaltung und Material | - | Backend (r + u) | 17.01.2023 |
-| 13. | 09.-13.01.2023 | Dateiupload + Drag&Drop  | - | Backend (d + fertig)| 24.01.2023 |
+| 12. | 02.-06.01.2023 | [Nutzerverwaltung und Material](./guards/#subject-observable-observer-und-guards) | - | Backend (r + u) | 17.01.2023 |
+| 13. | 09.-13.01.2023 | Wiederholung  | - | Backend (d + fertig)| 24.01.2023 |
 | 14. | 16.-20.01.2023 | Wiederholung | - | fertig stellen | 31.01.2023 |
 | 15. | 23.-27.01.2023 | - | Fragen | - | - |
 | 16. | 30.-02.02.2023 | - | Fragen  | - |
