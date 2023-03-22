@@ -27,8 +27,8 @@ Nachfolgend der vorläufige Wochenplan (wird eventuell angepasst).
 | 14. | 16.-20.01.2023 | Wiederholung | - | fertig stellen | 31.01.2023 |
 | 15. | 23.-27.01.2023 | - | Fragen | - | - |
 | 16. | 30.-02.02.2023 | - | Fragen  | - |
-| 17. | 06.-10.02.2023 | - | Fragen |  Abgabe 1.PZ 20.2.2023, Gespräche 21.2.2023  |
-|  |  |  |  | Abgabe 2.PZ 27.3.2023, Gespräche 28.3.2023 | - |
+| 17. | 06.-10.02.2023 | - | Fragen | Abgabe 1.PZ 20.2.2023, Gespräche 21.2.2023  |
+|  |  |  |  |Abgabe 2.PZ 24.3.2023, Gespräche 27.3.2023 | - |
 
 ### Organisatorisches 
 
